@@ -1,0 +1,534 @@
+body {
+    /* 1. Definirea variabilelor conform paletei de 5 culori */
+    --culoare-buton: #9500EA;
+    /* Violet */
+    --culoare-fundal: #FFFFFF;
+    /* Alb */
+    --culoare-secundara: #D9E6E9;
+    /* Gri-azuriu */
+    --culoare-text: #000000;
+    /* Negru */
+    --culoare-highlight: #EA3424;
+    /* Rosu */
+
+    /* Variabile pentru dimensiuni/contur (folosind culorile de mai sus) */
+    --culoare-contur: var(--culoare-text);
+    --margine-laterala: 10px;
+
+    --spatiere-stanga: 10px;
+    --spatiere-dreapta: 10px;
+    --gap-grid: 15px;
+    --zona-padding: 15px;
+
+    /* 2. Aplicarea variabilei pe body */
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
+    margin-left: var(--margine-laterala);
+    margin-right: var(--margine-laterala);
+}
+
+p {
+    border: 1px solid var(--culoare-fundal);
+}
+
+html {
+    font-size: 18px;
+    /* Baza pentru ecran mare */
+    transition: font-size 0.5s ease;
+    /* Tranziția cerută */
+}
+
+main {
+    margin-left: var(--margine-laterala);
+    margin-right: var(--margine-laterala);
+}
+
+/*resetare spatiere*/
+figure {
+    margin: 0;
+}
+
+#grid-pagina {
+    display: grid;
+    gap: var(--gap-grid);
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* 4 coloane de bază */
+    grid-template-areas:
+        "z1 z1 z1 z1"
+        /* Zona 1: Prezentare */
+        "z2 z2 z3 z3"
+        /* Zona 2 (Tabel) ocupă jumătate, Z3 restul */
+        "z2 z2 z4 z4"
+        /* Zona 2 continuă, Z4 (Anunțuri) sub Z3 */
+        "z5 z6 z6 z7"
+        /* Zona 6 (Statistici) e dublă față de Z5 și Z7 */
+        "z8 z8 z8 z8";
+    /* Zona 8 (Galerie) ocupă tot rândul */
+}
+
+#grid-pagina>* {
+    background-color: var(--culoare-fundal);
+    /* culoare de fundal */
+    border: 1px solid var(--culoare-contur);
+    /* contur pentru fiecare celulă */
+    border-radius: 8px;
+    /* colțuri rotunjite */
+    box-shadow: 0 0 10px var(--culoare-text);
+    /* umbră cu culoare din paletă */
+    padding: var(--padding-zona);
+}
+
+body {
+    font-size: 1rem;
+    /* 18px */
+    line-height: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+/* Unități relative (rem) */
+h2 {
+    font-size: 1.8rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+
+#header {
+    background-color: var(--culoare-secundara);
+    /* culoare diferită */
+    border: 2px solid var(--culoare-contur);
+    /* contur vizibil */
+    border-radius: 10px;
+    /* colțuri rotunjite */
+    padding: var(--padding-zona);
+    text-align: left;
+    box-shadow: 0 4px 8px var(--culoare-contur);
+    /* umbră folosind culoare din cromatică */
+}
+
+#welcome {
+    grid-area: z1;
+    justify-content: center;
+}
+
+#produse-populare {
+    grid-area: z2;
+}
+
+#program-evenimente {
+    grid-area: z3;
+}
+
+#anunturi {
+    grid-area: z4;
+}
+#anunturi h3 {
+    border-left: 5px solid var(--culoare-highlight);
+    padding-left: 10px;
+}
+
+#resurse {
+    grid-area: z5;
+}
+
+#promotii {
+    grid-area: z6;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Spațiu între Promoții și FAQ */
+    padding: 10px;
+    border: 1px solid var(--culoare-fundal);
+    /* Opțional, ca să vezi marginile ca în schiță */   
+}
+
+#instrumente {
+    grid-area: z7;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Spațiu între Promoții și FAQ */
+    padding: 10px;
+    border: 1px solid var(--culoare-highlight);
+    justify-content: center;
+    /* Opțional, ca să vezi marginile ca în schiță */
+}
+
+
+#galerie-statica {
+    grid-area: z8;
+    display: flex;
+    /* transformăm în flex container */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* permitem mai multe rânduri dacă nu încape totul pe un rând */
+    justify-content: center;
+    /* centrăm rândurile pe orizontală */
+    gap: 20px;
+}
+
+#galerie-statica img {
+    flex: 0 1 250px;
+    max-width: 700px;
+    min-width: 500px;
+    /* Forțează imaginea să rămână în interiorul coloanei ei */
+    height: 350px;
+    /* Păstrează proporțiile imaginii */
+    display: block;
+    /* Elimină golurile de sub imagine */
+    border-radius: 3px;
+    /* colțuri rotunjitei */
+    box-shadow: 0 4px 5px var(--culoare-secundara);
+    transition: transform 0.3s ease;
+    /* Pregătire pentru efectul de hover */
+    animation: fadeIn 1s ease;
+}
+
+#galerie-statica img:hover {
+    transform: scale(1.02);
+}
+
+#galerie-statica figcaption {
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: var(--culoare-text);
+}
+
+#footer {
+    text-align: center;
+    padding: var(--padding-zona);
+    background-color: var(--culoare-secundara);
+    border: 2px solid var(--culoare-contur);
+    color: var(--culoare-text);
+    box-shadow: 0 -4px 8px var(--culoare-highlight);
+    /* umbră cu culoare din paletă */
+}
+
+html {
+    font-size: 18px;
+    transition: font-size 0.5s ease;
+}
+
+@media screen and (max-width: 1100px) {
+    html {
+        font-size: 17px;
+        /* Scade cu 1px conform cerinței */
+    }
+
+    body {
+        --gap-grid: 10px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    #grid-pagina {
+        grid-template-columns: 1fr 1fr;
+        /* Doar 2 coloane */
+        grid-template-areas:
+            "z1 z1"
+            "z2 z2"
+            /* Tabelul devine full width pentru lizibilitate */
+            "z3 z4"
+            "z5 z7"
+            "z6 z6"
+            /* Statisticile ocupă tot rândul */
+            "z8 z8";
+    }
+     .tabel-container {
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    html {
+        font-size: 16px;
+        /* Scade cu încă 1px */
+    }
+
+    #grid-pagina {
+        grid-template-columns: 1fr;
+        /* O SINGURĂ COLOANĂ */
+        grid-template-areas: "z1" "z2" "z3" "z4" "z5" "z6" "z7" "z8";
+    }
+
+    body {
+        --gap-grid: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        /* Reducem marginea uriașă de 120px pe mobil */
+    }
+    #galerie-statica img {
+        flex: 0 1 90%;  /* ocupă aproape tot rândul pe mobil */
+        max-width: 100%;
+        min-width: 150px;
+    }
+    #tabel-instrumente {
+        border-spacing: 0;
+    }
+
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+.harta-interactiva {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.harta-interactiva img {
+    border: 2px solid var(--culoare-text);
+    border-radius: 10px;
+    width: 60%;          /* Lățimea fluidă */
+    max-width: 600px;    /* Limita superioară fixă */
+    min-width: 300px;
+    height: 500px;
+    display: block;
+}
+
+/* Imagine responsive */
+.imagine-responsive img {
+    width: 60%;          /* Lățimea fluidă */
+    max-width: 600px;    /* Limita superioară fixă */
+    min-width: 300px;
+    height: 500px;
+    text-align: center;
+    border-radius: 5px;
+    display: block;
+}
+
+.imagine-responsive figcaption {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--culoare-text);
+}
+
+figure.fg-img>img {
+    width: 60%;          /* Lățimea fluidă */
+    max-width: 600px;    /* Limita superioară fixă */
+    min-width: 300px;
+}
+
+
+h1 {
+    font-family: "Cinzel", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.container-iframe {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ca taburile să fie aliniate la stânga */
+    gap: 10px;               /* spațiu între linkuri și iframe */
+    padding: 10px;
+    border: 2px solid var(--culoare-contur);
+    border-radius: 8px;
+    background-color:var(--culoare-fundal); /* dreptunghi alb */
+    width: 70%;          /* lățime fluidă */
+    max-width: 800px;    /* limita superioară */
+    min-width: 300px;
+}
+
+.container-iframe iframe {
+    width: 100%; /* se întinde pe lățimea containerului */
+    height: 315px; /* sau ce vrei */
+    border: 1px solid var(--culoare-contur);
+    border-radius: 0 0 5px 5px; /* colțuri rotunjite jos */
+}
+
+.tabel-container {
+    overflow-x: auto;  /* permite scroll pe orizontală */
+    -webkit-overflow-scrolling: touch; /* smooth scroll pe mobil */
+}
+
+#tabel-instrumente thead {
+    background-color: var(--culoare-buton);
+    color: var(--culoare-fundal);
+}
+
+#tabel-instrumente tfoot {
+    font-style: italic;
+    text-align: center;
+    background-color: var(--culoare-secundara);
+}
+
+.taburi-iframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.taburi-iframe>a {
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--culoare-text);
+    border: 1px solid var(--culoare-contur);
+    color: var(--culoare-fundal);
+    text-decoration: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-right: 5px;
+    transition: all 0.05s linear;
+}
+
+.taburi-iframe>a:hover {
+    background-color: var(--culoare-buton);
+    color: var(--culoare-fundal);
+
+}
+
+.icon-animat {
+    color: var(--culoare-buton);
+    font-size: 1.5rem;
+    animation: rotire 1s linear infinite;
+}
+
+/* definirea animației */
+@keyframes rotire {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#tabel-instrumente caption {
+    caption-side: bottom; /* Mută caption sub tabel */
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--culoare-text);
+    text-align: center;
+}
+
+#tabel-instrumente tbody tr:nth-child(odd) {
+    background-color: var(--culoare-secundara); /* rânduri impare */
+}
+
+#tabel-instrumente tbody tr:nth-child(even) {
+    background-color: var(--culoare-fundal); /* rânduri pare */
+}
+
+#tabel-instrumente tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+#tabel-instrumente tbody tr:hover {
+    background-color: var(--culoare-buton);
+    color: var(--culoare-fundal); /* optional, ca textul să fie vizibil */
+}
+
+#tabel-instrumente {
+    border-collapse: separate; /* necesar pentru spacing */
+    border-spacing: 2px;       /* spațiul dintre celule */
+    width: 100%;
+}
+
+.link-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    
+    /* Centrare triunghi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Stil vizual conform cerinței */
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text); /* Triunghiul va fi vizibil acum */
+    border: 2px solid var(--culoare-text);
+    border-radius: 50%;
+    opacity: 0.6; /* Semi-transparent conform cerinței */
+    
+    /* Umbră externă corectă */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    
+    text-decoration: none;
+    transition: all 0.5s ease; /* Tranziție între 300-700ms */
+    z-index: 1000;
+}
+
+.link-top span:first-child {
+    font-size: 1.8rem;
+}
+
+/* Tooltip-ul care apare deasupra */
+.tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    bottom: 70px; /* Îl ridicăm deasupra butonului să nu-l acopere */
+    right: 0;
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Efectele de Hover */
+.link-top:hover {
+    opacity: 1; /* Devine opac */
+    background-color: var(--culoare-secundara); /* Se închide la culoare */
+}
+
+.link-top:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+math[display="block"] {
+    background-color: var(--culoare-secundara);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px dashed var(--culoare-contur);
+    margin: 10px auto;
+}
+.evidentiat {
+    fill: var(--culoare-highlight); /* Pentru MathML se folosește 'fill' sau 'color' */
+    color: var(--culoare-highlight);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+mo {
+    color: var(--culoare-text);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+/* Stil pentru textul de subscript (micșorăm și italicizăm diferit) */
+.text-mic {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--culoare-text);
+}
+/* Stil pentru cifre (le facem mai groase) */
+.numar-bold {
+    font-weight: 900;
+    color: var(--culoare-buton);
+}
+/* Stil pentru o altă variabilă (schimbăm culoarea în roșu/highlight și fontul) */
+.evidentiat-special {
+    color: var(--culoare-highlight);
+    font-family: "Cinzel", serif; /* Dacă ai fontul acesta încărcat */
+}
+/* Putem stiliza și elemente specifice direct (ex: toate fracțiile) */
+mfrac {
+    padding: 5px;
+}
