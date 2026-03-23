@@ -22,10 +22,7 @@ body {
 p {
     border: 1px solid var(--culoare-fundal);
 }
-#hamburger,
-#toggle-menu {
-    display: none;
-}
+
 html {
     font-size: 18px;
     transition: font-size 0.5s ease;
@@ -183,7 +180,7 @@ ul.meniu {
     font-weight:500;
 }
 
-#galerie-statica {
+#galerie {
     grid-area: z8;
     display: flex;
     flex-direction: row;
@@ -192,7 +189,7 @@ ul.meniu {
     gap: 20px;
 }
 
-#galerie-statica img {
+#galerie img {
     flex: 0 1 250px; /* flex: [flex-grow] [flex-shrink] [flex-basis] */
     max-width: 700px;
     min-width: 500px;
@@ -204,11 +201,11 @@ ul.meniu {
     animation: fadeIn 1s ease;
 }
 
-#galerie-statica img:hover {
+#galerie img:hover {
     transform: scale(1.02);
 }
 
-#galerie-statica figcaption {
+#galerie figcaption {
     text-align: center;
     margin-top: 1rem;
     margin-left: 1rem;
@@ -363,7 +360,7 @@ thead {
         margin-left: 10px;
         margin-right: 10px;
     }
-    #galerie-statica img {
+    #galerie img {
         flex: 0 1 90%;  
         max-width: 100%;
         min-width: 150px;

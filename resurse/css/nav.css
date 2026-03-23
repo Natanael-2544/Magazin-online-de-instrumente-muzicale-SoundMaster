@@ -1,12 +1,16 @@
 nav {
-  --latime-buton: 120px;
+  --latime-buton: 180px;
   --inaltime-buton: 50px;
+  --culoare-deschisa-meniu: var(--culoare-secundara); 
+  --culoare-inchisa-meniu: var(--culoare-buton);
   background-color: var(--culoare-fundal);
+  z-index: 100;
+  position: relative;
 }
 
-#piane,
-#chitare {
-  display: none;
+#hamburger,
+#ch-menu {
+    display: none;
 }
 
 .text-icon, .imag-icon{
