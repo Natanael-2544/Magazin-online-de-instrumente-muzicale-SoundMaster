@@ -1,110 +1,274 @@
-nav {
+body {
+  --culoare-buton: #9500EA;
+  --culoare-fundal: #FFFFFF;
+  --culoare-secundara: #D9E6E9;
+  --culoare-text: #000000;
+  --culoare-highlight: #EA3424;
   --latime-buton: 180px;
   --inaltime-buton: 50px;
-  --culoare-deschisa-meniu: var(--culoare-secundara); 
-  --culoare-inchisa-meniu: var(--culoare-buton);
+}
+
+nav {
   background-color: var(--culoare-fundal);
   z-index: 100;
   position: relative;
 }
-
-#hamburger,
-#ch-menu {
-    display: none;
+nav #ch-menu {
+  display: none;
 }
-
-.text-icon, .imag-icon{
-    display: inline-block;
+nav #hamburger {
+  display: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--culoare-text);
+  padding: 10px;
 }
-
-ul.meniu,
-ul.meniu li {
+nav #hamburger img {
+  height: 2rem;
+  width: auto;
+}
+nav .text-icon,
+nav .imag-icon {
+  display: inline-block;
+}
+nav ul.meniu {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-
-ul.meniu ul {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-}
-
-ul.meniu li {
+nav ul.meniu li {
   cursor: pointer;
-  position: relative;
   font-weight: bold;
   width: var(--latime-buton);
   height: var(--inaltime-buton);
-  background-color: var(--culoare-text);
   border: 1px solid var(--culoare-contur);
-  color: var(--culoare-fundal);
   text-align: center;
   line-height: var(--inaltime-buton);
-  margin-right: 5px;
   transition: all 0.05s linear;
 }
-
-ul.meniu li a {
+nav ul.meniu li {
+  background-color: var(--culoare-text);
+  color: #FFFFFF;
+  margin-right: 5px;
+  position: relative;
+}
+nav ul.meniu li.item-acasa {
+  width: 180px;
+}
+nav ul.meniu li.item-acasa .text-icon {
+  display: inline-block;
+}
+nav ul.meniu li.item-acasa .imag-icon {
+  margin: 0;
+}
+nav ul.meniu li a {
+  display: inline-block;
+  position: relative;
   text-decoration: none;
+  z-index: 2;
   color: inherit;
-  display: block;
-  width: 100%;
-  height: 100%;
+  line-height: normal;
+  vertical-align: middle;
 }
-
-ul.meniu ul {
-  display: none;
+nav ul.meniu li::before {
+  content: "";
   position: absolute;
-  animation: animatie_submeniu 0.1s linear;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid #FFFFFF;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%) scale(0);
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1;
+}
+nav ul.meniu li:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+nav ul.meniu li a {
+  position: relative;
+  text-decoration: none;
+  z-index: 2;
+  color: inherit;
+}
+nav ul.meniu li ul {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
   transform-origin: center top;
+  transform: scale(0);
+  transition: transform 0.3s ease-in-out;
+  z-index: 10;
 }
-
-#tabel-instrumente {
-  border-collapse: collapse;
-}
-
-#tabel-instrumente td,
-#tabel-instrumente th {
-  border: 1px solid var(--culoare-contur);
-  padding: 8px;
-}
-
-#tabel-instrumente tbody {
-  background-color: var(--culoare-secundara);
-}
-
-@keyframes animatie_submeniu {
-  0% {
-    opacity: 0;
-    transform: scale(0, 0);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(0.5, 1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
-}
-ul.meniu ul li {
+nav ul.meniu li ul li {
   background-color: var(--culoare-text);
   color: var(--culoare-fundal);
   border: 1px solid var(--culoare-contur);
 }
-
-ul.meniu li:hover {
-  background-color: var(--culoare-buton);
-  color: var(--culoare-fundal);
+nav ul.meniu li ul li::before {
+  content: none;
 }
-
-ul.meniu li:hover > ul {
-  display: block;
+nav ul.meniu li ul li a {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
 }
-
-ul.meniu > li:hover ul {
-  display: block;
+nav ul.meniu li ul li a::after {
+  content: "";
   position: absolute;
-  z-index: 10;
+  left: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 0;
+  background-color: var(--culoare-fundal);
+  box-shadow: 0 4px 0 var(--culoare-fundal);
+  transition: width 0.3s ease;
 }
+nav ul.meniu li ul li a:hover::after {
+  width: 100%;
+}
+nav ul.meniu li:hover > ul {
+  transform: scale(1);
+}
+
+@media (max-width: 700px) {
+  nav {
+    background-color: var(--culoare-text);
+    height: 50px;
+    position: relative;
+    --latime-buton: 100%;
+  }
+  #hamburger {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 60px;
+    z-index: 1001;
+    cursor: pointer;
+    background-color: transparent;
+  }
+  #hamburger img {
+    display: block;
+    height: 30px;
+    width: auto;
+    margin: 10px;
+  }
+  ul.meniu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: black;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+  }
+  ul.meniu li {
+    width: 100%;
+    height: auto;
+    line-height: 50px;
+    background-color: #111;
+    position: relative;
+  }
+  ul.meniu li::before {
+    display: block !important;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    height: 80%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid #FFFFFF;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1;
+    pointer-events: none;
+  }
+  ul.meniu li:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  ul.meniu li.item-acasa {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  ul.meniu li.item-acasa a {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+  }
+  ul.meniu li.item-acasa .text-icon {
+    display: none !important;
+  }
+  ul.meniu li.item-acasa .imag-icon {
+    display: block !important;
+    font-size: 1.8rem;
+    margin: 0 !important;
+  }
+  ul.meniu li ul {
+    display: none;
+    position: static;
+    width: 100%;
+    background-color: #050505;
+    padding: 0;
+  }
+  ul.meniu li ul li {
+    height: 45px;
+    line-height: 45px;
+    background-color: transparent;
+    border: none;
+  }
+  ul.meniu li ul li::before {
+    display: none !important;
+  }
+  ul.meniu li:hover > ul {
+    display: block;
+  }
+  #ch-menu:checked ~ ul.meniu {
+    display: flex;
+    flex-direction: column;
+  }
+  .item-acasa ul li a {
+    display: inline-block !important;
+    width: auto !important;
+    padding: 0 10px;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    z-index: 2;
+  }
+  .item-acasa ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--culoare-fundal);
+    box-shadow: 0 4px 0 var(--culoare-fundal);
+    transition: width 0.3s ease;
+    display: block;
+  }
+  .item-acasa ul li a:hover::after {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=nav.css.map */
