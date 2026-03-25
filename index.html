@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="/resurse/css/reset.css">
     <link rel="stylesheet" href="/resurse/css/general.css" type="text/css" />
     <link rel="stylesheet" href="/resurse/css/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/resurse/css/nav700.css" media="screen and (max-width: 700px)" />
     <link rel="stylesheet" href="/resurse/css/nav1000.css" media="screen and (max-width: 1000px)" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,15 +27,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Noto+Music&display=swap"
         rel="stylesheet">
 </head>
-
+<script src="index.js"></script>
 <body>
+    <div id="watermark">
+        <span class="nume">Ghiura</span>
+        <br>
+        <span class="prenume">Natanael</span>
+    </div>
 
     <nav>
+        <input type="checkbox" id="ch-menu" hidden>
         <label id="hamburger" for="ch-menu">
-            <img src="/resurse/imagini/Hamburger_icon_alb.png" alt="menu">
+            <span></span>
+            <span></span>
+            <span></span>
         </label>
-        <input type="checkbox" id="ch-menu" />
-
+    
         <ul class="meniu">
             <li class="item-acasa">
                 <a href="index.html">
@@ -589,7 +595,7 @@
             Pagina a fost creată la data de
             <time datetime="2026-02-25">25 februarie 2026</time>.
         </small>
-
+        <p class="banner-print">Acesta este un proiect școlar!</p>
     </footer>
 </body>
 

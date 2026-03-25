@@ -3,27 +3,69 @@
 </header>
 
 <nav>
-    <label id="hamburger" for="ch-menu">
-        <img src="/resurse/imagini/ico/favicon-96x96.png" alt="menu">
-    </label>
     <input type="checkbox" id="ch-menu" />
+    <label id="hamburger" for="ch-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+    
+
     <ul class="meniu">
-        <li>
-            <a href="index.html">Acasă</a>
+        <li class="item-acasa">
+            <a href="index.html">
+                <div class="text-icon">Acasă</div>
+                <div class="imag-icon">
+                    <span class="fas fa-house"></span>
+                </div>
+            </a>
             <ul>
-                <li><a href="#welcome">Prezentare</a></li>
-                <li><a href="#produse-populare">Produse Populare</a></li>
-                <li><a href="#program-evenimente">Evenimente</a></li>
-                <li><a href="#anunturi">Anunturi</a></li>
-                <li><a href="#resurse">Resurse</a></li>
-                <li><a href="#promotii">Promotii</a></li>
-                <li><a href="#instrumente">Instrumente</a></li>
+                <li style="--i:0;"><a href="#welcome">Prezentare</a></li>
+                <li style="--i:1;"><a href="#produse-populare">Produse Populare</a></li>
+                <li style="--i:2;"><a href="#program-evenimente">Evenimente</a></li>
+                <li style="--i:3;"><a href="#anunturi">Anunturi</a></li>
+                <li style="--i:4;"><a href="#resurse">Resurse</a></li>
+                <li style="--i:5;"><a href="#promotii">Promotii</a></li>
+                <li style="--i:6;"><a href="#instrumente">Instrumente</a></li>
             </ul>
         </li>
-        <li><a href="#galerie-statica">Galerie</a></li>
 
-        <li><a href="#demo-instrumente">Demo Instrumente</a></li>
+        <li>
+            <a href="#galerie">
+                <div class="text-icon">Galerie</div>
+                <div class="imag-icon"><span class="fa-solid fa-image"></span></div>
+            </a>
+            <ul>
+                <li><a href="galerie-statica.html">Statică</a></li>
+                <li><a href="galerie-dinamica.html">Dinamică</a></li>
+            </ul>
+        </li>
 
-        <li><a href="#contact-info">Contact</a></li>
+        <li>
+            <a href="#produse">
+                <div class="text-icon">Produse</div>
+                <div class="imag-icon"><span class="fa-solid fa-music"></span></div>
+            </a>
+            <ul>
+                <li><a href="#secțiune-piane">Piane</a></li>
+                <li><a href="#secțiune-chitare">Chitare și Basuri</a></li>
+                <li><a href="#secțiune-tobe">Tobe</a></li>
+                <li><a href="#secțiune-instrumente-cu-coarde">Instrumente cu coarde</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="#demo-instrumente">
+                <div class="text-icon">Demo</div>
+                <div class="imag-icon"><span class="fa-solid fa-circle-play"></span></div>
+            </a>
+        </li>
+
+        <li>
+            <a href="#footer">
+                <div class="text-icon">Contact</div>
+                <div class="imag-icon"><span class="fa-regular fa-envelope"></span></div>
+            </a>
+        </li>
     </ul>
 </nav>

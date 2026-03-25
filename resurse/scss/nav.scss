@@ -24,13 +24,8 @@ nav {
         display: none;
         cursor: pointer;
         font-size: 2rem;
-        color: var(--culoare-text);
+        color: var(--culoare-fundal);
         padding: 10px;
-
-        img {
-            height: 2rem;
-            width: auto;
-        }
     }
 
     .text-icon,
@@ -62,7 +57,7 @@ nav {
             position: relative;
 
             &.item-acasa {
-                width: 180px; 
+                width: 180px;
 
                 .text-icon {
                     display: inline-block;
@@ -74,12 +69,12 @@ nav {
             }
 
             a {
-                display: inline-block; 
+                display: inline-block;
                 position: relative;
                 text-decoration: none;
                 z-index: 2;
                 color: inherit;
-                line-height: normal; 
+                line-height: normal;
                 vertical-align: middle;
             }
 
@@ -127,7 +122,7 @@ nav {
                     border: 1px solid var(--culoare-contur);
 
                     &::before {
-                        content: none; 
+                        content: none;
                     }
 
                     a {
@@ -161,31 +156,56 @@ nav {
     }
 }
 
+$t: 0.3s;
 @media (max-width: $dim_max_ecran_mic) {
-
     nav {
-        background-color: var(--culoare-text);
+        background-color: var(--culoare-text) !important;
         height: 50px;
         position: relative;
-        --latime-buton: 100%;
-    }
+        z-index: 1000;
 
-    #hamburger {
-        display: block !important;
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 50px;
-        width: 60px;
-        z-index: 1001;
-        cursor: pointer;
-        background-color: transparent;
+        #hamburger {
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 50px;
+            width: 60px;
+            z-index: 1001;
+            cursor: pointer;
+            background-color: transparent;
 
-        img {
-            display: block;
-            height: 30px;
-            width: auto;
-            margin: 10px;
+            // Varianta cu span-uri (linii)
+            span {
+                display: block;
+                height: 4px;
+                width: 30px;
+                background-color: var(--culoare-fundal);
+                margin: 3px 0;
+                border-radius: 2px;
+                transition: all 0.3s ease;
+                animation: hamburgerAppear 0.6s ease forwards;
+                @for $i from 1 through 3 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: ($i - 1) * $t;
+                    }
+                }
+            }
+        }
+
+        #hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
         }
     }
 
@@ -312,5 +332,25 @@ nav {
         &:hover::after {
             width: 100%;
         }
+    }
+}
+
+@keyframes hamburgerAppear {
+    0% {
+        transform: translateY(-20px) scale(0.5) rotate(0deg);
+        opacity: 0;
+        background-color: red;
+    }
+
+    50% {
+        transform: translateY(5px) scale(1.2) rotate(10deg);
+        opacity: 0.7;
+        background-color: orange;
+    }
+
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+        background-color: var(--culoare-fundal);
     }
 }

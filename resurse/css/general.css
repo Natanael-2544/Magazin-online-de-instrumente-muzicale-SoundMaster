@@ -79,11 +79,11 @@ p {
 }
 
 ul.meniu {
-  display: flex; 
-  flex-direction: row; 
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 #header {
@@ -99,33 +99,35 @@ ul.meniu {
     grid-area: z1;
     justify-content: center;
 }
+
 #welcome strong {
-    color: var(--culoare-text); 
-    font-weight: 700;          
+    color: var(--culoare-text);
+    font-weight: 700;
 }
 
 #welcome h2 {
-    color: var(--culoare-highlight); 
-    font-weight: 800;                
-    font-size: 2rem;                 
+    color: var(--culoare-highlight);
+    font-weight: 800;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
 }
 
 #welcome h3 {
-    color: var(--culoare-buton);     
-    font-weight: 700;                
-    font-size: 1.5rem;               
+    color: var(--culoare-buton);
+    font-weight: 700;
+    font-size: 1.5rem;
     margin-top: 1rem;
     margin-bottom: 0.3rem;
     padding-left: 0.5rem;
 }
-.intro-oferte > div {
-    display: list-item;          
-    list-style-type: disc;       
-    margin-left: 20px;           
-    margin-bottom: 5px;          
-    color: var(--culoare-text);  
-    font-weight: 500;            
+
+.intro-oferte>div {
+    display: list-item;
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    color: var(--culoare-text);
+    font-weight: 500;
 }
 
 #produse-populare {
@@ -139,13 +141,14 @@ ul.meniu {
 
 #anunturi {
     grid-area: z4;
-    
+
 }
+
 #anunturi h3 {
     border-left: 5px solid var(--culoare-highlight);
     padding-left: 10px;
     font-size: 1.5rem;
-    font-weight:700;
+    font-weight: 700;
 }
 
 #resurse {
@@ -160,7 +163,7 @@ ul.meniu {
     flex-direction: column;
     gap: 20px;
     padding: 10px;
-    border: 1px solid var(--culoare-fundal); 
+    border: 1px solid var(--culoare-fundal);
 }
 
 #instrumente {
@@ -173,11 +176,12 @@ ul.meniu {
     justify-content: center;
     align-items: flex-start;
 }
+
 #instrumente h3 {
     border-left: 5px solid var(--culoare-highlight);
     padding-left: 10px;
     font-size: 1.5rem;
-    font-weight:500;
+    font-weight: 500;
 }
 
 #galerie {
@@ -190,7 +194,8 @@ ul.meniu {
 }
 
 #galerie img {
-    flex: 0 1 250px; /* flex: [flex-grow] [flex-shrink] [flex-basis] */
+    flex: 0 1 250px;
+    /* flex: [flex-grow] [flex-shrink] [flex-basis] */
     max-width: 700px;
     min-width: 500px;
     height: 350px;
@@ -217,13 +222,13 @@ ul.meniu {
     text-align: left;
     background-color: var(--culoare-secundara);
     color: var(--culoare-text);
-    font-style: italic 
+    font-style: italic
 }
 
 @media screen and (max-width: 1100px) {
     html {
         font-size: 17px;
-        
+
     }
 
     body {
@@ -234,7 +239,7 @@ ul.meniu {
 
     #grid-pagina {
         grid-template-columns: 1fr 1fr;
-    
+
         grid-template-areas:
             "z1 z1"
             "z2 z2"
@@ -243,20 +248,22 @@ ul.meniu {
             "z6 z6"
             "z8 z8";
     }
-     .tabel-container {
+
+    .tabel-container {
         overflow-x: auto;
     }
 }
 
 table {
-    border-collapse: collapse; 
-    width: 100%; 
-    margin-bottom: 1rem; 
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
-th, td {
-    border: 1px solid var(--culoare-contur); 
-    padding: 0.5rem; 
+th,
+td {
+    border: 1px solid var(--culoare-contur);
+    padding: 0.5rem;
     text-align: left;
 }
 
@@ -264,8 +271,9 @@ thead {
     background-color: var(--culoare-buton);
     color: var(--culoare-fundal);
 }
+
 #tabel-instrumente caption {
-    caption-side: bottom; 
+    caption-side: bottom;
     font-weight: bold;
     margin-top: 10px;
     color: var(--culoare-text);
@@ -273,11 +281,11 @@ thead {
 }
 
 #tabel-instrumente tbody tr:nth-child(odd) {
-    background-color: var(--culoare-secundara); 
+    background-color: var(--culoare-secundara);
 }
 
 #tabel-instrumente tbody tr:nth-child(even) {
-    background-color: var(--culoare-fundal); 
+    background-color: var(--culoare-fundal);
 }
 
 #tabel-instrumente tbody tr {
@@ -286,11 +294,12 @@ thead {
 
 #tabel-instrumente tbody tr:hover {
     background-color: var(--culoare-buton);
-    color: var(--culoare-fundal); 
+    color: var(--culoare-fundal);
 }
+
 .celula-unita {
-    padding: 0; 
-    background-color: var(--culoare-secundara); 
+    padding: 0;
+    background-color: var(--culoare-secundara);
     color: var(--culoare-text);
 }
 
@@ -298,21 +307,21 @@ thead {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%; 
+    height: 100%;
     width: 100%;
-    padding: 0.5rem; 
-    transition: none; 
+    padding: 0.5rem;
+    transition: none;
 }
 
 #tabel-instrumente {
-    border-collapse: separate; 
-    border-spacing: 2px;       
+    border-collapse: separate;
+    border-spacing: 2px;
     width: 100%;
 }
 
 .tabel-container {
-    overflow-x: auto;  
-    -webkit-overflow-scrolling: touch; 
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 #tabel-instrumente tfoot {
@@ -323,8 +332,8 @@ thead {
 
 #instrumente ul,
 #instrumente dl {
-    margin: 1rem 0;  
-    padding-left: 1.5rem; 
+    margin: 1rem 0;
+    padding-left: 1.5rem;
 }
 
 #instrumente li {
@@ -346,12 +355,12 @@ thead {
 @media screen and (max-width: 700px) {
     html {
         font-size: 16px;
-        
+
     }
 
     #grid-pagina {
         grid-template-columns: 1fr;
-        
+
         grid-template-areas: "z1" "z2" "z3" "z4" "z5" "z6" "z7" "z8";
     }
 
@@ -360,11 +369,13 @@ thead {
         margin-left: 10px;
         margin-right: 10px;
     }
+
     #galerie img {
-        flex: 0 1 90%;  
+        flex: 0 1 90%;
         max-width: 100%;
         min-width: 150px;
     }
+
     #tabel-instrumente {
         border-spacing: 0;
     }
@@ -383,8 +394,8 @@ thead {
 .harta-interactiva img {
     border: 2px solid var(--culoare-text);
     border-radius: 10px;
-    width: 60%;         
-    max-width: 600px;    
+    width: 60%;
+    max-width: 600px;
     min-width: 300px;
     height: 500px;
     display: block;
@@ -392,8 +403,8 @@ thead {
 
 /* Imagine responsive */
 .imagine-responsive img {
-    width: 60%;         
-    max-width: 600px;    
+    width: 60%;
+    max-width: 600px;
     min-width: 300px;
     height: 500px;
     text-align: center;
@@ -409,8 +420,8 @@ thead {
 }
 
 figure.fg-img>img {
-    width: 60%;         
-    max-width: 600px;    
+    width: 60%;
+    max-width: 600px;
     min-width: 300px;
 }
 
@@ -426,23 +437,23 @@ h1 {
 .container-iframe {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    gap: 10px;              
-    justify-content: flex-end; 
+    align-items: flex-start;
+    gap: 10px;
+    justify-content: flex-end;
     padding: 10px;
     border: 2px solid var(--culoare-contur);
     border-radius: 8px;
-    background-color:var(--culoare-fundal); 
-    width: 70%;          
-    max-width: 800px;    
+    background-color: var(--culoare-fundal);
+    width: 70%;
+    max-width: 800px;
     min-width: 300px;
 }
 
 .container-iframe iframe {
-    width: 100%; 
-    height: 315px; 
+    width: 100%;
+    height: 315px;
     border: 1px solid var(--culoare-contur);
-    border-radius: 0 0 5px 5px; 
+    border-radius: 0 0 5px 5px;
 }
 
 .taburi-iframe {
@@ -481,6 +492,7 @@ h1 {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(360deg);
     }
@@ -489,7 +501,7 @@ h1 {
 .link-top {
     position: fixed;
     bottom: 30px !important;
-    right: 30px !important; 
+    right: 30px !important;
     width: 60px;
     height: 60px;
     display: flex !important;
@@ -503,38 +515,38 @@ h1 {
     box-shadow: 0 4px 10px var(--culoare-text);
     text-decoration: none;
     transition: all 0.5s ease;
-    z-index: 2000; 
+    z-index: 2000;
 }
 
 .link-top span:first-child {
-    display: flex;               
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
-    font-size: 1.5rem;           
+    font-size: 1.5rem;
     line-height: 1;
-    margin: 0;                    
+    margin: 0;
 }
 
 .tooltip-text {
     position: absolute;
-    bottom: 120%; 
+    bottom: 120%;
     left: 50%;
-    transform: translateX(-50%);    
-    
-    background-color: var(--culoare-text); 
-    color: var(--culoare-fundal) !important;           
-    padding: 8px 15px;         
+    transform: translateX(-50%);
+
+    background-color: var(--culoare-text);
+    color: var(--culoare-fundal) !important;
+    padding: 8px 15px;
     border-radius: 6px;
-    white-space: nowrap;       
-    
-    font-family: sans-serif;   
+    white-space: nowrap;
+
+    font-family: sans-serif;
     font-size: 0.85rem;
     font-weight: bold;
-    font-style: normal !important; 
-    line-height: 1.2;         
-    
+    font-style: normal !important;
+    line-height: 1.2;
+
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -542,8 +554,8 @@ h1 {
 }
 
 .link-top:hover {
-    opacity: 1; 
-    background-color: var(--culoare-secundara); 
+    opacity: 1;
+    background-color: var(--culoare-secundara);
 }
 
 .link-top:hover .tooltip-text {
@@ -558,12 +570,14 @@ math[display="block"] {
     border: 1px dashed var(--culoare-contur);
     margin: 10px auto;
 }
+
 .evidentiat {
-   
+
     color: var(--culoare-highlight);
     font-size: 1.2rem;
     font-weight: bold;
 }
+
 mo {
     color: var(--culoare-text);
     font-size: 1.1rem;
@@ -583,8 +597,152 @@ mo {
 
 .evidentiat-special {
     color: var(--culoare-highlight);
-    font-family: "Cinzel", serif; 
+    font-family: "Cinzel", serif;
 }
+
 mfrac {
     padding: 5px;
+}
+
+/* Ascundem watermark-ul pe ecranul normal (în afara @media print) */
+    #watermark {
+        display: none;
+    }
+
+
+@media print {
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        page-break-before: always;   
+    }
+
+    nav {
+        display: block !important;
+        position: static !important;
+    }
+
+    nav ul.meniu {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        clip-path: none !important;
+        transform: none !important;
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+
+    nav ul.meniu li {
+        display: list-item !important;
+        width: auto !important;
+        height: auto !important;
+        line-height: normal !important;
+        background: none !important;
+        color: black !important;
+        border: none !important;
+        position: static !important;
+        text-align: left !important;
+    }
+
+    nav ul.meniu li ul {
+        display: block !important;
+        position: static !important;
+        transform: none !important;
+        padding-left: 30px;
+        list-style-type: circle;
+    }
+
+    nav {
+        page-break-after: always;
+    }
+
+    footer {
+        page-break-before: always;
+    }
+
+    .banner-print {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        border: 4px double black;
+        padding: 10px;
+        background-color: white;
+        z-index: 1000;
+        margin: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none !important;
+        background: none !important;
+    }
+
+    img,
+    video,
+    audio,
+    iframe,
+    figure,
+    figcaption,
+    .imag-icon,
+    canvas,
+    #hamburger,
+    #ch-menu {
+        display: none !important;
+    }
+
+    a[href="#header"],
+    .back-to-top,
+    #link-top {
+        display: none !important;
+    }
+
+    #grid-pagina {
+        display: block !important;
+        width:100%;
+    }
+
+    body {
+        background: none !important;
+        color: black !important;
+    }
+
+    #watermark {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        width: 60%;
+        height: 10%;
+
+        /* Culoare neagră cu opacitate 0.3 (RGBA)  */
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 40pt;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.2;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    @page :left {
+        margin-left: 2cm;
+        margin-right: 1cm;
+    }
+
+    @page :right {
+        margin-left: 1cm;
+        margin-right: 2cm;
+    }
+
+    @page {
+        size: A4;
+    }
 }
