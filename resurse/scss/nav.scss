@@ -3,6 +3,7 @@ body {
     --culoare-fundal: #FFFFFF;
     --culoare-secundara: #D9E6E9;
     --culoare-text: #000000;
+    --culoare-contur: #000000;
     --culoare-highlight: #EA3424;
 
     --latime-buton: 180px;
@@ -52,7 +53,7 @@ nav {
         li {
             @extend %buton-meniu;
             background-color: var(--culoare-text);
-            color: #FFFFFF;
+            color: var(--culoare-fundal);
             margin-right: 5px;
             position: relative;
 
@@ -111,7 +112,7 @@ nav {
                 position: absolute;
                 top: 100%;
                 left: 0;
-                transform-origin: center top;
+                transform-origin: top left;
                 transform: scale(0);
                 transition: transform 0.3s ease-in-out;
                 z-index: 10;
@@ -153,6 +154,26 @@ nav {
                 transform: scale(1);
             }
         }
+    }
+}
+
+@media (min-width: 701px) and (max-width: 1024px) {
+    ul.meniu li {
+        width: auto;
+        padding: 5px 10px;
+    }
+
+    ul.meniu li a {
+        font-size: 0.8rem;
+    }
+
+    .text-icon {
+        display: none !important;
+    }
+
+    .imag-icon {
+        display: inline-block !important;
+        font-size: 1.2rem;
     }
 }
 
@@ -216,7 +237,7 @@ $t: 0.3s;
         position: absolute;
         top: 50px;
         left: 0;
-        background-color: black;
+        background-color: var(--culoare-text);
         z-index: 100;
         padding: 0;
         margin: 0;
@@ -225,7 +246,7 @@ $t: 0.3s;
             width: 100%;
             height: auto;
             line-height: 50px;
-            background-color: #111;
+            background-color:var(--culoare-text);
             position: relative;
 
             &::before {
@@ -259,6 +280,7 @@ $t: 0.3s;
 
                 a {
                     display: flex !important;
+                    position: relative;
                     justify-content: center !important;
                     align-items: center !important;
                     width: 100%;
@@ -278,10 +300,11 @@ $t: 0.3s;
             }
 
             ul {
-                display: none;
-                position: static;
+                display: flex;
+                flex-direction: column;
+                position: relative;
                 width: 100%;
-                background-color: #050505;
+                background-color: var(--culoare-text);
                 padding: 0;
 
                 li {
@@ -309,6 +332,7 @@ $t: 0.3s;
 
     .item-acasa ul li a {
         display: inline-block !important;
+        position: relative;
         width: auto !important;
         padding: 0 10px;
         position: relative;
@@ -339,7 +363,7 @@ $t: 0.3s;
     0% {
         transform: translateY(-20px) scale(0.5) rotate(0deg);
         opacity: 0;
-        background-color: red;
+        background-color: var(--culoare-highlight);
     }
 
     50% {

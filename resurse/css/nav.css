@@ -3,6 +3,7 @@ body {
   --culoare-fundal: #FFFFFF;
   --culoare-secundara: #D9E6E9;
   --culoare-text: #000000;
+  --culoare-contur: #000000;
   --culoare-highlight: #EA3424;
   --latime-buton: 180px;
   --inaltime-buton: 50px;
@@ -44,7 +45,7 @@ nav ul.meniu li {
 }
 nav ul.meniu li {
   background-color: var(--culoare-text);
-  color: #FFFFFF;
+  color: var(--culoare-fundal);
   margin-right: 5px;
   position: relative;
 }
@@ -96,7 +97,7 @@ nav ul.meniu li ul {
   position: absolute;
   top: 100%;
   left: 0;
-  transform-origin: center top;
+  transform-origin: top left;
   transform: scale(0);
   transition: transform 0.3s ease-in-out;
   z-index: 10;
@@ -132,6 +133,22 @@ nav ul.meniu li:hover > ul {
   transform: scale(1);
 }
 
+@media (min-width: 701px) and (max-width: 1024px) {
+  ul.meniu li {
+    width: auto;
+    padding: 5px 10px;
+  }
+  ul.meniu li a {
+    font-size: 0.8rem;
+  }
+  .text-icon {
+    display: none !important;
+  }
+  .imag-icon {
+    display: inline-block !important;
+    font-size: 1.2rem;
+  }
+}
 @media (max-width: 700px) {
   nav {
     background-color: var(--culoare-text) !important;
@@ -188,7 +205,7 @@ nav ul.meniu li:hover > ul {
     position: absolute;
     top: 50px;
     left: 0;
-    background-color: black;
+    background-color: var(--culoare-text);
     z-index: 100;
     padding: 0;
     margin: 0;
@@ -197,7 +214,7 @@ nav ul.meniu li:hover > ul {
     width: 100%;
     height: auto;
     line-height: 50px;
-    background-color: #111;
+    background-color: var(--culoare-text);
     position: relative;
   }
   ul.meniu li::before {
@@ -229,6 +246,7 @@ nav ul.meniu li:hover > ul {
   }
   ul.meniu li.item-acasa a {
     display: flex !important;
+    position: relative;
     justify-content: center !important;
     align-items: center !important;
     width: 100%;
@@ -244,10 +262,11 @@ nav ul.meniu li:hover > ul {
     margin: 0 !important;
   }
   ul.meniu li ul {
-    display: none;
-    position: static;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     width: 100%;
-    background-color: #050505;
+    background-color: var(--culoare-text);
     padding: 0;
   }
   ul.meniu li ul li {
@@ -268,6 +287,7 @@ nav ul.meniu li:hover > ul {
   }
   .item-acasa ul li a {
     display: inline-block !important;
+    position: relative;
     width: auto !important;
     padding: 0 10px;
     position: relative;
@@ -295,7 +315,7 @@ nav ul.meniu li:hover > ul {
   0% {
     transform: translateY(-20px) scale(0.5) rotate(0deg);
     opacity: 0;
-    background-color: red;
+    background-color: var(--culoare-highlight);
   }
   50% {
     transform: translateY(5px) scale(1.2) rotate(10deg);
