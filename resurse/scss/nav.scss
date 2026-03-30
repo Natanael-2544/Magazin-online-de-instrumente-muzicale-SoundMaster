@@ -88,7 +88,7 @@ nav {
                 height: 90%;
                 border-radius: 10px;
                 background-color: rgba(255, 255, 255, 0.3);
-                border: 1px solid #FFFFFF;
+                border: 1px solid var(--culoare-fundal);
                 box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
                 transform: translate(-50%, -50%) scale(0);
                 transform-origin: center center;
@@ -177,204 +177,544 @@ nav {
     }
 }
 
-$t: 0.3s;
+$t: 0.3s; 
+$dim_max_ecran_mic: 700px;
+
+@keyframes aparitie_burger {
+    0% { opacity: 0; transform: translateY(-20px) rotate(-10deg); background-color: var(--culoare-highlight); }
+    50% { opacity: 0.5; transform: translateY(5px) rotate(5deg); background-color: var(--culoare-buton); }
+    100% { opacity: 1; transform: translateY(0) rotate(0deg); background-color: var(--culoare-fundal, var(--culoare-fundal)); }
+}
+ul.meniu li ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+ul.meniu li:hover > ul {
+    display: block;
+}
+
+ul.meniu li:focus-within > ul {
+    display: block;
+}
 @media (max-width: $dim_max_ecran_mic) {
+
     nav {
-        background-color: var(--culoare-text) !important;
         height: 50px;
+        background-color: var(--culoare-text, var(--culoare-text));
         position: relative;
-        z-index: 1000;
+        display: flex;
+        align-items: center;
+    }
 
-        #hamburger {
-            display: flex !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 50px;
-            width: 60px;
-            z-index: 1001;
-            cursor: pointer;
-            background-color: transparent;
+    #ch-menu {
+        display: none;
+    }
 
-            // Varianta cu span-uri (linii)
-            span {
-                display: block;
-                height: 4px;
-                width: 30px;
-                background-color: var(--culoare-fundal);
-                margin: 3px 0;
-                border-radius: 2px;
-                transition: all 0.3s ease;
-                animation: hamburgerAppear 0.6s ease forwards;
-                @for $i from 1 through 3 {
-                    &:nth-child(#{$i}) {
-                        animation-delay: ($i - 1) * $t;
-                    }
-                }
-            }
+    #hamburger {
+        display: block !important;
+        position: relative;
+        margin-left: 15px;
+        width: 30px;
+        height: 22px;
+        cursor: pointer;
+        z-index: 3000;
+    }
+
+    #hamburger span {
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: var(--culoare-fundal);
+        border-radius: 2px;
+        left: 0;
+        transition: 0.3s;
+        animation: aparitie_burger 0.6s ease forwards;
+    }
+
+    #hamburger span:nth-child(1) { top: 0; }
+    #hamburger span:nth-child(2) { top: 9px; }
+    #hamburger span:nth-child(3) { top: 18px; }
+
+    @for $i from 1 through 3 {
+        #hamburger span:nth-child(#{$i}) {
+            animation-delay: ($i - 1) * $t;
         }
+    }
 
-        #hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
+    #ch-menu:checked ~ #hamburger span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
 
-        #hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
+    #ch-menu:checked ~ #hamburger span:nth-child(2) {
+        opacity: 0;
+    }
 
-        #hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
+    #ch-menu:checked ~ #hamburger span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
     }
 
     ul.meniu {
         display: none;
         flex-direction: column;
-        width: 100%;
         position: absolute;
         top: 50px;
         left: 0;
+        width: 100%;
         background-color: var(--culoare-text);
-        z-index: 100;
+        padding: 20px 0;
+        margin: 0;
+        text-align: center;
+        z-index: 2000;
+    }
+
+    #ch-menu:checked ~ ul.meniu {
+        display: flex;
+    }
+
+    ul.meniu li a {
+        display: flex !important; 
+    align-items: center;
+    justify-content: center;
+    gap: 10px; 
+    color: var(--culoare-fundal);
+    padding: 15px 0;
+    width: 100%;
+    }
+
+    ul.meniu li.item-acasa .text-icon {
+        display: none;
+    }
+
+    ul.meniu li.item-acasa .imag-icon {
+        display: inline-block;
+        font-size: 1.5rem;
+    }
+
+    ul.meniu li ul {
+        display: none;
+        position: relative;
+        background: transparent;
         padding: 0;
         margin: 0;
+    }
 
-        li {
-            width: 100%;
-            height: auto;
-            line-height: 50px;
-            background-color:var(--culoare-text);
-            position: relative;
+    ul.meniu li:hover > ul,
+    ul.meniu li:focus-within > ul {
+        display: block;
+    }
 
-            &::before {
-                display: block !important;
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 90%;
-                height: 80%;
-                border-radius: 10px;
-                background-color: rgba(255, 255, 255, 0.15);
-                border: 1px solid #FFFFFF;
-                box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
-                transform: translate(-50%, -50%) scale(0);
-                transition: transform 0.3s ease-in-out;
-                z-index: 1;
-                pointer-events: none;
-            }
+    ul.meniu li ul li {
+        position: relative;
+        
+        animation: animatie_sageata 3s ease-out forwards;
+    }
 
-            &:hover::before {
-                transform: translate(-50%, -50%) scale(1);
-            }
-
-            &.item-acasa {
-                display: flex !important;
-                justify-content: center !important;
-                align-items: center !important;
-                width: 100% !important;
-                padding: 0 !important;
-
-                a {
-                    display: flex !important;
-                    position: relative;
-                    justify-content: center !important;
-                    align-items: center !important;
-                    width: 100%;
-                    height: 100%;
-                    text-decoration: none;
-                }
-
-                .text-icon {
-                    display: none !important;
-                }
-
-                .imag-icon {
-                    display: block !important;
-                    font-size: 1.8rem;
-                    margin: 0 !important;
-                }
-            }
-
-            ul {
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                width: 100%;
-                background-color: var(--culoare-text);
-                padding: 0;
-
-                li {
-                    height: 45px;
-                    line-height: 45px;
-                    background-color: transparent;
-                    border: none;
-
-                    &::before {
-                        display: none !important;
-                    }
-                }
-            }
-
-            &:hover>ul {
-                display: block;
-            }
+    @for $i from 0 through 10 {
+        ul.meniu li ul li[style*="--i:#{$i}"] {
+            animation-delay: $i * 0.1s;
         }
     }
 
-    #ch-menu:checked~ul.meniu {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .item-acasa ul li a {
-        display: inline-block !important;
-        position: relative;
-        width: auto !important;
-        padding: 0 10px;
-        position: relative;
-        text-decoration: none;
-        color: inherit;
-        z-index: 2;
-
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 2px;
-            width: 0;
-            background-color: var(--culoare-fundal);
-            box-shadow: 0 4px 0 var(--culoare-fundal);
-            transition: width 0.3s ease;
-            display: block;
-        }
-
-        &:hover::after {
-            width: 100%;
-        }
+    ul.meniu li ul li a {
+        font-size: 1rem;
+        color: var(--culoare-fundal);
+        font-weight: normal;
+        display: block;
+        width: 100%;
     }
 }
 
-@keyframes hamburgerAppear {
+@keyframes animatie_sageata {
     0% {
-        transform: translateY(-20px) scale(0.5) rotate(0deg);
+        clip-path: polygon(0% 0%, 0% 50%, 0% 100%, 0% 100%);
         opacity: 0;
-        background-color: var(--culoare-highlight);
     }
-
     50% {
-        transform: translateY(5px) scale(1.2) rotate(10deg);
-        opacity: 0.7;
-        background-color: orange;
+        clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 100%);
+        opacity: 0.5;
     }
-
     100% {
-        transform: translateY(0) scale(1) rotate(0deg);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
         opacity: 1;
-        background-color: var(--culoare-fundal);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @media (max-width: $dim_max_ecran_mic) {
+//     nav {
+//         background-color: var(--culoare-text) !important;
+//         height: 50px;
+//         position: relative;
+//         z-index: 1000;
+
+//         #hamburger {
+//             display: flex !important;
+//             flex-direction: column;
+//             justify-content: center;
+//             align-items: center;
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             height: 50px;
+//             width: 60px;
+//             z-index: 1002; // Peste meniu
+//             cursor: pointer;
+
+//             span {
+//                 display: block;
+//                 height: 4px;
+//                 width: 30px;
+//                 background-color: var(--culoare-fundal);
+//                 margin: 3px 0;
+//                 border-radius: 2px;
+//                 transition: all 0.3s ease;
+//             }
+//         }
+
+//         // Transformare în X
+//         #ch-menu:checked ~ #hamburger {
+//             span:nth-child(1) { transform: translateY(10px) rotate(45deg); }
+//             span:nth-child(2) { opacity: 0; transform: translateX(-20px); }
+//             span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
+//         }
+
+//         // MENIUL - Fix pentru afișare
+//         ul.meniu {
+//             display: none; // Îl ținem ascuns până la checked
+//             flex-direction: column;
+//             width: 100vw; // Ocupă toată lățimea ecranului
+//             position: absolute;
+//             top: 50px; // Începe exact sub header-ul de 50px
+//             left: 0;
+//             background-color: var(--culoare-text);
+//             padding: 0;
+//             margin: 0;
+//             z-index: 1001;
+//             border-top: 1px solid rgba(255,255,255,0.1);
+
+//             // ACEASTA ESTE REGLA CRITICĂ:
+//             #ch-menu:checked ~ & {
+//                 display: flex !important; // Forțează afișarea listei
+//             }
+
+//             li {
+//                 width: 100% !important;
+//                 height: auto !important; // Permite deschiderea submeniului
+//                 min-height: 50px;
+//                 border-bottom: 1px solid #333;
+//                 background-color: var(--culoare-text);
+
+//                 // Submeniul (cel cu derulare)
+//                 ul {
+//                     display: none; // Ascuns până la hover/tap pe categorie
+//                     position: relative; // Împinge elementele de sub el
+//                     width: 100%;
+//                     transform: scale(1) !important; 
+//                     opacity: 1 !important;
+
+//                     li {
+//                         background-color: var(--culoare-secundara);
+//                         height: 45px !important;
+//                         opacity: 0; // Pentru animația clip-path
+//                         border-bottom: none;
+                        
+//                         a {
+//                             color: var(--culoare-text) !important;
+//                             padding-left: 40px; // Indentare pentru submeniu
+//                         }
+//                     }
+//                 }
+
+//                 // Derulare submeniu
+//                 &:hover > ul {
+//                     display: block !important;
+//                     li {
+//                         animation: animatie_sageata 0.4s ease-out forwards;
+//                         @for $i from 0 through 10 {
+//                             &[style*="--i:#{$i}"] { animation-delay: #{$i * 0.1s}; }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// $t: 0.3s;
+
+// @media (max-width: 700px) {
+//   $t: 0.1s; // Definim variabila de timp care lipsea
+
+//   nav {
+//     height: 50px;
+//     background-color: var(--culoare-text);
+//     position: relative;
+//     z-index: 1000;
+//   }
+
+//   // Checkbox-ul care controlează meniul
+//   #ch-menu { display: none; }
+
+//   // Iconița de Hamburger
+//   #hamburger {
+//     display: flex !important;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 10px;
+//     cursor: pointer;
+    
+//     span {
+//       display: block;
+//       width: 30px;
+//       height: 4px;
+//       background-color: var(--culoare-fundal);
+//       margin: 3px 0;
+//       transition: 0.3s;
+//     }
+//   }
+
+//   // Afișarea meniului când e bifat checkbox-ul
+//   #ch-menu:checked ~ ul.meniu {
+//     display: flex;
+//   }
+
+//   ul.meniu {
+//     display: none;
+//     flex-direction: column;
+//     position: absolute;
+//     top: 50px;
+//     left: 0;
+//     width: 100%;
+//     background-color: var(--culoare-text);
+//     padding: 0;
+
+//     li {
+//       width: 100%;
+//       list-style: none;
+//       position: relative;
+
+//       // Cerința: Icon-căsuță pentru prima pagină pe mobil
+//       &.item-acasa {
+//         .text-icon { display: none !important; }
+//         .imag-icon { 
+//           display: block !important; 
+//           font-size: 1.5rem;
+//         }
+//       }
+//     }
+//   }
+
+//   // --- SUBMENIUL CU CLIP-PATH (SĂGEATĂ) ---
+//   ul.meniu li ul {
+//     position: absolute;
+//     left: 100%; // Apare în dreapta opțiunii
+//     top: 0;
+//     width: 200px;
+//     background-color: #eaf6ff; // O culoare deschisă pentru contrast
+//     display: block;
+//     visibility: hidden;
+//     opacity: 0;
+//     transition: all 0.4s ease;
+    
+//     // Cerința: Clip-path poligon tip săgeată
+//     clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+//     transform: translateX(-20px); // Efect de alunecare
+//   }
+
+//   // Apariția submeniului la hover pe părinte
+//   ul.meniu li:hover > ul {
+//     visibility: visible;
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+
+//   // Cerința: Animația pe fiecare opțiune (nu pe tot meniul)
+//   ul.meniu li ul li {
+//     opacity: 0;
+//     transform: translateY(10px);
+//     transition: 0.3s ease;
+
+//     @for $i from 1 through 6 {
+//       &:nth-child(#{$i}) {
+//         transition-delay: $i * $t;
+//       }
+//     }
+//   }
+
+//   ul.meniu li:hover ul li {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
+// $t: 0.3s;
+// $dim_max_ecran_mic: 700px;
+
+// @media (max-width: $dim_max_ecran_mic) {
+//     nav {
+//         background-color: var(--culoare-text) !important;
+//         height: 50px;
+//         position: relative;
+//         z-index: 1000;
+
+//         // Stilul pentru butonul Hamburger
+//         #hamburger {
+//             display: flex !important; // Îl facem vizibil
+//             flex-direction: column;
+//             justify-content: center;
+//             align-items: center;
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             height: 50px;
+//             width: 60px;
+//             z-index: 1001;
+//             cursor: pointer;
+
+//             span {
+//                 display: block;
+//                 height: 4px;
+//                 width: 30px;
+//                 background-color: var(--culoare-fundal);
+//                 margin: 3px 0;
+//                 border-radius: 2px;
+//                 transition: all 0.3s ease-in-out;
+                
+//                 // Animația de intrare (slide-in) când se încarcă pagina
+//                 animation: hamburgerAppear 0.6s ease forwards;
+//                 @for $i from 1 through 3 {
+//                     &:nth-child(#{$i}) {
+//                         animation-delay: ($i - 1) * 0.1s;
+//                     }
+//                 }
+//             }
+//         }
+
+//         // LOGICA PENTRU TRANSFORMARE ÎN "X" (Când checkbox-ul e bifat)
+//         #ch-menu:checked ~ #hamburger {
+//             span:nth-child(1) {
+//                 transform: translateY(10px) rotate(45deg);
+//             }
+//             span:nth-child(2) {
+//                 opacity: 0;
+//                 transform: translateX(-20px);
+//             }
+//             span:nth-child(3) {
+//                 transform: translateY(-10px) rotate(-45deg);
+//             }
+//         }
+
+//         // AFIȘAREA MENIULUI
+//         ul.meniu {
+//             display: none; // Ascuns implicit
+//             flex-direction: column;
+//             width: 100%;
+//             position: absolute;
+//             top: 50px;
+//             left: 0;
+//             background-color: var(--culoare-text);
+//             padding: 0;
+
+//             #ch-menu:checked ~ & {
+//                 display: flex; // Apare când e bifat
+//             }
+
+//             li {
+//                 width: 100%;
+//                 height: auto !important;
+//                 line-height: 50px;
+//                 position: relative;
+
+//                 // Submeniul care se derulează
+//                 ul {
+//                     display: none; 
+//                     position: relative;
+//                     width: 100%;
+//                     transform: scale(1) !important; // Reset desktop
+//                     opacity: 1 !important;
+
+//                     li {
+//                         background-color: var(--culoare-secundara);
+//                         height: 45px !important;
+//                         opacity: 0; // Pentru animația clip-path
+                        
+//                         a {
+//                             color: var(--culoare-text) !important;
+//                             padding-left: 25px;
+//                         }
+//                     }
+//                 }
+
+//                 // Efectul de derulare la hover pe categorie
+//                 &:hover > ul {
+//                     display: block;
+//                     li {
+//                         animation: animatie_sageata 0.4s ease-out forwards;
+//                         @for $i from 0 through 10 {
+//                             &[style*="--i:#{$i}"] {
+//                                 animation-delay: #{$i * 0.1s};
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// // Animația de derulare tip "Săgeată -> Dreptunghi"
+// @keyframes animatie_sageata {
+//     0% {
+//         clip-path: polygon(0 0, 0 50%, 0 100%, 0 100%);
+//         opacity: 0;
+//     }
+//     50% {
+//         clip-path: polygon(0 0, 100% 50%, 0 100%, 0 100%);
+//         opacity: 1;
+//     }
+//     100% {
+//         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+//         opacity: 1;
+//     }
+// }
+
+// // Animația de apariție a hamburgerului la load
+// @keyframes hamburgerAppear {
+//     0% {
+//         transform: translateY(-20px);
+//         opacity: 0;
+//     }
+//     100% {
+//         transform: translateY(0);
+//         opacity: 1;
+//     }
+// }
+

@@ -381,8 +381,8 @@ thead {
     }
 
     * {
-        transition: none !important;
-        animation: none !important;
+        transition: none;
+        animation: none;
     }
 }
 
@@ -722,13 +722,12 @@ mfrac {
         width: 60%;
         height: 10%;
 
-        /* Culoare neagră cu opacitate 0.3 (RGBA)  */
         color: rgba(0, 0, 0, 0.3);
         font-size: 40pt;
         font-weight: bold;
         text-align: center;
         line-height: 1.2;
-        z-index: -1;
+        z-index: 10;
         pointer-events: none;
     }
 
