@@ -282,8 +282,8 @@ ul.meniu li:focus-within > ul {
     display: block;
   }
   ul.meniu li ul li {
-    opacity: 0;
-    animation: animatie_sageata 0.5s ease-out forwards;
+    position: relative;
+    animation: animatie_sageata 3s ease-out forwards;
   }
   ul.meniu li ul li[style*="--i:0"] {
     animation-delay: 0s;
@@ -340,5 +340,3 @@ ul.meniu li:focus-within > ul {
     opacity: 1;
   }
 }
-
-/*# sourceMappingURL=nav.css.map */

@@ -2,6 +2,7 @@ const express= require("express");
 const path= require("path");
 const fs=require("fs");
 const sass=require("sass");
+const sharp=require("sharp");
 
 app= express();
 app.set("view engine", "ejs")
@@ -24,10 +25,10 @@ console.log("Cale fisier", __filename);
 // });
 
 let vect_folder=["temp", "logs", "backup", "fisiere_uploadate"];
-for (let folder of vect_folders){
+for (let folder of vect_folder){
     let caleFolder=path.join(__dirname, folder);
     if(!fs.existsSync(caleFolder)){
-        fs.mkdireSync(caleFolder);
+        fs.mkdirSync(caleFolder, { recursive: true });
     }
 }
 

@@ -604,6 +604,16 @@ mfrac {
     padding: 5px;
 }
 
+/* a:visited{
+    color: green;
+
+} */
+
+
+
+
+
+
 /* Ascundem watermark-ul pe ecranul normal (în afara @media print) */
     #watermark {
         display: none;
