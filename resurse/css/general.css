@@ -1,3 +1,5 @@
+@import "video.css";
+
 body {
     --culoare-buton: #9500EA;
     --culoare-fundal: #FFFFFF;
@@ -468,7 +470,7 @@ h1 {
     padding: 10px;
     background-color: var(--culoare-text);
     border: 1px solid var(--culoare-contur);
-    color: var(--culoare-fundal);
+    color: var(--culoare-fundal) !important;
     text-decoration: none;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -477,9 +479,8 @@ h1 {
 }
 
 .taburi-iframe>a:hover {
-    background-color: var(--culoare-buton);
-    color: var(--culoare-fundal);
-
+    background-color: var(--culoare-buton) !important;
+    color: var(--culoare-text) !important;
 }
 
 .icon-animat {
@@ -604,14 +605,36 @@ mfrac {
     padding: 5px;
 }
 
-/* a:visited{
-    color: green;
+/* link-uri*/
+a:visited {
+    color: var(--culoare-buton);
+}
 
-} */
+main a[href^="http"]::before {
+    content: "⮳";
+    font-size: 1.5em;
+}
 
+main a[href^="http"]:hover::before {
+    color: var(--culoare-text);
+}
 
+main a {
+    position: relative;
+    background-image: radial-gradient(circle, var(--culoare-secundara) 0%, var(--culoare-secundara) 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0%;
+    transition: background-size 0.4s ease;
+}
 
+main a:hover {
+    background-size: 100%;
+}
 
+main a:active {
+    border: 2px solid var(--culoare-text);
+}
 
 
 /* Ascundem watermark-ul pe ecranul normal (în afara @media print) */

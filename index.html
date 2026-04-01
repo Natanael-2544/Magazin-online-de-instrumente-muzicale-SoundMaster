@@ -44,7 +44,7 @@
             <span></span>
             <span></span>
         </label>
-    
+
         <ul class="meniu">
             <li class="item-acasa">
                 <a href="index.html">
@@ -207,6 +207,26 @@
                         Descarcă imaginea Pian
                     </a>
                 </p>
+                <hr class="note-muzicale" />
+                <div id="container-video">
+                    <div id="clip-video">
+                        <div id="stil-video">
+                            <video controls 
+                                   poster="/resurse/imagini/poster.jpg" 
+                                   preload="metadata"
+                                   playsinline autoplay loop muted>
+                                <source src="/resurse/video/music_notes.mp4" type="video/mp4">
+                                <source src="/resurse/video/music_notes.ogv" type="video/ogg">
+                                <track default
+                                    src="/resurse/video/tracks/music_notes.vtt"
+                                    kind="captions" srclang="ro" label="Română">
+                                <track
+                                    src="/resurse/video/tracks/music_notes-en.vtt"
+                                    kind="captions" srclang="en" label="English">
+                            </video>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="promotii">

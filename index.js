@@ -92,6 +92,107 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
     });
 }
 
+function valideazaEroriJSON() {
+    const caleFisier = path.join(__dirname, "resurse/json/erori.json");
+    //a)
+    if (!fs.existsSync(caleFisier)) {
+        console.error("EROARE: Fișierul erori.json lipsește!");
+        process.exit(1);
+    }
+
+    let continut, ob;
+    try {
+        continut = fs.readFileSync(caleFisier, "utf-8"); 
+        ob = JSON.parse(continut);
+    } catch (err) {
+        console.error("EROARE: Fișierul nu poate fi citit sau JSON-ul este invalid:", err.message);
+        process.exit(1);
+    }
+
+    //b)
+    const propsObligatorii = ["info_erori", "cale_baza", "eroare_default"];
+    for (let prop of propsObligatorii) {
+        if (ob[prop] === undefined) {
+            console.error(`EROARE: lipsește proprietatea obligatorie '${prop}'`);
+            process.exit(1);
+        }
+    }
+
+    // c)
+    const def = ob.eroare_default;
+    for (let prop of ["titlu", "text", "imagine"]) {
+        if (def[prop] === undefined) {
+            console.error(`EROARE: eroare_default nu are '${prop}'`);
+            process.exit(1);
+        }
+    }
+
+    // d)
+    const folderBaza = path.join(__dirname, ob.cale_baza);
+    if (!fs.existsSync(folderBaza)) {
+        console.error("EROARE: folderul din cale_baza nu există:", folderBaza);
+        process.exit(1);
+    }
+
+    //e)
+    const fisiereDinFolder = new Set(fs.readdirSync(folderBaza));
+    for (let eroare of ob.info_erori) {
+        const img = path.basename(eroare.imagine);
+        if (!fisiereDinFolder.has(img)) {
+            console.error(`❌ EROARE: imagine lipsă pentru eroarea ${eroare.identificator}: ${eroare.imagine}`);
+            process.exit(1);
+        }
+    }
+
+    //g)
+    const map = {};
+    for (let eroare of ob.info_erori) {
+        if (!map[eroare.identificator]) {
+            map[eroare.identificator] = [];
+        }
+        map[eroare.identificator].push(eroare);
+    }
+
+    for (let id in map) {
+        if (map[id].length > 1) {
+            console.error(`❌ EROARE: identificator duplicat -> ${id}`);
+
+            for (let e of map[id]) {
+                console.error({
+                    titlu: e.titlu,
+                    text: e.text,
+                    imagine: e.imagine,
+                    status: e.status
+                });
+            }
+            process.exit(1);
+        }
+    }
+
+    //f)
+    const obiecte = continut.match(/\{[\s\S]*?\}/g);
+    if (obiecte) {
+        for (let obj of obiecte) {
+            const props = obj.match(/"([^"]+)"\s*:/g);
+            if (!props) continue;
+            const seen = new Set();
+            for (let p of props) {
+                const prop = p.replace(/["\s:]/g, "");
+
+                if (seen.has(prop)) {
+                    console.error("❌ EROARE: proprietate duplicată în același obiect:", prop);
+                    console.error("Obiect problematic:\n", obj);
+                    process.exit(1);
+                }
+                seen.add(prop);
+            }
+        }
+    }
+
+    console.log("erori.json valid");
+    return ob;
+}
+
 app.get("/eroare", function (req, res) {
     afisareEroare(res, 404, "Eroare 404");
 });
