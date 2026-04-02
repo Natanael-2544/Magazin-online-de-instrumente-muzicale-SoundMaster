@@ -18,7 +18,7 @@
             "status":true,
             "titlu":"403 - Da, tu ce cauți aici?!!",
             "text": "Ai greșit ruta. Stânga-împrejur și pa!",
-            "imagine":"interzis.png"
+            "imagine":"acces_denied.png"
         },
         {
             "identificator":400,
