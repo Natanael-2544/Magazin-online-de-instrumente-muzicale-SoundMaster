@@ -139,7 +139,7 @@ function valideazaEroriJSON() {
     for (let eroare of ob.info_erori) {
         const img = path.basename(eroare.imagine);
         if (!fisiereDinFolder.has(img)) {
-            console.error(`❌ EROARE: imagine lipsă pentru eroarea ${eroare.identificator}: ${eroare.imagine}`);
+            console.error(`EROARE: imagine lipsă pentru eroarea ${eroare.identificator}: ${eroare.imagine}`);
             process.exit(1);
         }
     }
@@ -155,7 +155,7 @@ function valideazaEroriJSON() {
 
     for (let id in map) {
         if (map[id].length > 1) {
-            console.error(`❌ EROARE: identificator duplicat -> ${id}`);
+            console.error(`EROARE: identificator duplicat -> ${id}`);
 
             for (let e of map[id]) {
                 console.error({
@@ -180,7 +180,7 @@ function valideazaEroriJSON() {
                 const prop = p.replace(/["\s:]/g, "");
 
                 if (seen.has(prop)) {
-                    console.error("❌ EROARE: proprietate duplicată în același obiect:", prop);
+                    console.error("EROARE: proprietate duplicată în același obiect:", prop);
                     console.error("Obiect problematic:\n", obj);
                     process.exit(1);
                 }
