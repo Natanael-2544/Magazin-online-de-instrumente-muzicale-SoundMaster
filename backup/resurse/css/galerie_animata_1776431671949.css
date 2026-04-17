@@ -1,0 +1,31 @@
+.galerie {
+  display: grid;
+  gap: 10px;
+  border: 20px solid transparent;
+  border-image: url("../imagini/border.jpg") 30 stretch;
+}
+.galerie .slide img {
+  width: 100%;
+  height: auto;
+  transition: clip-path 0.8s ease-in-out;
+  clip-path: inset(0 0 0 0);
+}
+.galerie .slide img.activ {
+  clip-path: inset(45% 45% 45% 45%);
+}
+
+.n2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.n4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.n8 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.n16 {
+  grid-template-columns: repeat(4, 1fr);
+}

@@ -407,13 +407,24 @@
 
                 <section id="galerie">
                     <h2>Galerie</h2>
-                    <div class="galerie n<%= nrImagini %>">
-                        <% imagini.forEach((img)=> { %>
-                            <div class="slide">
-                                <img src="<%= img.fisier_mediu %>" alt="<%= img.alternativ %>">
-                            </div>
-                            <% }) %>
-                    </div>
+
+                    <div id="galerie-container"></div>
+
+                    <section id="galerie-animata">
+                        <div id="grid-galerie">
+                            <% for (let img of imagini) { %>
+                                <figure>
+                                    <picture>
+                                        <source srcset="<%= img.fisier_mediu %>" media="(max-width:1200px)" />
+                                        <img src="<%= img.fisier %>" alt="<%= img.titlu || 'Imagine galerie' %>">
+                                    </picture>
+                                    <figcaption>
+                                        <%= img.descriere %>
+                                    </figcaption>
+                                </figure>
+                                <% } %>
+                        </div>
+                    </section>
 
                     <section id="demo-instrumente">
                         <h2>Demo Video Instrumente</h2>

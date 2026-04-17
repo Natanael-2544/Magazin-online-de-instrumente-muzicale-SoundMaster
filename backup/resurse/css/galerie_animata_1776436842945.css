@@ -42,6 +42,8 @@
   background: rgba(0, 0, 0, 0.7);
   color: white;
   text-align: center;
+  padding: 5px;
+  font-size: 14px;
   z-index: 11;
 }
 #galerie-animata #grid-galerie figure:nth-child(1) {
@@ -92,25 +94,23 @@
 
 @keyframes animatie_clip_path {
   0% {
-    z-index: 10;
     opacity: 0;
     clip-path: inset(50% 0 50% 0);
+    z-index: 10;
   }
-  0.1428571429% {
-    opacity: 1;
-    clip-path: inset(50% 0 50% 0);
-  }
-  5.7142857143% {
+  10% {
     opacity: 1;
     clip-path: inset(0 0 0 0);
-  }
-  7.1428571429% {
-    opacity: 0;
-    clip-path: inset(50% 0 50% 0);
     z-index: 10;
   }
-  7.2428571429%, 100% {
+  80% {
+    opacity: 1;
+    clip-path: inset(0 0 0 0);
+    z-index: 10;
+  }
+  100% {
     opacity: 0;
+    clip-path: inset(50% 0 50% 0);
     z-index: 0;
   }
 }

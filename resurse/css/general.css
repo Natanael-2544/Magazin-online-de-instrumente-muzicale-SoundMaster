@@ -245,11 +245,12 @@ hr {
 
 .imagine-efect {
     position: relative;
-    width: 500px;
-    height:350px;
+    width: 300px;
+    height: 500px;
     overflow: hidden;
-    transition: filter 2s linear;
+    transition: filter 2s linear; 
     isolation: isolate;
+    filter: grayscale(0%);
 }
 
 .imagine-efect img {
@@ -263,6 +264,7 @@ hr {
     content: "";
     position: absolute;
     inset: 0;
+    transition: opacity 2s linear;
 }
 
 .imagine-efect::before {
@@ -273,6 +275,15 @@ hr {
 .imagine-efect::after {
     background-color: var(--culoare-buton);
     mix-blend-mode: darken;
+}
+
+.imagine-efect:hover {
+    filter: grayscale(100%);
+}
+
+.imagine-efect:hover::before,
+.imagine-efect:hover::after {
+    opacity: 0;
 }
 
 /*text*/

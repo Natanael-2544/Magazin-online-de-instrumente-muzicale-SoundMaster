@@ -32,31 +32,45 @@ app.use("/dist", express.static(path.join(__dirname, "node_modules/bootstrap/dis
 
 
 app.get(["/", "/index", "/home"], function (req, res) {
-
     let oraCurenta = new Date().getHours();
 
     let imaginiFiltrate = obGlobal.obImagini.imagini.filter((img, index) => {
-
         if (index % 2 !== 0) return false;
-
         if (!img.intervale_ore) return true;
-
         return img.intervale_ore.some(interval => {
             return oraCurenta >= interval[0] && oraCurenta <= interval[1];
         });
     });
 
-    // ✔ ADĂUGAT: imagini distincte
     let imaginiUnice = [...new Map(
         imaginiFiltrate.map(img => [img.cale_relativa, img])
     ).values()];
 
     const puteri = [2, 4, 8, 16];
     let n = puteri[Math.floor(Math.random() * puteri.length)];
-
     n = Math.min(n, imaginiUnice.length);
 
     let imaginiFinale = imaginiUnice.slice(0, n);
+
+    // --- LOGICA REPARATĂ PENTRU SASS ---
+
+    // 1. Schimbăm numele fișierului în "_galerie_variabile.scss" 
+    // (punem underscore ca să fie "invizibil" pentru compilatorul automat)
+    const caleSassVars = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
+    const continutSass = `$nr-imagini: ${n};`;
+
+    try {
+        // 2. Scriem doar valoarea lui n în acest fișier mic
+        fs.writeFileSync(caleSassVars, continutSass);
+
+        // 3. Compilăm fișierul principal de design (cel pe care îl ai deja în folder)
+        // Atenție: Numele de aici trebuie să fie fix cel din folderul tău scss!
+        compileazaScss("galerie_animata.scss");
+
+    } catch (err) {
+        console.error("Eroare la scrierea/compilarea SASS-ului dinamic:", err);
+    }
+    // ---------------------------------------
 
     res.render("pagini/index", {
         ip: req.ip,
@@ -64,7 +78,6 @@ app.get(["/", "/index", "/home"], function (req, res) {
         nrImagini: n
     });
 });
-
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))
@@ -316,9 +329,9 @@ function initImagini() {
                 .toFile(caleFisMicAbs);
         }
 
-        imag.fisier_mediu = path.join("/", caleGalerie, "mediu", numeFis + ".webp");
-        imag.fisier_mic = path.join("/", caleGalerie, "mic", numeFis + ".webp");
-        imag.fisier = path.join("/", caleGalerie, imag.cale_relativa);
+        imag.fisier_mediu = path.join("/", caleGalerie, "mediu", numeFis + ".webp").replace(/\\/g, "/");
+        imag.fisier_mic = path.join("/", caleGalerie, "mic", numeFis + ".webp").replace(/\\/g, "/");
+        imag.fisier = path.join("/", caleGalerie, imag.cale_relativa).replace(/\\/g, "/");
     }
 }
 initImagini();
@@ -359,20 +372,19 @@ function verificaGalerie(dataGalerie) {
 //la pornirea serverului
 vFisiere = fs.readdirSync(obGlobal.folderScss);
 for (let numeFis of vFisiere) {
-    if (path.extname(numeFis) == ".scss") {
+    if (path.extname(numeFis) == ".scss" && !numeFis.startsWith("_")) {
         compileazaScss(numeFis);
     }
 }
 
 fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
-    if (eveniment == "change" || eveniment == "rename") {
+    if (numeFis && !numeFis.startsWith("_") && (eveniment == "change" || eveniment == "rename")) {
         let caleCompleta = path.join(obGlobal.folderScss, numeFis);
         if (fs.existsSync(caleCompleta)) {
             compileazaScss(caleCompleta);
         }
     }
 })
-
 
 
 app.listen(8080);
