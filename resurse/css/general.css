@@ -8,17 +8,38 @@ body {
     --culoare-highlight: #EA3424;
 
     --culoare-contur: var(--culoare-text);
-    --margine-laterala: 100px;
+    --margine-laterala: 10px;
 
-    --spatiere-stanga: 10px;
-    --spatiere-dreapta: 10px;
-    --gap-grid: 15px;
+    --spatiere-stanga: 20px;
+    --spatiere-dreapta: 20px;
+    --gap-grid: 30px;
     --zona-padding: 15px;
 
     background-color: var(--culoare-fundal);
     color: var(--culoare-text);
     margin-left: var(--margine-laterala);
     margin-right: var(--margine-laterala);
+
+}
+
+#pagina-galerie.statica { 
+    background-image: url("/resurse/imagini/musicbg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    animation: bg-change 15s infinite; }
+
+body.theme-dark {
+  --culoare-buton: #7a2cff;
+  --culoare-fundal: #121212;
+  --culoare-secundara: #2a2a2a;
+  --culoare-text: #ffffff;
+  --culoare-highlight: #EA3424;
+
+  background-color: var(--culoare-fundal);
+  color: var(--culoare-text);
 }
 
 p {
@@ -76,9 +97,18 @@ h2 {
     margin-bottom: 40px;
 }
 
+h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.5rem; 
+    font-weight: 600;
+    line-height: 1; 
+}
+
 p {
     font-size: 1rem;
 }
+
 
 ul.meniu {
     display: flex;
@@ -170,13 +200,15 @@ ul.meniu {
 
 #instrumente {
     grid-area: z7;
-    display: flex;
-    flex-direction: column;
+    display: block;
     gap: 20px;
     padding: 10px;
     border: 1px solid var(--culoare-highlight);
     justify-content: center;
-    align-items: flex-start;
+
+    column-count: 2;
+    column-gap: 30px;
+    column-rule: 1px solid var(--culoare-text);
 }
 
 #instrumente h3 {
@@ -186,38 +218,254 @@ ul.meniu {
     font-weight: 500;
 }
 
-#galerie {
-    grid-area: z8;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 20px;
+#video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
 }
 
-#galerie img {
-    flex: 0 1 250px;
-    /* flex: [flex-grow] [flex-shrink] [flex-basis] */
-    max-width: 700px;
-    min-width: 500px;
-    height: 350px;
+/*  */
+
+hr {
+    border: none;
+    height: 15px;
+    background: repeating-linear-gradient(to bottom,
+            var(--culoare-highlight),
+            var(--culoare-highlight) 2px,
+            transparent 2px,
+            transparent 4px);
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 90%;
+}
+
+.imagine-efect {
+    position: relative;
+    width: 500px;
+    height:350px;
+    overflow: hidden;
+    transition: filter 2s linear;
+    isolation: isolate;
+}
+
+.imagine-efect img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.imagine-efect::before,
+.imagine-efect::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.imagine-efect::before {
+    background-color: var(--culoare-text);
+    mix-blend-mode: lighten;
+}
+
+.imagine-efect::after {
+    background-color: var(--culoare-buton);
+    mix-blend-mode: darken;
+}
+
+/*text*/
+.reflexie {
+    position: relative;
+    display: inline-block;
+
+    font-size: 50px;
+    font-weight: bold;
+
+    margin: 0;          
+    line-height: 1; 
+}
+
+/* reflexia */
+.reflexie::after {
+    content: attr(data-text);
+    content: "Harta Interactivă";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    transform-origin: top;
+
+    transform: translateY(0) scaleY(-1);
+
+    opacity: 0.35;
+    filter: blur(2px);
+
+    pointer-events: none;
+
     display: block;
+    width: 100%;
+}
+
+/* hover */
+.reflexie:hover::after {
+    transform: translateY(0) scaleY(-1.6);
+    filter: blur(5px);
+    opacity: 0.2;
+}
+
+#galerie {
+    grid-area: z8;
+    width: 100%;
+}
+
+#grid-galerie {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-areas:
+        ".   i1  i2"
+        "i3  .   i4"
+        "i5  i6  ."
+        "i7  .   i8"
+        ".   i9  i10"
+        "i11 .   i12"
+        "i13 i14 .";
+
+    gap: 20px;
+    width: 100%;
+    counter-reset: img;
+}
+
+#grid-galerie figure:nth-child(1)  { grid-area: i1; }
+#grid-galerie figure:nth-child(2)  { grid-area: i2; }
+#grid-galerie figure:nth-child(3)  { grid-area: i3; }
+#grid-galerie figure:nth-child(4)  { grid-area: i4; }
+#grid-galerie figure:nth-child(5)  { grid-area: i5; }
+#grid-galerie figure:nth-child(6)  { grid-area: i6; }
+#grid-galerie figure:nth-child(7)  { grid-area: i7; }
+#grid-galerie figure:nth-child(8)  { grid-area: i8; }
+#grid-galerie figure:nth-child(9)  { grid-area: i9; }
+#grid-galerie figure:nth-child(10) { grid-area: i10; }
+#grid-galerie figure:nth-child(11) { grid-area: i11; }
+#grid-galerie figure:nth-child(12) { grid-area: i12; }
+#grid-galerie figure:nth-child(13) { grid-area: i13; }
+#grid-galerie figure:nth-child(14) { grid-area: i14; }
+
+#grid-galerie img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(50%);
+    transition: filter 1.2s ease;
     border-radius: 3px;
     box-shadow: 0 4px 5px var(--culoare-secundara);
     transition: transform 0.3s ease;
-    animation: fadeIn 1s ease;
 }
 
-#galerie img:hover {
+#grid-galerie figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    counter-increment: img;
+    transition: all 1.2s ease;
+}
+#grid-galerie figure:hover {
+    box-shadow: 0 0 10px var(--culoare-secundara);
     transform: scale(1.02);
 }
 
-#galerie figcaption {
+#grid-galerie figure:hover img {
+    filter: brightness(100%);
+}
+
+#grid-galerie figcaption {
     text-align: center;
-    margin-top: 1rem;
-    margin-left: 1rem;
+    margin-top: 10px;
     font-weight: bold;
     color: var(--culoare-text);
+    transition: background-color 1.2s ease, color 1.2s ease;
+    padding: 5px;
+}
+
+#grid-galerie figcaption::before {
+    content: counter(img, decimal-leading-zero) " ";
+}
+
+#grid-galerie figure:hover figcaption {
+    background-color: var(--culoare-secundara);
+    color: var(--culoare-text);
+}
+
+#demo-instrumente {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+::selection {
+    background-color: var(--culoare-text);
+    color: var(--culoare-fundal);
+}
+
+.btn-primary {
+  color: #ffffff;
+}
+
+.theme-dark .btn-primary {
+  background-color: #7a2cff;
+}
+
+.mesaj-animat {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: var(--culoare-highlight);
+    color: var(--culoare-fundal);
+    padding: 8px 0;
+    margin: 8px 0;
+}
+
+.mesaj-animat p {
+    display: inline-block;
+    animation: scroll-text 10s linear infinite;
+}
+
+@keyframes scroll-text {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.bg-animat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    animation: bg-change 15s infinite;
+}
+
+@keyframes bg-change {
+    0%, 30% {
+        background-image: url("/resurse/imagini/musicbg.png");
+    }
+    33%, 63% {
+        background-image: url("/resurse/imagini/musicbg2.jpg");
+    }
+    66%, 100% {
+        background-image: url("/resurse/imagini/musicbg3.jpg");
+    }
 }
 
 #footer {
@@ -227,13 +475,13 @@ ul.meniu {
     font-style: italic
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1000px) {
     html {
         font-size: 17px;
 
     }
 
-    body {
+     body{
         --gap-grid: 10px;
         margin-left: 40px;
         margin-right: 40px;
@@ -253,6 +501,18 @@ ul.meniu {
 
     .tabel-container {
         overflow-x: auto;
+    }
+    #instrumente {
+        column-count: 1;
+        column-rule: none;
+    }
+    #grid-galerie {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: none;
+    }
+
+    #grid-galerie figure {
+        grid-area: auto !important;
     }
 }
 
@@ -332,6 +592,16 @@ thead {
     background-color: var(--culoare-secundara);
 }
 
+.tabel-responsive {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tabel-responsive th,
+.tabel-responsive td {
+    border: 1px solid var(--culoare-contur);
+    padding: 0.5rem;
+}
+
 #instrumente ul,
 #instrumente dl {
     margin: 1rem 0;
@@ -372,20 +642,74 @@ thead {
         margin-right: 10px;
     }
 
+    #instrumente {
+        column-count: 1;
+    }
+
     #galerie img {
         flex: 0 1 90%;
         max-width: 100%;
         min-width: 150px;
     }
+     #grid-galerie {
+        grid-template-columns: 1fr;
+    }
 
     #tabel-instrumente {
         border-spacing: 0;
+    }
+      .tabel-responsive thead,
+    .tabel-responsive tbody,
+    .tabel-responsive tr {
+        display: block;
+        float: left;
+        width: 100%;
+    }
+
+    .tabel-responsive td,
+    .tabel-responsive th {
+        display: block;
+        border: 1px solid var(--culoare-contur);
+        padding: 0.3em;
+    }
+
+    /* elimină separarea dublă între celule */
+    .tabel-responsive td + td,
+    .tabel-responsive th + th {
+        border-top: none;
+    }
+
+    /* ascundem headerul pe mobil (opțional dar recomandat) */
+    .tabel-responsive thead {
+        display: none;
+    }
+
+    /* fiecare rând devine "card" */
+    .tabel-responsive tr {
+        margin-bottom: 1rem;
+        border: 1px solid var(--culoare-contur);
+        background: var(--culoare-fundal);
+    }
+
+    /* afișare label + valoare */
+    .tabel-responsive td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tabel-responsive td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 1rem;
+        color: var(--culoare-highlight);
     }
 
     * {
         transition: none;
         animation: none;
     }
+
 }
 
 .harta-interactiva {
@@ -617,6 +941,7 @@ main a[href^="http"]::before {
 
 main a[href^="http"]:hover::before {
     color: var(--culoare-text);
+
 }
 
 main a {
@@ -636,11 +961,9 @@ main a:active {
     border: 2px solid var(--culoare-text);
 }
 
-
-/* Ascundem watermark-ul pe ecranul normal (în afara @media print) */
-    #watermark {
-        display: none;
-    }
+#watermark {
+    display: none;
+}
 
 
 @media print {
@@ -648,7 +971,7 @@ main a:active {
     h1 {
         text-align: center;
         margin-top: 50px;
-        page-break-before: always;   
+        page-break-before: always;
     }
 
     nav {
@@ -735,7 +1058,7 @@ main a:active {
 
     #grid-pagina {
         display: block !important;
-        width:100%;
+        width: 100%;
     }
 
     body {

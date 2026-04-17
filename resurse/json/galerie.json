@@ -1,50 +1,106 @@
 {
-    "cale_galerie": "resurse/imagini/galerie",
-    "imagini": [
-        {
-            "fisier": "brown_drums.jpg",
-            "descriere": "Set de tobe acustice maro",
-            "luni": ["martie", "februarie", "noiembrie", "aprilie", "decembrie", "octombrie"]
-        },
-        {
-            "fisier": "digital_piano.jpg",
-            "descriere": "Pian digital portabil",
-            "luni": ["ianuarie", "februarie", "iunie", "octombrie"]
-        },
-        {
-            "fisier": "electric_drums.jpg",
-            "descriere": "Set de tobe electronice profesionale",
-            "luni": ["ianuarie", "noiembrie", "iunie", "martie", "aprilie"]
-        },
-        {
-            "fisier": "guitar1.jpg",
-            "descriere": "Chitară clasică",
-            "luni": ["noiembrie", "aprilie", "decembrie"]
-        },
-        {
-            "fisier": "guitar2.jpg",
-            "descriere": "Chitară acustică premium",
-            "luni": ["noiembrie", "aprilie", "decembrie", "octombrie"]
-        },
-        {
-            "fisier": "red_drums.png",
-            "descriere": "Set de tobe roșii",
-            "luni": ["mai", "iulie", "august"]
-        },
-        {
-            "fisier": "violin1.jpg",
-            "descriere": "Vioară clasică 4/4",
-            "luni": ["septembrie", "octombrie", "ianuarie"]
-        },
-        {
-            "fisier": "yamaha.jpg",
-            "descriere": "Pian acustic vertical Yamaha",
-            "luni": ["decembrie", "iunie"]
-        },
-        {
-            "fisier": "Tobe.png",
-            "descriere": "Set de tobe de studio",
-            "luni": ["august", "septembrie"]
-        }
-    ]
+  "cale_galerie": "resurse/imagini/galerie",
+  "imagini": [
+    {
+      "cale_relativa": "yamaha.jpg",
+      "nume_imag": "Pian Yamaha",
+      "alternativ": "Pian Yamaha",
+      "descriere_imag": "Pian Yamaha",
+      "intervale_ore": [[10, 13], [16, 19]]
+    },
+    {
+      "cale_relativa": "violin1.jpg",
+      "nume_imag": "Vioară",
+      "alternativ": "Vioară",
+      "descriere_imag": "Vioară",
+      "intervale_ore": [[9, 11], [14, 17]]
+    },
+    {
+      "cale_relativa": "chitara_bass.jpg",
+      "nume_imag": "Chitară bass",
+      "alternativ": "Chitară bass",
+      "descriere_imag": "Chitară bass",
+      "intervale_ore": [[9, 12], [15, 18]]
+    },
+    {
+      "cale_relativa": "vioara.jpg",
+      "nume_imag": "Vioară",
+      "alternativ": "Vioară",
+      "descriere_imag": "Vioară",
+      "intervale_ore": [[10, 12], [16, 20]]
+    },
+    {
+      "cale_relativa": "tobe.png",
+      "nume_imag": "Tobe",
+      "alternativ": "Tobe",
+      "descriere_imag": "Tobe",
+      "intervale_ore": [[8, 10], [17, 20]]
+    },
+    {
+      "cale_relativa": "saxofon.jpg",
+      "nume_imag": "Saxofon",
+      "alternativ": "Saxofon",
+      "descriere_imag": "Saxofon",
+      "intervale_ore": [[11, 13], [18, 21]]
+    },
+    {
+      "cale_relativa": "reddrums.jpg",
+      "nume_imag": "Tobe roșii",
+      "alternativ": "Tobe roșii",
+      "descriere_imag": "Tobe roșii",
+      "intervale_ore": [[12, 15], [18, 21]]
+    },
+    {
+      "cale_relativa": "pian.png",
+      "nume_imag": "Pian Steinway",
+      "alternativ": "Pian Steinway",
+      "descriere_imag": "Pian Steinway & Sons upright",
+      "intervale_ore": [[9, 12], [16, 19]],
+      "autor": "Steinway & Sons",
+  "sursa": "https://commons.wikimedia.org/wiki/File:Steinway_%26_Sons_upright_piano,_model_K-132,_manufactured_at_Steinway%27s_factory_in_Hamburg,_Germany.png",
+  "licenta": "CC BY-SA 3.0"
+    },
+    {
+      "cale_relativa": "guitar23.jpg",
+      "nume_imag": "Chitară",
+      "alternativ": "Chitară",
+      "descriere_imag": "Chitară",
+      "intervale_ore": [[10, 12], [15, 18]]
+    },
+    {
+      "cale_relativa": "electric.jpg",
+      "nume_imag": "Chitară electrică",
+      "alternativ": "Chitară electrică",
+      "descriere_imag": "Chitară electrică",
+      "intervale_ore": [[11, 13], [17, 20]]
+    },
+    {
+      "cale_relativa": "electric_drums.jpg",
+      "nume_imag": "Tobe electronice",
+      "alternativ": "Tobe electronice",
+      "descriere_imag": "Tobe electronice",
+      "intervale_ore": [[10, 13], [15, 19]]
+    },
+    {
+      "cale_relativa": "digital_piano2.jpg",
+      "nume_imag": "Pian digital",
+      "alternativ": "Pian digital",
+      "descriere_imag": "Pian digital",
+      "intervale_ore": [[8, 11], [16, 20]]
+    },
+    {
+      "cale_relativa": "digital_piano.jpg",
+      "nume_imag": "Pian digital",
+      "alternativ": "Pian digital",
+      "descriere_imag": "Pian digital",
+      "intervale_ore": [[8, 11], [16, 20]]
+    },
+    {
+      "cale_relativa": "brown_drums.jpg",
+      "nume_imag": "Tobe maro",
+      "alternativ": "Tobe maro",
+      "descriere_imag": "Tobe maro",
+      "intervale_ore": [[9, 12], [14, 18]]
+    }
+  ]
 }

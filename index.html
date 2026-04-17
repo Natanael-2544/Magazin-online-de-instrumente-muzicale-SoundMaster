@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="/resurse/css/general.css" type="text/css" />
     <link rel="stylesheet" href="/resurse/css/nav.css" type="text/css" />
     <link rel="stylesheet" href="/resurse/css/nav1000.css" media="screen and (max-width: 1000px)" />
+    <link rel="stylesheet" href="/resurse/css/galerie_animata.css?v=<%= Math.random() %>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +29,7 @@
         rel="stylesheet">
 </head>
 
-<script src="/resurse/js/script.js"></script>
+
 
 <body>
     <div id="watermark">
@@ -36,6 +37,9 @@
         <br>
         <span class="prenume">Natanael</span>
     </div>
+    <video autoplay muted loop id="video-bg">
+        <source src="/resurse/video/muisc_video.mp4" type="video/mp4">
+    </video>
 
     <nav>
         <input type="checkbox" id="ch-menu">
@@ -70,8 +74,8 @@
                     <div class="imag-icon"><span class="fa-solid fa-image"></span></div>
                 </a>
                 <ul>
-                    <li><a href="galerie-statica.html">Statică</a></li>
-                    <li><a href="galerie-dinamica.html">Dinamică</a></li>
+                    <li><a href="galerie.statica.html">Statică</a></li>
+                    <li><a href="galerie.dinamica.html">Dinamică</a></li>
                 </ul>
             </li>
 
@@ -123,7 +127,8 @@
                 </p>
 
                 <figure class="harta-interactiva">
-                    <h3>Harta Interactivă a Magazinului</h3>
+                    <h3 class="reflexie">Harta Interactivă</h3>
+
                     <p><small>Apasă pe diferite părți ale imaginii pentru a naviga rapid.</small></p>
 
                     <img src="/resurse/imagini/Pian.jpg" alt="Harta Instrumente" usemap="#harta-pian" width="600">
@@ -211,18 +216,14 @@
                 <div id="container-video">
                     <div id="clip-video">
                         <div id="stil-video">
-                            <video controls 
-                                   poster="/resurse/imagini/poster.jpg" 
-                                   preload="metadata"
-                                   playsinline autoplay loop muted>
+                            <video controls poster="/resurse/imagini/poster.jpg" preload="metadata" playsinline autoplay
+                                loop muted>
                                 <source src="/resurse/video/music_notes.mp4" type="video/mp4">
                                 <source src="/resurse/video/music_notes.ogv" type="video/ogg">
-                                <track default
-                                    src="/resurse/video/tracks/music_notes.vtt"
-                                    kind="captions" srclang="ro" label="Română">
-                                <track
-                                    src="/resurse/video/tracks/music_notes-en.vtt"
-                                    kind="captions" srclang="en" label="English">
+                                <track default src="/resurse/video/tracks/music_notes.vtt" kind="captions" srclang="ro"
+                                    label="Română">
+                                <track src="/resurse/video/tracks/music_notes-en.vtt" kind="captions" srclang="en"
+                                    label="English">
                             </video>
                         </div>
                     </div>
@@ -232,6 +233,10 @@
             <section id="promotii">
                 <div>
                     <h2>Promoții și oferte online</h2>
+                    <div class="mesaj-animat">
+                        <p>🎵 Super reduceri de primăvară • Piane, chitare și tobe la preț redus • Transport gratuit
+                            peste 500 RON • SoundMaster</p>
+                    </div>
                     <article>
                         <h3 class="titlu">Super oferta săptămânii</h3>
                         <p><strong>Magazinul nostru</strong> oferă <b>reduceri de <s>10%</s> <ins>20%</ins></b> pentru
@@ -371,7 +376,7 @@
             </section>
 
             <section id="produse-populare">
-                <h2>Produse Populare și Prețuri</h2>
+                <h2>Produse Populare, Prețuri și Livrări</h2>
                 <div class="tabel-container">
                     <table id="tabel-instrumente">
                         <caption>Top 5 Instrumente Muzicale SoundMaster</caption>
@@ -421,6 +426,62 @@
                                 <td colspan="4">Produse selectate din top vânzări SoundMaster</td>
                             </tr>
                         </tfoot>
+                    </table>
+
+                    <table class="tabel-responsive">
+                        <caption>Informații livrare SoundMaster</caption>
+
+                        <thead>
+                            <tr>
+                                <th>Serviciu</th>
+                                <th>Tip produs</th>
+                                <th>Timp livrare</th>
+                                <th>Cost</th>
+                                <th>Disponibilitate</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td data-label="Serviciu">Curier standard</td>
+                                <td data-label="Tip produs">Instrumente mici</td>
+                                <td data-label="Timp livrare">24-48h</td>
+                                <td data-label="Cost">25 RON</td>
+                                <td data-label="Disponibilitate">Permanent</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Curier premium</td>
+                                <td data-label="Tip produs">Piane / Tobe</td>
+                                <td data-label="Timp livrare">48-72h</td>
+                                <td data-label="Cost">50 RON</td>
+                                <td data-label="Disponibilitate">Permanent</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Transport specializat</td>
+                                <td data-label="Tip produs">Instrumente fragile</td>
+                                <td data-label="Timp livrare">3-5 zile</td>
+                                <td data-label="Cost">100 RON</td>
+                                <td data-label="Disponibilitate">La comandă</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Ridicare din showroom</td>
+                                <td data-label="Tip produs">Toate</td>
+                                <td data-label="Timp livrare">Imediat</td>
+                                <td data-label="Cost">0 RON</td>
+                                <td data-label="Disponibilitate">Program 10-18</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Livrare internațională</td>
+                                <td data-label="Tip produs">Toate</td>
+                                <td data-label="Timp livrare">5-10 zile</td>
+                                <td data-label="Cost">150 RON</td>
+                                <td data-label="Disponibilitate">Disponibil</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </section>
@@ -508,40 +569,8 @@
             <section id="galerie">
                 <h2>Galerie</h2>
 
-                <div id="grid-galerie">
-                    <figure>
-                        <div>
-                            <img src="/resurse/imagini/Nord_Stage_4,_88_keys_-_Pian_digital_de_scena.jpg" alt="pian">
-                        </div>
+                <div id="galerie-container"></div>
 
-                        <figcaption>Pian digital Nord Stage</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/resurse/imagini/Chitara_Acustica.jpg" alt="Instrumente">
-                        <figcaption>Chitară Acustică</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="resurse/imagini/Chitara_bass.jpg" alt="Instrumente">
-                        <figcaption>Chitară bass</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/resurse/imagini/Flaut.jpg" alt="Instrumente">
-                        <figcaption>Flaut</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/resurse/imagini/Violoncel.jpg" alt="Instrumente">
-                        <figcaption>Violoncel</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/resurse/imagini/Vioara.jpg" alt="Instrumente">
-                        <figcaption>Vioară</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/resurse/imagini/Saxofon.jpg" alt="Instrumente">
-                        <figcaption>Saxofon</figcaption>
-                    </figure>
-
-                </div>
                 <section id="demo-instrumente">
                     <h2>Demo Video Instrumente</h2>
                     <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul de
@@ -619,6 +648,8 @@
         </small>
         <p class="banner-print">Acesta este un proiect școlar!</p>
     </footer>
+
+    <script src="/resurse/js/script.js"></script>
 </body>
 
 </html>
