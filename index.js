@@ -52,25 +52,18 @@ app.get(["/", "/index", "/home"], function (req, res) {
 
     let imaginiFinale = imaginiUnice.slice(0, n);
 
-    // --- LOGICA REPARATĂ PENTRU SASS ---
-
-    // 1. Schimbăm numele fișierului în "_galerie_variabile.scss" 
-    // (punem underscore ca să fie "invizibil" pentru compilatorul automat)
     const caleSassVars = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
     const continutSass = `$nr-imagini: ${n};`;
 
     try {
-        // 2. Scriem doar valoarea lui n în acest fișier mic
+
         fs.writeFileSync(caleSassVars, continutSass);
 
-        // 3. Compilăm fișierul principal de design (cel pe care îl ai deja în folder)
-        // Atenție: Numele de aici trebuie să fie fix cel din folderul tău scss!
         compileazaScss("galerie_animata.scss");
 
     } catch (err) {
         console.error("Eroare la scrierea/compilarea SASS-ului dinamic:", err);
     }
-    // ---------------------------------------
 
     res.render("pagini/index", {
         ip: req.ip,
@@ -249,10 +242,11 @@ app.get("/eroare", function (req, res) {
     afisareEroare(res, 404, "Eroare 404");
 });
 
+
 //Etapa 5
 function compileazaScss(caleScss, caleCss) {
     if (!caleCss) {
-        let numeFis = path.parse(caleScss).name;
+        let numeFis = path.basename(caleScss, path.extname(caleScss));
         caleCss = numeFis + ".css";
     }
 
@@ -271,8 +265,8 @@ function compileazaScss(caleScss, caleCss) {
 
     if (fs.existsSync(caleCss)) {
         try {
-            let nume = path.parse(numeFisCss).name;   // a
-            let extensie = path.parse(numeFisCss).ext; // .css
+            let nume = path.parse(numeFisCss).name;   
+            let extensie = path.parse(numeFisCss).ext; 
             let timestamp = Date.now();
 
             let numeBackup = `${nume}_${timestamp}${extensie}`;
@@ -337,9 +331,6 @@ function initImagini() {
 initImagini();
 
 function verificaGalerie(dataGalerie) {
-    const fs = require("fs");
-    const path = require("path");
-
     // 1
     if (!fs.existsSync(dataGalerie.cale_galerie)) {
         console.error(
@@ -350,7 +341,6 @@ function verificaGalerie(dataGalerie) {
 
     // 2
     let imaginiLipsa = [];
-
     for (let img of dataGalerie.imagini) {
         let caleImg = path.join(dataGalerie.cale_galerie, img.cale_relativa);
 
@@ -358,16 +348,15 @@ function verificaGalerie(dataGalerie) {
             imaginiLipsa.push(img.cale_relativa);
         }
     }
-
     if (imaginiLipsa.length > 0) {
         console.error(
             `Eroare: Următoarele fișiere imagine specificate în JSON NU există în sistemul de fișiere:\n- ${imaginiLipsa.join("\n- ")}`
         );
         return false;
     }
-
     return true;
 }
+verificaGalerie(obGlobal.obImagini);
 
 //la pornirea serverului
 vFisiere = fs.readdirSync(obGlobal.folderScss);

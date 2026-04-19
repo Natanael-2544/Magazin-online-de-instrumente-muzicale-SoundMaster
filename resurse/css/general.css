@@ -684,25 +684,21 @@ thead {
         padding: 0.3em;
     }
 
-    /* elimină separarea dublă între celule */
     .tabel-responsive td + td,
     .tabel-responsive th + th {
         border-top: none;
     }
 
-    /* ascundem headerul pe mobil (opțional dar recomandat) */
     .tabel-responsive thead {
         display: none;
     }
 
-    /* fiecare rând devine "card" */
     .tabel-responsive tr {
         margin-bottom: 1rem;
         border: 1px solid var(--culoare-contur);
         background: var(--culoare-fundal);
     }
 
-    /* afișare label + valoare */
     .tabel-responsive td {
         display: flex;
         justify-content: space-between;

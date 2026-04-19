@@ -30,16 +30,16 @@ $theme-dark-text: #ffffff;
 $theme-dark-primary: #7a2cff;
 $theme-dark-secondary: #2a2a2a;
 
-@use "../../node_modules/bootstrap/scss/bootstrap.scss" with (
-  $primary: $primary,
-  $secondary: $secondary,
-  $danger: $danger,
-  $body-bg: $body-bg,
-  $body-color: $body-color,
-  $font-family-base: $font-family-base,
-  $border-radius: $border-radius,
-  $h1-font-size: $h1-font-size,
-  $h2-font-size: $h2-font-size,
-  $h3-font-size: $h3-font-size,
-  $grid-breakpoints: $grid-breakpoints
-);
+  @use "../../node_modules/bootstrap/scss/bootstrap.scss" with (
+    $primary: $primary,
+    $secondary: $secondary,
+    $danger: $danger,
+    $body-bg: $body-bg,
+    $body-color: $body-color,
+    $font-family-base: $font-family-base,
+    $border-radius: $border-radius,
+    $h1-font-size: $h1-font-size,
+    $h2-font-size: $h2-font-size,
+    $h3-font-size: $h3-font-size,
+    $grid-breakpoints: $grid-breakpoints
+  );

@@ -8,7 +8,7 @@ $nr-imagini: 14 !default;
     margin: 30px auto;
     overflow: hidden;
     border: 15px solid;
-    // Atenție: Cerința cere border-image cu o IMAGINE, nu gradient.
+
     border-image: linear-gradient(45deg, #2c3e50, #bdc3c7, #2c3e50) 1;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 
@@ -63,29 +63,36 @@ $nr-imagini: 14 !default;
 }
 
 @keyframes animatie_clip_path {
+
     0% {
         z-index: 10;
-        opacity: 0;
-        clip-path: inset(50% 0 50% 0); 
-    }
-  
-    #{percentage(0.02 / $nr-imagini)} {
         opacity: 1;
         clip-path: inset(50% 0 50% 0);
     }
-    #{percentage(0.8 / $nr-imagini)} {
+
+    1% {
+        opacity: 1;
+        clip-path: inset(50% 0 50% 0);
+    }
+
+    6% {
         opacity: 1;
         clip-path: inset(0 0 0 0);
     }
 
-    #{percentage(1 / $nr-imagini)} {
-        opacity: 0;
+    30% {
+        opacity: 1;
         clip-path: inset(50% 0 50% 0);
         z-index: 10;
     }
 
-    #{percentage(1 / $nr-imagini + 0.001)}, 100% {
-        opacity: 0;
+    70% {
+        opacity: 1;
+        z-index: 0;
+    }
+
+    100% {
+        opacity: 1;
         z-index: 0;
     }
 }

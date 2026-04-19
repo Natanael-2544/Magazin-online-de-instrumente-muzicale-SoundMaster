@@ -15,395 +15,461 @@
 <body>
     <%- include("../fragmente/header.ejs") %>
         <main> <!--  comentariu -->
-            <div id="grid-pagina">
+       <div id="grid-pagina">
 
-                <section id="welcome">
-                    <hgroup>
-                        <h2 style='color:red'>Bine ati venit!</h2>
-                    </hgroup>
-                    <p>La noi găsești o gamă variată de <strong>instrumente muzicale</strong> de înaltă calitate.
-                        Fie că ești în căutarea unei <strong>chitare</strong> acustice sau a unui <strong>pian</strong>
-                        digital, suntem aici să te ajutăm.</p>
-                    <p>De asemenea, oferim seturi profesionale de <strong>tobe</strong> pentru percuționiști
-                        și o selecție elegantă de <strong>instrumente de suflat</strong>, ideale pentru orice
-                        <strong>magazin de muzica</strong> respectat.
-                    </p>
+            <section id="welcome">
+                <hgroup>
+                    <h2 style='color:red'>Bine ati venit!</h2>
+                </hgroup>
+                <p>La noi găsești o gamă variată de <strong>instrumente muzicale</strong> de înaltă calitate.
+                    Fie că ești în căutarea unei <strong>chitare</strong> acustice sau a unui <strong>pian</strong>
+                    digital, suntem aici să te ajutăm.</p>
+                <p>De asemenea, oferim seturi profesionale de <strong>tobe</strong> pentru percuționiști
+                    și o selecție elegantă de <strong>instrumente de suflat</strong>, ideale pentru orice
+                    <strong>magazin de muzica</strong> respectat.
+                </p>
 
-                    <figure class="harta-interactiva">
-                        <h3>Harta Interactivă a Magazinului</h3>
-                        <p><small>Apasă pe diferite părți ale imaginii pentru a naviga rapid.</small></p>
+                <figure class="harta-interactiva">
+                    <h3 class="reflexie">Harta Interactivă</h3>
 
-                        <img src="/resurse/imagini/Pian.jpg" alt="Harta Instrumente" usemap="#harta-pian" width="600">
+                    <p><small>Apasă pe diferite părți ale imaginii pentru a naviga rapid.</small></p>
 
-                        <map name="harta-pian">
+                    <img src="/resurse/imagini/Pian.jpg" alt="Harta Instrumente" usemap="#harta-pian" width="600">
 
-                            <area shape="rect" coords="0,150,250,350" alt="Prezentare" href="#welcome"
-                                title="Prezentare">
+                    <map name="harta-pian">
 
-                            <area shape="rect" coords="250,150,450,350" alt="Produse Populare" href="#produse-populare"
-                                title="Produse Populare">
+                        <area shape="rect" coords="0,150,250,350" alt="Prezentare" href="#welcome" title="Prezentare">
 
-                            <area shape="rect" coords="450,150,650,350" alt="Evenimente" href="#program-evenimente"
-                                title="Evenimente">
+                        <area shape="rect" coords="250,150,450,350" alt="Produse Populare" href="#produse-populare"
+                            title="Produse Populare">
 
-                            <area shape="rect" coords="0,350,250,550" alt="Anunturi" href="#anunturi" title="Anunturi">
+                        <area shape="rect" coords="450,150,650,350" alt="Evenimente" href="#program-evenimente"
+                            title="Evenimente">
 
-                            <area shape="rect" coords="250,350,450,550" alt="Resurse" href="#resurse" title="Resurse">
+                        <area shape="rect" coords="0,350,250,550" alt="Anunturi" href="#anunturi" title="Anunturi">
 
-                            <area shape="rect" coords="450,350,650,550" alt="Promotii" href="#promotii"
-                                title="Promotii">
+                        <area shape="rect" coords="250,350,450,550" alt="Resurse" href="#resurse" title="Resurse">
 
-                            <area shape="circle" coords="300,200,50" alt="Instrumente" href="#instrumente"
-                                title="Instrumente">
+                        <area shape="rect" coords="450,350,650,550" alt="Promotii" href="#promotii" title="Promotii">
 
-                            <area shape="rect" coords="400,250,600,400" alt="Galerie" href="#galerie"
-                                title="Vezi galeria">
+                        <area shape="circle" coords="300,200,50" alt="Instrumente" href="#instrumente"
+                            title="Instrumente">
 
-                        </map>
-                        <figcaption>Navigare vizuală folosind harta de imagini.</figcaption>
-                    </figure>
+                        <area shape="rect" coords="400,250,600,400" alt="Galerie" href="#galerie" title="Vezi galeria">
 
-                    <blockquote>
-                        "Am cumpărat prima mea chitară de aici și sună incredibil. Recomand cu drag tuturor
-                        începătorilor!"
-                        <cite>— Andrei M. în <cite>Ghidul Muzicianului</cite></cite>
-                    </blockquote>
-                    <p>Satisfacția clienților SoundMaster:
-                        <meter value="95" min="0" max="100" low="40" high="90" optimum="100"></meter>
-                        <span>95/100 (Excelent)</span>
-                        <!-- meter pentru a arata satisfactia clientilor, span pentru a afisa valoarea -->
-                    </p>
+                    </map>
+                    <figcaption>Navigare vizuală folosind harta de imagini.</figcaption>
+                </figure>
 
-                    <figure class="imagine-responsive"> <!--organizarea imaginilor si a legendei-->
-                        <picture>
-                            <!-- element pentru imagini de diferite dimensiuni, in functie de dispozitiv, afiseaza imaginea optima -->
-                            <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:700px)" />
-                            <!-- source e intructiunea de selectie a imaginii-->
+                <blockquote>
+                    "Am cumpărat prima mea chitară de aici și sună incredibil. Recomand cu drag tuturor începătorilor!"
+                    <cite>— Andrei M. în <cite>Ghidul Muzicianului</cite></cite>
+                </blockquote>
+                <p>Satisfacția clienților SoundMaster:
+                    <meter value="95" min="0" max="100" low="40" high="90" optimum="100"></meter>
+                    <span>95/100 (Excelent)</span>
+                    <!-- meter pentru a arata satisfactia clientilor, span pentru a afisa valoarea -->
+                </p>
 
-                            <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:1200px)" />
+                <figure class="imagine-responsive"> <!--organizarea imaginilor si a legendei-->
+                    <picture>
+                        <!-- element pentru imagini de diferite dimensiuni, in functie de dispozitiv, afiseaza imaginea optima -->
+                        <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:700px)" />
+                        <!-- source e intructiunea de selectie a imaginii-->
 
+                        <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:1200px)" />
+
+                        <div class="imagine-efect">
                             <img src="/resurse/imagini/Pian.jpg" alt="Pian în showroom"
                                 title="Descoperă gama noastră de instrumente premium">
                             <!--director curent ./, ../un nivel mai sus(parinte)-->
-                        </picture>
-                        <figcaption>Selecția noastră de piane disponibile în magazinul online.
-                        </figcaption>
-                    </figure>
-                    <!-- Link imagine separată -->
-                    <figure>
-                        <a href="/resurse/imagini/Pian.jpg">
-                            <img src="/resurse/imagini/Pian.jpg" alt="Pian mare în showroom"
-                                title="Imagine Piano - click pentru versiunea mare" width="300">
-                        </a>
-                        <figcaption>Pian profesional - versiune mare la click</figcaption>
-                    </figure>
+                        </div>
+                    </picture>
+                    <figcaption>Selecția noastră de piane disponibile în magazinul online.
+                    </figcaption>
+                </figure>
+                <!-- Link imagine separată -->
+                <figure>
+                    <a href="/resurse/imagini/Pian.jpg">
+                        <img src="/resurse/imagini/Pian.jpg" alt="Pian mare în showroom"
+                            title="Imagine Piano - click pentru versiunea mare" width="300">
+                    </a>
+                    <figcaption>Pian profesional - versiune mare la click</figcaption>
+                </figure>
 
-                    <p class="intro">Vă mulțumim că ne vizitați site-ul! Magazinul <abbr title="SoundMaster">SM</abbr>
-                        oferă instrumente de înaltă calitate pentru muzicieni!
-                    </p>
-                    <p><a href="http://www.google.com">Google</a></p>
-                    <p>Ip: <%- locals.ip %></p>
+                <p class="intro">Vă mulțumim că ne vizitați site-ul! Magazinul <abbr title="SoundMaster">SM</abbr>
+                    oferă instrumente de înaltă calitate pentru muzicieni!
+                </p>
 
-                    <div class="intro-oferte">
-                        <div>Piane digitale</div>
-                        <div>Tobe acustice</div>
-                        <div>Chitare electrice</div>
-                        <div>Viori clasice</div>
+                <div class="intro-oferte">
+                    <div>Piane digitale</div>
+                    <div>Tobe acustice</div>
+                    <div>Chitare electrice</div>
+                    <div>Viori clasice</div>
+                </div>
+                <p class="anunt intro">
+                    <strong>URGENT:</strong> Livrăm instrumentele în siguranță prin curier specializat.
+                    Toate coletele includ documentația <abbr title="International Standard Book Number">ISBN</abbr>
+                    pentru manualele de utilizare incluse.
+                </p>
+                <p>
+                    <a href="/resurse/imagini/Pian.jpg" download="Pian_descarcat.jpg">
+                        Descarcă imaginea Pian
+                    </a>
+                </p>
+                <hr class="note-muzicale" />
+                <div id="container-video">
+                    <div id="clip-video">
+                        <div id="stil-video">
+                            <video controls poster="/resurse/imagini/poster.jpg" preload="metadata" playsinline autoplay
+                                loop muted>
+                                <source src="/resurse/video/music_notes.mp4" type="video/mp4">
+                                <source src="/resurse/video/music_notes.ogv" type="video/ogg">
+                                <track default src="/resurse/video/tracks/music_notes.vtt" kind="captions" srclang="ro"
+                                    label="Română">
+                                <track src="/resurse/video/tracks/music_notes-en.vtt" kind="captions" srclang="en"
+                                    label="English">
+                            </video>
+                        </div>
                     </div>
-                    <p class="anunt intro">
-                        <strong>URGENT:</strong> Livrăm instrumentele în siguranță prin curier specializat.
-                        Toate coletele includ documentația <abbr title="International Standard Book Number">ISBN</abbr>
-                        pentru manualele de utilizare incluse.
-                    </p>
-                    <p>
-                        <a href="resurse/imagini/Pian.jpg" download="Pian_descarcat.jpg">
-                            Descarcă imaginea Pian
-                        </a>
-                    </p>
-                </section>
+                </div>
+            </section>
 
-                <section id="promotii">
-                    <div>
-                        <h2>Promoții și oferte online</h2>
-                        <article>
-                            <h3 class="titlu">Super oferta săptămânii</h3>
-                            <p><strong>Magazinul nostru</strong> oferă <b>reduceri de <s>10%</s> <ins>20%</ins></b>
-                                pentru
-                                toate
-                                accesoriile de chitară acustică.</p>
-
-                            <p>Dorim să fim complet transparenți cu privire la costurile tale. Pentru a-ți planifica
-                                bugetul
-                                corect, folosim următoarea metodă matematică pentru a stabili prețul final la checkout,
-                                incluzând discountul aplicat și costul de livrare pentru instrumentele voluminoase:</p>
-
-                            <div
-                                style="margin: 20px 0; padding: 15px; border: 1px dashed #ccc; background-color: #f9f9f9;">
-                                <p><strong>Modelul de calcul al prețului promoțional:</strong></p>
-                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                                    <msub>
-                                        <mi class="evidentiat">P</mi>
-                                        <mtext class="text-mic">final</mtext>
-                                    </msub>
-                                    <mo>=</mo>
-                                    <msub>
-                                        <mi>P</mi>
-                                        <mtext class="text-mic">listă</mtext>
-                                    </msub>
-                                    <mo>·</mo>
-                                    <mrow>
-                                        <mo>(</mo>
-                                        <mn class="numar-bold">1</mn>
-                                        <mo>-</mo>
-                                        <mfrac>
-                                            <mi class="evidentiat-special">d</mi>
-                                            <mn>100</mn>
-                                        </mfrac>
-                                        <mo>)</mo>
-                                    </mrow>
-                                    <mo>+</mo>
-                                    <mi>t</mi>
-                                </math>
-                                <p><small>Unde: <i>d</i> = reducerea (%), <i>t</i> = taxa transport (standard: 50 RON
-                                        pentru
-                                        produse în valoare mai mică de 700 de lei, 0 RON dacă produsele costă peste 700
-                                        de
-                                        lei).</small></p>
-                            </div>
-
-                            <p>Oferta este valabilă doar săptămâna aceasta pentru membrii comunității noastre.</p>
-                            <p>Ne <em>"chinuim"</em> să fim cei mai buni, deoarece <q>calitatea sunetului nu se
-                                    negociază</q>.
-                            </p>
-                        </article>
+            <section id="promotii">
+                <div>
+                    <h2>Promoții și oferte online</h2>
+                    <div class="mesaj-animat">
+                        <p>🎵 Super reduceri de primăvară • Piane, chitare și tobe la preț redus • Transport gratuit
+                            peste 500 RON • SoundMaster</p>
                     </div>
-                    <hr>
-                    <div id="faq-instrumente">
-                        <h2>Informații Utile (FAQ)</h2>
+                    <article>
+                        <h3 class="titlu">Super oferta săptămânii</h3>
+                        <p><strong>Magazinul nostru</strong> oferă <b>reduceri de <s>10%</s> <ins>20%</ins></b> pentru
+                            toate
+                            accesoriile de chitară acustică.</p>
 
-                        <details>
-                            <summary>Cum se realizează acordajul instrumentelor înainte de livrare?</summary>
-                            <!-- details pentru a crea o secțiune expandabilă, summary pentru a afișa titlul secțiunii -->
-                            <p>
-                                Toate instrumentele cu coarde sunt verificate de lutierii noștri.
-                                <strong>Atenție:</strong> Din cauza variațiilor de temperatură din timpul transportului,
-                                poate fi necesară o ajustare fină la recepție.
-                            </p>
-                        </details>
+                        <p>Dorim să fim complet transparenți cu privire la costurile tale. Pentru a-ți planifica bugetul
+                            corect, folosim următoarea metodă matematică pentru a stabili prețul final la checkout,
+                            incluzând discountul aplicat și costul de livrare pentru instrumentele voluminoase:</p>
 
-                        <details>
-                            <summary>Care este politica de retur pentru produsele fragile?</summary>
-                            <p>
-                                Acceptăm returul în termen de 14 zile calendaristice. Pentru piane,
-                                returul se face exclusiv prin curierul nostru specializat.
-                            </p>
-                        </details>
+                        <div style="margin: 20px 0; padding: 15px; border: 1px dashed #ccc; background-color: #f9f9f9;">
+                            <p><strong>Modelul de calcul al prețului promoțional:</strong></p>
+                            <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                <msub>
+                                    <mi class="evidentiat">P</mi>
+                                    <mtext class="text-mic">final</mtext>
+                                </msub>
+                                <mo>=</mo>
+                                <msub>
+                                    <mi>P</mi>
+                                    <mtext class="text-mic">listă</mtext>
+                                </msub>
+                                <mo>·</mo>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mn class="numar-bold">1</mn>
+                                    <mo>-</mo>
+                                    <mfrac>
+                                        <mi class="evidentiat-special">d</mi>
+                                        <mn>100</mn>
+                                    </mfrac>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mo>+</mo>
+                                <mi>t</mi>
+                            </math>
+                            <p><small>Unde: <i>d</i> = reducerea (%), <i>t</i> = taxa transport (standard: 50 RON pentru
+                                    produse în valoare mai mică de 700 de lei, 0 RON dacă produsele costă peste 700 de
+                                    lei).</small></p>
+                        </div>
 
-                        <details>
-                            <summary>Detalii despre tehnologia <i>AWM Stereo Sampling</i></summary>
-                            <p>
-                                Această tehnologie folosește înregistrări digitale ale instrumentelor reale
-                                pentru un sunet bogat, capturând și <dfn>reverberația</dfn> naturală a sălii.
-                            </p>
-                        </details>
-                    </div>
+                        <p>Oferta este valabilă doar săptămâna aceasta pentru membrii comunității noastre.</p>
+                        <p>Ne <em>"chinuim"</em> să fim cei mai buni, deoarece <q>calitatea sunetului nu se
+                                negociază</q>.
+                        </p>
+                    </article>
+                </div>
+                <hr>
+                <div id="faq-instrumente">
+                    <h2>Informații Utile (FAQ)</h2>
+
+                    <details>
+                        <summary>Cum se realizează acordajul instrumentelor înainte de livrare?</summary>
+                        <!-- details pentru a crea o secțiune expandabilă, summary pentru a afișa titlul secțiunii -->
+                        <p>
+                            Toate instrumentele cu coarde sunt verificate de lutierii noștri.
+                            <strong>Atenție:</strong> Din cauza variațiilor de temperatură din timpul transportului,
+                            poate fi necesară o ajustare fină la recepție.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Care este politica de retur pentru produsele fragile?</summary>
+                        <p>
+                            Acceptăm returul în termen de 14 zile calendaristice. Pentru piane,
+                            returul se face exclusiv prin curierul nostru specializat.
+                        </p>
+                    </details>
+
+                    <details>
+                        <summary>Detalii despre tehnologia <i>AWM Stereo Sampling</i></summary>
+                        <p>
+                            Această tehnologie folosește înregistrări digitale ale instrumentelor reale
+                            pentru un sunet bogat, capturând și <dfn>reverberația</dfn> naturală a sălii.
+                        </p>
+                    </details>
+                </div>
+            </section>
+            <section id="instrumente">
+                <h2>Instrumentele Noastre <i class="fa-solid fa-guitar"></i></h2>
+
+                <p>Vă oferim o gamă largă de instrumente atât pentru profesioniști, cât și pentru începători.</p>
+                <p>
+                    Toate produsele noastre sunt testate pentru a oferi o
+                    <dfn title="Persistență sunetului într-o incintă după oprirea sursei">reverberatie</dfn>
+                    naturală de excepție, esențială pentru un sunet profesional.
+                </p>
+                <section id="secțiune-piane">
+                    <h3>Piane</h3>
+                    <p>Dispunem de modele cu mecanică <i>double escapement</i> și eșantionare <i>AWM Stereo
+                            Sampling</i>.</p>
+                    <ul>
+                        <li>Piane digitale</li>
+                        <li>Pianine</li>
+                        <li>Piane de concert</li>
+                        <li>Orgi electrice</li>
+
+                    </ul>
                 </section>
-                <section id="instrumente">
-                    <h2>Instrumentele Noastre <i class="fa-solid fa-guitar"></i></h2>
+                <section id="secțiune-chitare">
+                    <h3>Chitare și Basuri</h3>
 
-                    <p>Vă oferim o gamă largă de instrumente atât pentru profesioniști, cât și pentru începători.</p>
-                    <p>
-                        Toate produsele noastre sunt testate pentru a oferi o
-                        <dfn title="Persistență sunetului într-o incintă după oprirea sursei">reverberatie</dfn>
-                        naturală de excepție, esențială pentru un sunet profesional.
-                    </p>
-                    <section id="secțiune-piane">
-                        <h3>Piane</h3>
-                        <p>Dispunem de modele cu mecanică <i>double escapement</i> și eșantionare <i>AWM Stereo
-                                Sampling</i>.</p>
-                        <ul>
-                            <li>Piane digitale</li>
-                            <li>Pianine</li>
-                            <li>Piane de concert</li>
-                            <li>Orgi electrice</li>
-
-                        </ul>
-                    </section>
-                    <section id="secțiune-chitare">
-                        <h3>Chitare și Basuri</h3>
-
-                        <ul>
-                            <li>Chitare electrice</li>
-                            <li>Chitare acustice</li>
-                            <li>Chitare clasice</li>
-                            <li>Basuri electrice</li>
-                            <li>Ukulele</li>
-                        </ul>
-                    </section>
-
-                    <section id="secțiune-tobe">
-                        <h3>Tobe</h3>
-                        <ul>
-                            <li>Tobe acustice</li>
-                            <li>Tobe electronice</li>
-                        </ul>
-                    </section>
-
-                    <section id="secțiune-instrumente-cu-coarde">
-                        <h3>Instrumente cu coarde</h3>
-                        <ul>
-                            <li>Viori</li>
-                            <li>Viole</li>
-                            <li>Violoncele</li>
-                            <li>Contrabasuri</li>
-                        </ul>
-                        <dl> <!--  (d=description) lista de definitii, pentru a oferi informatii suplimentare despre caracteristicile produselor -->
-                            <dt>Garanție Premium</dt>
-                            <!-- termen de definitie, poate fi stilizat diferit fata de definitie -->
-                            <dd>Toate instrumentele beneficiază de 24 luni garanție și revizie gratuită.</dd>
-                            <!-- (description details) definitia/descrierea termenului -->
-                            <dt>Livrare Rapidă</dt>
-                            <dd>Produsele ajung la tine în 24-48 de ore, ambalate special pentru protecție maximă.</dd>
-                        </dl>
-                    </section>
-                </section>
-
-                <section id="produse-populare">
-                    <h2>Produse Populare și Prețuri</h2>
-                    <div class="tabel-container">
-                        <table id="tabel-instrumente">
-                            <caption>Top 5 Instrumente Muzicale SoundMaster</caption>
-                            <thead>
-                                <tr>
-                                    <th>Produs</th>
-                                    <th>Categorie</th>
-                                    <th>Preț</th>
-                                    <th>Stoc</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Pian Digital Yamaha P-125</td>
-                                    <td>Piane</td>
-                                    <td>3.200 RON</td>
-                                    <td>15 buc</td>
-                                </tr>
-                                <tr>
-                                    <td>Chitară Bass Fender</td>
-                                    <td>Chitare</td>
-                                    <td>2.500 RON</td>
-                                    <td>8 buc</td>
-                                </tr>
-                                <tr>
-                                    <td rowspan="2" class="celula-unita">
-                                        <div class="continut-izolat">Set Tobe Acustice Pearl</div>
-                                    </td>
-                                    <td>Tobe</td>
-                                    <td>4.800 RON</td>
-                                    <td>5 buc</td>
-                                </tr>
-                                <tr>
-                                    <td>Tobe</td>
-                                    <td>4.950 RON</td>
-                                    <td>3 buc</td>
-                                </tr>
-                                <tr>
-                                    <td>Ukulele Kala Concert</td>
-                                    <td>Chitare</td>
-                                    <td colspan="2" style="text-align:center;">450 RON - Stoc Limitat</td>
-                                    <!-- colspan pentru a uni cele 2 celule pe orizontala -->
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="4">Produse selectate din top vânzări SoundMaster</td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                    <ul>
+                        <li>Chitare electrice</li>
+                        <li>Chitare acustice</li>
+                        <li>Chitare clasice</li>
+                        <li>Basuri electrice</li>
+                        <li>Ukulele</li>
+                    </ul>
                 </section>
 
-                <section id="program-evenimente">
-                    <h2>Program Detaliat Evenimente și Workshop-uri</h2>
-                    <ol>
-                        <li>
-                            <time datetime="2026-03-15T19:00">15 martie 2026, ora 19:00</time>,
-                            <!--T(time) delimiteaza data si ora-->
-                            <b>Webinar Chitare</b> - prezentare online despre alegerea chitarei potrivite.
-                        </li>
-                        <li>
-                            <time datetime="2026-03-22T18:00">22 martie 2026, ora 18:00</time>,
-                            <b>Demo Sintetizatoare</b> - demonstrație live în showroom Oradea.
-                        </li>
-                        <li>
-                            <time datetime="2026-04-05T12:00">5 aprilie 2026, ora 12:00</time>,
-                            <b>Curs Toboșari (Începători)</b> - atelier pentru începători în sala de repetiții.
-                        </li>
-                        <li>
-                            <time datetime="2026-04-05T15:00">5 aprilie 2026, ora 15:00</time>,
-                            <b>Curs Toboșari (Avansați)</b> - atelier pentru avansați în sala de repetiții.
-                        </li>
-                        <li>
-                            <time datetime="2026-04-10T00:00">10 aprilie 2026</time>,
-                            <b>Lansare brand nou - Eveniment Special</b> - eveniment online în magazinul nostru.
-                        </li>
-                    </ol>
-                    <p>Grad de ocupare locuri Workshop (Bilete rămase):
-                        <meter value="15" min="0" max="100" low="30" high="80" optimum="90"></meter>
-                        <span>15% (Locuri limitate!)</span>
-                    </p>
+                <section id="secțiune-tobe">
+                    <h3>Tobe</h3>
+                    <ul>
+                        <li>Tobe acustice</li>
+                        <li>Tobe electronice</li>
+                    </ul>
                 </section>
 
-                <section id="resurse">
-                    <h2>Resurse</h2>
-                    <p>Pentru mai multe detalii despre echipamente, vizitați partenerul nostru:
-                        <a href="https://www.thomann.de/" target="_blank">Thomann Music</a>.
-                    </p>
-
-                    <p>Citește mai multe despre clasificarea și istoria instrumentelor aici: <br />
-
-                        <a
-                            href="https://ro.wikipedia.org/wiki/Instrument_muzical">https://ro.wikipedia.org/<wbr>wiki/<wbr>Instrument_muzical</a>
-
-                        <embed src="/resurse/despreinstrumentemuzicale.pdf" type="application/pdf"
-                            style="width:100%; height:500px;">
-                        <!-- embed pentru a integra un document PDF direct în pagină, container pt surse externe (embed=a incorpora) -->
-                    </p>
-
+                <section id="secțiune-instrumente-cu-coarde">
+                    <h3>Instrumente cu coarde</h3>
+                    <ul>
+                        <li>Viori</li>
+                        <li>Viole</li>
+                        <li>Violoncele</li>
+                        <li>Contrabasuri</li>
+                    </ul>
+                    <dl> <!--  (d=description) lista de definitii, pentru a oferi informatii suplimentare despre caracteristicile produselor -->
+                        <dt>Garanție Premium</dt>
+                        <!-- termen de definitie, poate fi stilizat diferit fata de definitie -->
+                        <dd>Toate instrumentele beneficiază de 24 luni garanție și revizie gratuită.</dd>
+                        <!-- (description details) definitia/descrierea termenului -->
+                        <dt>Livrare Rapidă</dt>
+                        <dd>Produsele ajung la tine în 24-48 de ore, ambalate special pentru protecție maximă.</dd>
+                    </dl>
                 </section>
+            </section>
+
+            <section id="produse-populare">
+                <h2>Produse Populare, Prețuri și Livrări</h2>
+                <div class="tabel-container">
+                    <table id="tabel-instrumente">
+                        <caption>Top 5 Instrumente Muzicale SoundMaster</caption>
+                        <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th>Categorie</th>
+                                <th>Preț</th>
+                                <th>Stoc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pian Digital Yamaha P-125</td>
+                                <td>Piane</td>
+                                <td>3.200 RON</td>
+                                <td>15 buc</td>
+                            </tr>
+                            <tr>
+                                <td>Chitară Bass Fender</td>
+                                <td>Chitare</td>
+                                <td>2.500 RON</td>
+                                <td>8 buc</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" class="celula-unita">
+                                    <div class="continut-izolat">Set Tobe Acustice Pearl</div>
+                                </td>
+                                <td>Tobe</td>
+                                <td>4.800 RON</td>
+                                <td>5 buc</td>
+                            </tr>
+                            <tr>
+                                <td>Tobe</td>
+                                <td>4.950 RON</td>
+                                <td>3 buc</td>
+                            </tr>
+                            <tr>
+                                <td>Ukulele Kala Concert</td>
+                                <td>Chitare</td>
+                                <td colspan="2" style="text-align:center;">450 RON - Stoc Limitat</td>
+                                <!-- colspan pentru a uni cele 2 celule pe orizontala -->
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">Produse selectate din top vânzări SoundMaster</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <table class="tabel-responsive">
+                        <caption>Informații livrare SoundMaster</caption>
+
+                        <thead>
+                            <tr>
+                                <th>Serviciu</th>
+                                <th>Tip produs</th>
+                                <th>Timp livrare</th>
+                                <th>Cost</th>
+                                <th>Disponibilitate</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td data-label="Serviciu">Curier standard</td>
+                                <td data-label="Tip produs">Instrumente mici</td>
+                                <td data-label="Timp livrare">24-48h</td>
+                                <td data-label="Cost">25 RON</td>
+                                <td data-label="Disponibilitate">Permanent</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Curier premium</td>
+                                <td data-label="Tip produs">Piane / Tobe</td>
+                                <td data-label="Timp livrare">48-72h</td>
+                                <td data-label="Cost">50 RON</td>
+                                <td data-label="Disponibilitate">Permanent</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Transport specializat</td>
+                                <td data-label="Tip produs">Instrumente fragile</td>
+                                <td data-label="Timp livrare">3-5 zile</td>
+                                <td data-label="Cost">100 RON</td>
+                                <td data-label="Disponibilitate">La comandă</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Ridicare din showroom</td>
+                                <td data-label="Tip produs">Toate</td>
+                                <td data-label="Timp livrare">Imediat</td>
+                                <td data-label="Cost">0 RON</td>
+                                <td data-label="Disponibilitate">Program 10-18</td>
+                            </tr>
+
+                            <tr>
+                                <td data-label="Serviciu">Livrare internațională</td>
+                                <td data-label="Tip produs">Toate</td>
+                                <td data-label="Timp livrare">5-10 zile</td>
+                                <td data-label="Cost">150 RON</td>
+                                <td data-label="Disponibilitate">Disponibil</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="program-evenimente">
+                <h2>Program Detaliat Evenimente și Workshop-uri</h2>
+                <ol>
+                    <li>
+                        <time datetime="2026-03-15T19:00">15 martie 2026, ora 19:00</time>,
+                        <!--T(time) delimiteaza data si ora-->
+                        <b>Webinar Chitare</b> - prezentare online despre alegerea chitarei potrivite.
+                    </li>
+                    <li>
+                        <time datetime="2026-03-22T18:00">22 martie 2026, ora 18:00</time>,
+                        <b>Demo Sintetizatoare</b> - demonstrație live în showroom Oradea.
+                    </li>
+                    <li>
+                        <time datetime="2026-04-05T12:00">5 aprilie 2026, ora 12:00</time>,
+                        <b>Curs Toboșari (Începători)</b> - atelier pentru începători în sala de repetiții.
+                    </li>
+                    <li>
+                        <time datetime="2026-04-05T15:00">5 aprilie 2026, ora 15:00</time>,
+                        <b>Curs Toboșari (Avansați)</b> - atelier pentru avansați în sala de repetiții.
+                    </li>
+                    <li>
+                        <time datetime="2026-04-10T00:00">10 aprilie 2026</time>,
+                        <b>Lansare brand nou - Eveniment Special</b> - eveniment online în magazinul nostru.
+                    </li>
+                </ol>
+                <p>Grad de ocupare locuri Workshop (Bilete rămase):
+                    <meter value="15" min="0" max="100" low="30" high="80" optimum="90"></meter>
+                    <span>15% (Locuri limitate!)</span>
+                </p>
+            </section>
+
+            <section id="resurse">
+                <h2>Resurse</h2>
+                <p>Pentru mai multe detalii despre echipamente, vizitați partenerul nostru:
+                    <a href="https://www.thomann.de/" target="_blank">Thomann Music</a>.
+                </p>
+
+                <p>Citește mai multe despre clasificarea și istoria instrumentelor aici: <br />
+
+                    <a
+                        href="https://ro.wikipedia.org/wiki/Instrument_muzical">https://ro.wikipedia.org/<wbr>wiki/<wbr>Instrument_muzical</a>
+
+                    <embed src="/resurse/despreinstrumentemuzicale.pdf" type="application/pdf"
+                        style="width:100%; height:500px;">
+                    <!-- embed pentru a integra un document PDF direct în pagină, container pt surse externe (embed=a incorpora) -->
+                </p>
+
+            </section>
 
 
-                <section id="anunturi">
-                    <h3 class="fg-img">Anunțuri și Noutăți SoundMaster</h3>
+            <section id="anunturi">
+                <h3 class="fg-img">Anunțuri și Noutăți SoundMaster</h3>
 
-                    <p><time datetime="2026-03-01">1 martie 2026</time>
-                        <strong>Nou în stoc:</strong> Am primit o nouă livrare de viori și violoncele pentru
-                        profesioniști.
-                        Vă invităm la showroom pentru o sesiune de testare!
-                    </p>
+                <p><time datetime="2026-03-01">1 martie 2026</time>
+                    <strong>Nou în stoc:</strong> Am primit o nouă livrare de viori și violoncele pentru profesioniști.
+                    Vă invităm la showroom pentru o sesiune de testare!
+                </p>
 
-                    <p><time datetime="2026-03-15">15 martie 2026</time>
-                        Am actualizat catalogul de <strong>piane digitale</strong>. Noile modele includ tehnologia
-                        <i>AWM Stereo Sampling</i> pentru un sunet mult mai realist.
-                    </p>
+                <p><time datetime="2026-03-15">15 martie 2026</time>
+                    Am actualizat catalogul de <strong>piane digitale</strong>. Noile modele includ tehnologia
+                    <i>AWM Stereo Sampling</i> pentru un sunet mult mai realist.
+                </p>
 
-                    <p><time datetime="2026-03-20">20 martie 2026</time>
-                        Înscrierile pentru Workshop-ul de chitară din martie sunt acum deschise!
-                        Grăbiți-vă, locurile sunt limitate.
-                    </p>
+                <p><time datetime="2026-03-20">20 martie 2026</time>
+                    Înscrierile pentru Workshop-ul de chitară din martie sunt acum deschise!
+                    Grăbiți-vă, locurile sunt limitate.
+                </p>
 
-                    <p><time datetime="2025-04-02">2 aprilie 2025</time>
-                        <span>Program special de sărbători pascale: Magazinul fizic va fi închis în perioada 17-20
-                            aprilie.</span>
-                    </p>
+                <p><time datetime="2025-04-02">2 aprilie 2025</time>
+                    <span>Program special de sărbători pascale: Magazinul fizic va fi închis în perioada 17-20
+                        aprilie.</span>
+                </p>
 
-                    <p><time datetime="2025-05-05">5 mai 2026</time>
-                        Am extins gama de <strong>instrumente de suflat</strong>. Verifică acum noile modele de saxofon
-                        și
-                        flaut!
-                    </p>
+                <p><time datetime="2025-05-05">5 mai 2026</time>
+                    Am extins gama de <strong>instrumente de suflat</strong>. Verifică acum noile modele de saxofon și
+                    flaut!
+                </p>
 
-                </section>
+            </section>
 
                 <section id="galerie">
                     <h2>Galerie</h2>
@@ -426,40 +492,36 @@
                         </div>
                     </section>
 
-                    <section id="demo-instrumente">
-                        <h2>Demo Video Instrumente</h2>
-                        <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul
-                            de
-                            mai jos:
-                        </p>
-                        <p>Pornește demo <i class="fa-solid fa-music icon-animat"></i></p>
+                   <section id="demo-instrumente">
+                    <h2>Demo Video Instrumente</h2>
+                    <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul de
+                        mai jos:
+                    </p>
+                    <p>Pornește demo <i class="fa-solid fa-music icon-animat"></i></p>
 
-                        <div class="container-iframe">
-                            <div class="taburi-iframe">
-                                <a href="https://www.youtube.com/embed/MJ9D1T0lY40?start=87" target="ifr-video">Demo
-                                    Pian
-                                    Digital</a>
-                                <!--video-ul se deschide direct in iframe=inline frame(cadru incorporat) (target)-->
-                                <a href="https://www.youtube.com/embed/tWeDO9M7a2I" target="ifr-video">Demo Chitară
-                                    Bass</a>
-                                <a href="https://www.youtube.com/embed/E06IwlqdkP8" target="ifr-video">Demo Tobe
-                                    Acustice</a>
-                            </div>
-
-                            <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/MJ9D1T0lY40?playlist=MJ9D1T0lY40,tWeDO9M7a2I,E06IwlqdkP8&autoplay=0&loop=1&controls=1"
-                                name="ifr-video" title="YouTube demo instrumente muzicale" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                            </iframe>
-                            <!-- autoplay pentru a porni automat playlist-ul, loop pentru a repeta, controls pentru a afișa controalele video, 
-                 cheile care îi permit Ytb-ului să folosească placa de sunet sau accelerarea grafică a calculatorului pentru o redare fluidă.-->
+                    <div class="container-iframe">
+                        <div class="taburi-iframe">
+                            <a href="https://www.youtube.com/embed/MJ9D1T0lY40?start=87" target="ifr-video">Demo Pian
+                                Digital</a>
+                            <!--video-ul se deschide direct in iframe=inline frame(cadru incorporat) (target)-->
+                            <a href="https://www.youtube.com/embed/tWeDO9M7a2I" target="ifr-video">Demo Chitară Bass</a>
+                            <a href="https://www.youtube.com/embed/E06IwlqdkP8" target="ifr-video">Demo Tobe
+                                Acustice</a>
                         </div>
 
+                        <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/MJ9D1T0lY40?playlist=MJ9D1T0lY40,tWeDO9M7a2I,E06IwlqdkP8&autoplay=0&loop=1&controls=1"
+                            name="ifr-video" title="YouTube demo instrumente muzicale" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                        </iframe>
+                       
+                    </div>
 
-                    </section>
+
                 </section>
-            </div>
+            </section>
+        </div>
 
 
         </main>
