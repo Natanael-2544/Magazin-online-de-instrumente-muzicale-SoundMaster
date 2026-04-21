@@ -22,24 +22,25 @@ body {
 
 }
 
-#pagina-galerie.statica { 
+#pagina-galerie.statica {
     background-image: url("/resurse/imagini/musicbg.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
 
-    animation: bg-change 15s infinite; }
+    animation: bg-change 15s infinite;
+}
 
 body.theme-dark {
-  --culoare-buton: #7a2cff;
-  --culoare-fundal: #121212;
-  --culoare-secundara: #2a2a2a;
-  --culoare-text: #ffffff;
-  --culoare-highlight: #EA3424;
+    --culoare-buton: #7a2cff;
+    --culoare-fundal: #121212;
+    --culoare-secundara: #2a2a2a;
+    --culoare-text: #ffffff;
+    --culoare-highlight: #EA3424;
 
-  background-color: var(--culoare-fundal);
-  color: var(--culoare-text);
+    background-color: var(--culoare-fundal);
+    color: var(--culoare-text);
 }
 
 p {
@@ -93,16 +94,16 @@ h1 {
 
 h2 {
     font-size: 1.8rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 40px;
 }
 
 h3 {
     margin: 0;
     padding: 0;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     font-weight: 600;
-    line-height: 1; 
+    line-height: 1;
 }
 
 p {
@@ -248,7 +249,7 @@ hr {
     width: 300px;
     height: 500px;
     overflow: hidden;
-    transition: filter 2s linear; 
+    transition: filter 2s linear;
     isolation: isolate;
     filter: grayscale(0%);
 }
@@ -287,42 +288,38 @@ hr {
 }
 
 /*text*/
-.reflexie {
+.container-text {
     position: relative;
     display: inline-block;
-
-    font-size: 50px;
-    font-weight: bold;
-
-    margin: 0;          
-    line-height: 1; 
+    margin-bottom: 80px;
 }
 
-/* reflexia */
-.reflexie::after {
-    content: attr(data-text);
-    content: "Harta Interactivă";
+#text {
+    position: relative;
+    z-index: 2;
+}
+
+#text-reflectat {
     position: absolute;
     left: 0;
     top: 100%;
-    transform-origin: top;
-
-    transform: translateY(0) scaleY(-1);
-
-    opacity: 0.35;
-    filter: blur(2px);
-
-    pointer-events: none;
-
-    display: block;
-    width: 100%;
+    transform-origin: 0 0;
+    transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px);
+    opacity: 0.55;
+    z-index: 1;
+    transition: 0.5s linear;
 }
 
-/* hover */
-.reflexie:hover::after {
-    transform: translateY(0) scaleY(-1.6);
-    filter: blur(5px);
-    opacity: 0.2;
+#text,
+#text-reflectat {
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+.container-text:hover #text-reflectat {
+    transform: rotateX(180deg) skew(-60deg) scaleY(1) translate(15px, -30px);
+    opacity: 0.35;
 }
 
 #galerie {
@@ -348,20 +345,61 @@ hr {
     counter-reset: img;
 }
 
-#grid-galerie figure:nth-child(1)  { grid-area: i1; }
-#grid-galerie figure:nth-child(2)  { grid-area: i2; }
-#grid-galerie figure:nth-child(3)  { grid-area: i3; }
-#grid-galerie figure:nth-child(4)  { grid-area: i4; }
-#grid-galerie figure:nth-child(5)  { grid-area: i5; }
-#grid-galerie figure:nth-child(6)  { grid-area: i6; }
-#grid-galerie figure:nth-child(7)  { grid-area: i7; }
-#grid-galerie figure:nth-child(8)  { grid-area: i8; }
-#grid-galerie figure:nth-child(9)  { grid-area: i9; }
-#grid-galerie figure:nth-child(10) { grid-area: i10; }
-#grid-galerie figure:nth-child(11) { grid-area: i11; }
-#grid-galerie figure:nth-child(12) { grid-area: i12; }
-#grid-galerie figure:nth-child(13) { grid-area: i13; }
-#grid-galerie figure:nth-child(14) { grid-area: i14; }
+#grid-galerie figure:nth-child(1) {
+    grid-area: i1;
+}
+
+#grid-galerie figure:nth-child(2) {
+    grid-area: i2;
+}
+
+#grid-galerie figure:nth-child(3) {
+    grid-area: i3;
+}
+
+#grid-galerie figure:nth-child(4) {
+    grid-area: i4;
+}
+
+#grid-galerie figure:nth-child(5) {
+    grid-area: i5;
+}
+
+#grid-galerie figure:nth-child(6) {
+    grid-area: i6;
+}
+
+#grid-galerie figure:nth-child(7) {
+    grid-area: i7;
+}
+
+#grid-galerie figure:nth-child(8) {
+    grid-area: i8;
+}
+
+#grid-galerie figure:nth-child(9) {
+    grid-area: i9;
+}
+
+#grid-galerie figure:nth-child(10) {
+    grid-area: i10;
+}
+
+#grid-galerie figure:nth-child(11) {
+    grid-area: i11;
+}
+
+#grid-galerie figure:nth-child(12) {
+    grid-area: i12;
+}
+
+#grid-galerie figure:nth-child(13) {
+    grid-area: i13;
+}
+
+#grid-galerie figure:nth-child(14) {
+    grid-area: i14;
+}
 
 #grid-galerie img {
     width: 100%;
@@ -382,6 +420,7 @@ hr {
     counter-increment: img;
     transition: all 1.2s ease;
 }
+
 #grid-galerie figure:hover {
     box-shadow: 0 0 10px var(--culoare-secundara);
     transform: scale(1.02);
@@ -421,11 +460,11 @@ hr {
 }
 
 .btn-primary {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .theme-dark .btn-primary {
-  background-color: #7a2cff;
+    background-color: #7a2cff;
 }
 
 .mesaj-animat {
@@ -447,6 +486,7 @@ hr {
     0% {
         transform: translateX(100%);
     }
+
     100% {
         transform: translateX(-100%);
     }
@@ -468,13 +508,19 @@ hr {
 }
 
 @keyframes bg-change {
-    0%, 30% {
+
+    0%,
+    30% {
         background-image: url("/resurse/imagini/musicbg.png");
     }
-    33%, 63% {
+
+    33%,
+    63% {
         background-image: url("/resurse/imagini/musicbg2.jpg");
     }
-    66%, 100% {
+
+    66%,
+    100% {
         background-image: url("/resurse/imagini/musicbg3.jpg");
     }
 }
@@ -492,7 +538,7 @@ hr {
 
     }
 
-     body{
+    body {
         --gap-grid: 10px;
         margin-left: 40px;
         margin-right: 40px;
@@ -513,10 +559,12 @@ hr {
     .tabel-container {
         overflow-x: auto;
     }
+
     #instrumente {
         column-count: 1;
         column-rule: none;
     }
+
     #grid-galerie {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas: none;
@@ -607,10 +655,17 @@ thead {
     width: 100%;
     border-collapse: collapse;
 }
+
 .tabel-responsive th,
 .tabel-responsive td {
     border: 1px solid var(--culoare-contur);
     padding: 0.5rem;
+}
+
+#transpus {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
 #instrumente ul,
@@ -662,14 +717,16 @@ thead {
         max-width: 100%;
         min-width: 150px;
     }
-     #grid-galerie {
+
+    #grid-galerie {
         grid-template-columns: 1fr;
     }
 
     #tabel-instrumente {
         border-spacing: 0;
     }
-      .tabel-responsive thead,
+
+    .tabel-responsive thead,
     .tabel-responsive tbody,
     .tabel-responsive tr {
         display: block;
@@ -684,8 +741,8 @@ thead {
         padding: 0.3em;
     }
 
-    .tabel-responsive td + td,
-    .tabel-responsive th + th {
+    .tabel-responsive td+td,
+    .tabel-responsive th+th {
         border-top: none;
     }
 
@@ -712,6 +769,29 @@ thead {
         color: var(--culoare-highlight);
     }
 
+    #transpus thead,
+    tbody,
+    tr {
+        display: block;
+        float: left;
+    }
+
+    #transpus th,
+    td {
+        display: block;
+        border: 1px solid var(--culoare-text);
+        padding: 0.3em;
+    }
+
+    #transpus td+td,
+    #transpus th+th {
+        border-top: none;
+    }
+
+    #transpus {
+        border-collapse: collapse;
+    }
+
     * {
         transition: none;
         animation: none;
@@ -732,6 +812,7 @@ thead {
     min-width: 300px;
     height: 500px;
     display: block;
+    margin: 0 auto;
 }
 
 /* Imagine responsive */

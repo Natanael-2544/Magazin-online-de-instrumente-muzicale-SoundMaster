@@ -15,11 +15,11 @@
 <body>
     <%- include("../fragmente/header.ejs") %>
         <main> <!--  comentariu -->
-       <div id="grid-pagina">
+        <div id="grid-pagina">
 
             <section id="welcome">
                 <hgroup>
-                    <h2 style='color:red'>Bine ati venit!</h2>
+                    <h2>Bine ați venit!</h2>
                 </hgroup>
                 <p>La noi găsești o gamă variată de <strong>instrumente muzicale</strong> de înaltă calitate.
                     Fie că ești în căutarea unei <strong>chitare</strong> acustice sau a unui <strong>pian</strong>
@@ -30,7 +30,10 @@
                 </p>
 
                 <figure class="harta-interactiva">
-                    <h3 class="reflexie">Harta Interactivă</h3>
+                    <div class="container-text">
+                        <div id="text">Harta Interactivă</div>
+                        <div id="text-reflectat">Harta Interactivă</div>
+                    </div>
 
                     <p><small>Apasă pe diferite părți ale imaginii pentru a naviga rapid.</small></p>
 
@@ -388,6 +391,37 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table id="transpus">
+                        <caption>Program Showroom & Ridicare Comenzi</caption>
+                        <thead>
+                            <tr>
+                                <th>Activitate</th>
+                                <th>Luni - Vineri</th>
+                                <th>Sâmbătă</th>
+                                <th>Duminică</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Showroom (Testare)</td>
+                                <td>10:00 - 19:00</td>
+                                <td>11:00 - 16:00</td>
+                                <td>Închis</td>
+                            </tr>
+                            <tr>
+                                <td>Ridicare Produse</td>
+                                <td>09:00 - 20:00</td>
+                                <td>10:00 - 15:00</td>
+                                <td>Închis</td>
+                            </tr>
+                            <tr>
+                                <td>Suport Tehnic</td>
+                                <td>09:00 - 18:00</td>
+                                <td>Închis</td>
+                                <td>Închis</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
 
@@ -471,28 +505,82 @@
 
             </section>
 
-                <section id="galerie">
-                    <h2>Galerie</h2>
+            <section id="galerie">
+                <h2>Galerie</h2>
 
-                    <div id="galerie-container"></div>
+                <div id="galerie-container"></div>
+                <div id="galerie-animata">
+                    <div id="grid-galerie">
+                        <figure>
+                            <img src="resurse/imagini/galerie/yamaha.jpg" alt="pian">
 
-                    <section id="galerie-animata">
-                        <div id="grid-galerie">
-                            <% for (let img of imagini) { %>
-                                <figure>
-                                    <picture>
-                                        <source srcset="<%= img.fisier_mediu %>" media="(max-width:1200px)" />
-                                        <img src="<%= img.fisier %>" alt="<%= img.titlu || 'Imagine galerie' %>">
-                                    </picture>
-                                    <figcaption>
-                                        <%= img.descriere %>
-                                    </figcaption>
-                                </figure>
-                                <% } %>
-                        </div>
-                    </section>
+                            <figcaption>Pian Yamaha</figcaption>
+                        </figure>
+                        <figure>
 
-                   <section id="demo-instrumente">
+                            <img src="resurse/imagini/galerie/violin1.jpg" alt="Vioara1">
+
+                            <figcaption>Vioară</figcaption>
+                        </figure>
+                        <figure>
+
+                            <img src="resurse/imagini/galerie/chitara_bass.jpg" alt="Chitara Bass">
+
+                            <figcaption>Chitară bass</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/vioara.jpg" alt="Vioară">
+                            <figcaption>Vioară</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/tobe.png" alt="Tobe">
+                            <figcaption>Tobe</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/saxofon.jpg" alt="Saxofon">
+                            <figcaption>Saxofon</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/reddrums.jpg" alt="Tobe roșii">
+                            <figcaption>Tobe roșii</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/pian.png" alt="Pian">
+                            <figcaption>Pian</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/guitar23.jpg" alt="Chitară">
+                            <figcaption>Chitară</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/electric.jpg" alt="Chitară electrică">
+                            <figcaption>Chitară electrică</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/electric_drums.jpg" alt="Tobe electronice">
+                            <figcaption>Tobe electronice</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/digital_piano2.jpg" alt="Pian digital">
+                            <figcaption>Pian digital</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/digital_piano.jpg" alt="Pian digital">
+                            <figcaption>Pian digital</figcaption>
+                        </figure>
+                        <figure>
+                            <img src="resurse/imagini/galerie/brown_drums.jpg" alt="Tobe maro">
+                            <figcaption>Tobe maro</figcaption>
+                        </figure>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <section id="demo-instrumente">
                     <h2>Demo Video Instrumente</h2>
                     <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul de
                         mai jos:
@@ -515,7 +603,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
-                       
+
                     </div>
 
 

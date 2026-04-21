@@ -27,7 +27,7 @@
   margin: 0;
   opacity: 0;
   z-index: 0;
-  animation: animatie_clip_path 0s linear infinite;
+  animation: animatie_clip_path 6s linear infinite;
 }
 #galerie-animata #grid-galerie figure img {
   width: 100%;
@@ -47,8 +47,8 @@
 #galerie-animata #grid-galerie figure:nth-child(1) {
   animation-delay: 0s;
 }
-#galerie-animata #grid-galerie figure:nth-child(0) {
-  animation-delay: -3s;
+#galerie-animata #grid-galerie figure:nth-child(2) {
+  animation-delay: 3s;
 }
 #galerie-animata:hover #grid-galerie figure {
   animation-play-state: paused;

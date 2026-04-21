@@ -4,9 +4,32 @@ const fs = require("fs");
 const sass = require("sass");
 const sharp = require("sharp");
 
+// const ejs=require('ejs');
+// const pg = require("pg");
+// //etapa 6
+// client=new pg.Client({
+//     database:"cti_2024",
+//     user:"natanael",
+//     password:"natanael",
+//     host:"localhost",
+//     port:5432
+// })
+
+// client.connect() //transmite date
+
+// client.querry("select * from prajituri where id>3", function(err, rez){
+//     if (err){
+//         console.log("Eroare", err)
+//     }
+//     else{
+//         console.log(rez)
+//     }
+// })
+
 app = express();
 app.set("view engine", "ejs")
 
+//a) pregatire
 obGlobal = {
     obErori: null,
     obImagini: null,
@@ -35,7 +58,6 @@ app.get(["/", "/index", "/home"], function (req, res) {
     let oraCurenta = new Date().getHours();
 
     let imaginiFiltrate = obGlobal.obImagini.imagini.filter((img, index) => {
-        if (index % 2 !== 0) return false;
         if (!img.intervale_ore) return true;
         return img.intervale_ore.some(interval => {
             return oraCurenta >= interval[0] && oraCurenta <= interval[1];
@@ -245,6 +267,7 @@ app.get("/eroare", function (req, res) {
 
 //Etapa 5
 function compileazaScss(caleScss, caleCss) {
+    //b)
     if (!caleCss) {
         let numeFis = path.basename(caleScss, path.extname(caleScss));
         caleCss = numeFis + ".css";
@@ -255,12 +278,12 @@ function compileazaScss(caleScss, caleCss) {
 
     if (!path.isAbsolute(caleCss))
         caleCss = path.join(obGlobal.folderCss, caleCss);
-
+    //c)
     let caleBackup = path.join(obGlobal.folderBackup, "resurse/css");
     if (!fs.existsSync(caleBackup)) {
-        fs.mkdirSync(caleBackup, { recursive: true });
+        fs.mkdirSync(caleBackup, { recursive: true });  
     }
-
+    //Bonus 3
     let numeFisCss = path.basename(caleCss);
 
     if (fs.existsSync(caleCss)) {
@@ -279,7 +302,7 @@ function compileazaScss(caleScss, caleCss) {
             console.error("Eroare la backup CSS:", err.message);
         }
     }
-
+    //b)
     let rez = sass.compile(caleScss, { sourceMap: true });
     fs.writeFileSync(caleCss, rez.css);
 }
@@ -358,14 +381,14 @@ function verificaGalerie(dataGalerie) {
 }
 verificaGalerie(obGlobal.obImagini);
 
-//la pornirea serverului
+//d)
 vFisiere = fs.readdirSync(obGlobal.folderScss);
 for (let numeFis of vFisiere) {
     if (path.extname(numeFis) == ".scss" && !numeFis.startsWith("_")) {
         compileazaScss(numeFis);
     }
 }
-
+//e)
 fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
     if (numeFis && !numeFis.startsWith("_") && (eveniment == "change" || eveniment == "rename")) {
         let caleCompleta = path.join(obGlobal.folderScss, numeFis);
@@ -374,6 +397,7 @@ fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
         }
     }
 })
+
 
 
 app.listen(8080);
