@@ -585,41 +585,59 @@
                         </figure>
 
                     </div>
+                    <p>Galerie animată</p>
+                    <div id="galerie-animata">
+                        
+                        <div id="grid-galerie">
+                            <% if (locals.imagini && locals.imagini.length> 0) { %>
+                                <% for (let i=0; i < imagini.length; i++) { let img=imagini[i]; %>
+                                    <figure>
+                                        <img src="<%= img.fisier %>" alt="<%= img.titlu || 'Imagine galerie' %>">
 
-                    <div id="galerie-animata"></div>
-            </div>
-
-
-
-            <section id="demo-instrumente">
-                <h2>Demo Video Instrumente</h2>
-                <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul de
-                    mai jos:
-                </p>
-                <p>Pornește demo <i class="fa-solid fa-music icon-animat"></i></p>
-
-                <div class="container-iframe">
-                    <div class="taburi-iframe">
-                        <a href="https://www.youtube.com/embed/MJ9D1T0lY40?start=87" target="ifr-video">Demo Pian
-                            Digital</a>
-                        <!--video-ul se deschide direct in iframe=inline frame(cadru incorporat) (target)-->
-                        <a href="https://www.youtube.com/embed/tWeDO9M7a2I" target="ifr-video">Demo Chitară Bass</a>
-                        <a href="https://www.youtube.com/embed/E06IwlqdkP8" target="ifr-video">Demo Tobe
-                            Acustice</a>
+                                        <figcaption>
+                                            <%= img.titlu %>
+                                        </figcaption>
+                                    </figure>
+                                    <% } %>
+                                        <% } else { %>
+                                            <p>Nu sunt imagini disponibile pentru galerie.</p>
+                                            <% } %>
+                        </div>
                     </div>
 
-                    <iframe width="560" height="315"
-                        src="https://www.youtube.com/embed/MJ9D1T0lY40?playlist=MJ9D1T0lY40,tWeDO9M7a2I,E06IwlqdkP8&autoplay=0&loop=1&controls=1"
-                        name="ifr-video" title="YouTube demo instrumente muzicale" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                    </iframe>
 
-                </div>
+                    <section id="demo-instrumente">
+                        <h2>Demo Video Instrumente</h2>
+                        <p>Puteți urmări playlist-ul nostru automat sau puteți alege un instrument specific din meniul
+                            de
+                            mai jos:
+                        </p>
+                        <p>Pornește demo <i class="fa-solid fa-music icon-animat"></i></p>
+
+                        <div class="container-iframe">
+                            <div class="taburi-iframe">
+                                <a href="https://www.youtube.com/embed/MJ9D1T0lY40?start=87" target="ifr-video">Demo
+                                    Pian
+                                    Digital</a>
+                                <!--video-ul se deschide direct in iframe=inline frame(cadru incorporat) (target)-->
+                                <a href="https://www.youtube.com/embed/tWeDO9M7a2I" target="ifr-video">Demo Chitară
+                                    Bass</a>
+                                <a href="https://www.youtube.com/embed/E06IwlqdkP8" target="ifr-video">Demo Tobe
+                                    Acustice</a>
+                            </div>
+
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/MJ9D1T0lY40?playlist=MJ9D1T0lY40,tWeDO9M7a2I,E06IwlqdkP8&autoplay=0&loop=1&controls=1"
+                                name="ifr-video" title="YouTube demo instrumente muzicale" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+                            </iframe>
+
+                        </div>
 
 
-            </section>
-            </section>
+                    </section>
+                </section>
             </div>
 
 

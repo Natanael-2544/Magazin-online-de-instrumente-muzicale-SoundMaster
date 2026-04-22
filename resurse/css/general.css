@@ -693,7 +693,22 @@ thead {
 @media screen and (max-width: 700px) {
     html {
         font-size: 16px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
 
+    }
+
+    #header {
+        background-color: var(--culoare-secundara);
+        border: 2px solid var(--culoare-contur);
+        border-radius: 0;
+        padding: 10px;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        box-shadow: 0 4px 8px var(--culoare-contur);
+        margin: 0;
     }
 
     #grid-pagina {
@@ -704,8 +719,10 @@ thead {
 
     body {
         --gap-grid: 5px;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
     }
 
     #instrumente {

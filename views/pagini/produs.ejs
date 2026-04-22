@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta name="keywords" content="instrumente muzicale, magazin muzica, 
+                            chitara, pian, tobe, instrumente de suflat">
+    <meta name="description"
+        content="Magazin online specializat în instrumente muzicale pentru muzicieni amatori și profesioniști.">
+
+    <title>Magazin online de instrumente muzicale: SoundMaster - <%- locals.prod.nume %></title>
+    <%- include("../fragmente/head") %>
+        <link href="/resurse/css/produs.css" type="text/css" rel="stylesheet" />
+</head>
+
+<%- include("../fragmente/header") %>
+    <main>
+        <section>
+            <h2>Pagină produs</h2>
+
+            <article id="art-produs">
+                <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+
+                <p>Pret: <span class="pret"><%- locals.prod.pret %></span></p>
+
+                <p>Descriere: <span class="descriere"><%- locals.prod.descriere %></span></p>
+
+                <p>Tip instrument: <span class="tip_produs"><%- locals.prod.tip_produs %></span></p>
+
+                <p>Număr componente: <span class="nr_componente"><%- locals.prod.nr_componente %></span></p>
+
+                <p>Greutate: <span class="greutate"><%- locals.prod.greutate %> g</span></p>
+
+                <p>Categorie utilizare: <span class="categorie"><%- locals.prod.categorie %></span></p>
+
+                <p>Materiale: <span class="materiale"><%- locals.prod.materiale %></span></p>
+
+                <p>Este electric: <span class="este_electric"><%- locals.prod.este_electric %></span></p>
+
+                <p>Data adăugare: <span class="data_adaugare"><%- locals.prod.data_adaugare %></span></p>
+
+                <figure class="imag-produs">
+                    <img src="/resurse/imagini/instrumente/<%- locals.prod.imagine %>"
+                        alt="[imagine <%- locals.prod.nume %>]" />
+                </figure>
+            </article>
+        </section>
+    </main>
+
+    <%- include("../fragmente/footer") %>
+        </body>
+
+</html>

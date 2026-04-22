@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+
+    <title>Magazin online de instrumente muzicale: SoundMaster</title>
+    <meta name="keywords" content="instrumente muzicale, magazin muzica, 
+                            chitara, pian, tobe, instrumente de suflat">
+    <meta name="description"
+        content="Magazin online specializat în instrumente muzicale pentru muzicieni amatori și profesioniști.">
+
+    <%- include("../fragmente/head.ejs") %>
+</head>
+
+<body>
+    <%- include("../fragmente/header.ejs") %>
+        <main> <!--  comentariu -->
+            <div id="grid-pagina">
+                <section id="galerie">
+                    <h2>Galerie</h2>
+
+                    <div id="galerie-container"></div>
+
+
+                    <div id="galerie-animata">
+                        <div id="grid-galerie">
+                            <% if (locals.imagini && locals.imagini.length> 0) { %>
+                                <% for (let i=0; i < imagini.length; i++) { let img=imagini[i]; %>
+                                    <figure>
+                                        <img src="<%= img.fisier %>" alt="<%= img.titlu || 'Imagine galerie' %>">
+
+                                        <figcaption>
+                                            <%= img.titlu %>
+                                        </figcaption>
+                                    </figure>
+                                    <% } %>
+                                        <% } else { %>
+                                            <p>Nu sunt imagini disponibile pentru galerie.</p>
+                                            <% } %>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+
+
+        </main>
+
+        <%- include("../fragmente/footer.ejs") %>
+</body>
+
+</html>

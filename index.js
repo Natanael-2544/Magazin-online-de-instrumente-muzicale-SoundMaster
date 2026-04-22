@@ -4,27 +4,20 @@ const fs = require("fs");
 const sass = require("sass");
 const sharp = require("sharp");
 
-// const ejs=require('ejs');
-// const pg = require("pg");
-// //etapa 6
-// client=new pg.Client({
-//     database:"cti_2024",
-//     user:"natanael",
-//     password:"natanael",
-//     host:"localhost",
-//     port:5432
-// })
+const ejs=require('ejs');
+const pg = require("pg");
 
-// client.connect() //transmite date
+//etapa 6
+client=new pg.Client({
+    database:"cti_2026",
+    user:"natanael",
+    password:"natanael",
+    host:"localhost",
+    port:5432
+})
 
-// client.querry("select * from prajituri where id>3", function(err, rez){
-//     if (err){
-//         console.log("Eroare", err)
-//     }
-//     else{
-//         console.log(rez)
-//     }
-// })
+client.connect() //transmite date
+
 
 app = express();
 app.set("view engine", "ejs")
@@ -64,31 +57,28 @@ app.get(["/", "/index", "/home"], function (req, res) {
         });
     });
 
-    let imaginiUnice = [...new Map(
-        imaginiFiltrate.map(img => [img.cale_relativa, img])
-    ).values()];
+let imaginiIndicePar = obGlobal.obImagini.imagini.filter((img, index) => index % 2 === 0);
 
+    // 2. Eliminăm duplicatele (să fie distincte)
+    let imaginiUnice = [...new Map(imaginiIndicePar.map(img => [img.cale_relativa, img])).values()];
+
+    // 3. Generăm n (putere a lui 2: 2, 4, 8, 16)
     const puteri = [2, 4, 8, 16];
     let n = puteri[Math.floor(Math.random() * puteri.length)];
+    
+    // Ne asigurăm că nu cerem mai multe imagini decât avem în JSON
     n = Math.min(n, imaginiUnice.length);
 
+    // 4. Luăm primele n imagini
     let imaginiFinale = imaginiUnice.slice(0, n);
 
+    // 5. Scriem variabila în SASS
     const caleSassVars = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
-    const continutSass = `$nr-imagini: ${n};`;
-
-    try {
-
-        fs.writeFileSync(caleSassVars, continutSass);
-
-        compileazaScss("galerie_animata.scss");
-
-    } catch (err) {
-        console.error("Eroare la scrierea/compilarea SASS-ului dinamic:", err);
-    }
+    fs.writeFileSync(caleSassVars, `$nr-imagini: ${n};`);
+    
+    compileazaScss("galerie_animata.scss");
 
     res.render("pagini/index", {
-        ip: req.ip,
         imagini: imaginiFinale,
         nrImagini: n
     });
@@ -99,8 +89,69 @@ app.get("/galerie", (req, res) => {
 });
 
 app.get("/galerie-dinamica", (req, res) => {
-    res.render("pagini/galerie_dinamica");
+    let imaginiDinJSON = obGlobal.obImagini.imagini;
+    let imaginiProcesate = imaginiDinJSON.map(img => {
+        let numeFis = path.parse(img.cale_relativa).name;
+    
+        return {
+            ...img,
+            fisier: path.join("/", obGlobal.obImagini.cale_galerie, img.cale_relativa).replace(/\\/g, "/")
+        };
+    });
+
+    res.render("pagini/galerie_dinamica", {
+        imagini: imaginiProcesate 
+    });
 });
+
+
+//Etapa 6
+app.get("/produse", function (req, res) {
+    clauzaWhere = ""
+    if (req.query.tip) {
+        clauzaWhere = `where tip_produs='${req.query.tip}'`
+    }
+
+    client.query(`select * from instrumente ${clauzaWhere}`, function (err, rez) {
+        if (err) {
+            console.log("Eroare", err)
+            afisareEroare(res, 2)
+        }
+        else {
+            res.render("pagini/produse", {
+                produse: rez.rows,
+                optiuni: []
+            })
+
+        }
+    })
+
+})
+
+
+app.get("/produs/:id", function (req, res) {
+
+    client.query(`select * from instrumente where id=${req.params.id}`, function (err, rez) {
+        if (err) {
+            console.log("Eroare", err)
+            afisareEroare(res, 2)
+        }
+        else {
+            if (rez.rowCount == 0) {
+                afisareEroare(res, 404, "Produs inexistent")
+            }
+            else {
+                res.render("pagini/produs", {
+                    prod: rez.rows[0]
+                })
+
+            }
+
+        }
+    })
+
+})
+
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))
