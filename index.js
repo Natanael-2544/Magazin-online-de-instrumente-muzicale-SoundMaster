@@ -16,7 +16,7 @@ client=new pg.Client({
     port:5432
 })
 
-client.connect() //transmite date
+client.connect()
 
 
 app = express();
@@ -59,20 +59,15 @@ app.get(["/", "/index", "/home"], function (req, res) {
 
 let imaginiIndicePar = obGlobal.obImagini.imagini.filter((img, index) => index % 2 === 0);
 
-    // 2. Eliminăm duplicatele (să fie distincte)
     let imaginiUnice = [...new Map(imaginiIndicePar.map(img => [img.cale_relativa, img])).values()];
 
-    // 3. Generăm n (putere a lui 2: 2, 4, 8, 16)
     const puteri = [2, 4, 8, 16];
     let n = puteri[Math.floor(Math.random() * puteri.length)];
-    
-    // Ne asigurăm că nu cerem mai multe imagini decât avem în JSON
+
     n = Math.min(n, imaginiUnice.length);
 
-    // 4. Luăm primele n imagini
     let imaginiFinale = imaginiUnice.slice(0, n);
 
-    // 5. Scriem variabila în SASS
     const caleSassVars = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
     fs.writeFileSync(caleSassVars, `$nr-imagini: ${n};`);
     

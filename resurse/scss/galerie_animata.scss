@@ -11,13 +11,11 @@ $nr-imagini: 14 !default; // Acesta va fi suprascris de scriptul Node
     height: 500px;
     margin: 30px auto;
     border: 15px solid;
-    /* Imaginea de border conform cerinței tale */
-    border-image: url('/resurse/imagini/cale_catre_border.jpg') 30 round;
+    border-image: url('/resurse/imagini/music_notes.jpg') 30 round;
     overflow: hidden;
 
     #grid-galerie {
         display: block;
-        /* Ne asigurăm că NU este grid sau flex */
         position: relative;
         width: 100%;
         height: 100%;
@@ -55,7 +53,6 @@ $nr-imagini: 14 !default; // Acesta va fi suprascris de scriptul Node
         }
     }
 
-    /* Generare delay-uri pentru fiecare imagine */
     @for $i from 1 through $nr-imagini {
         #grid-galerie figure:nth-child(#{$i}) {
             animation-delay: #{($i - 1) * 3}s;
