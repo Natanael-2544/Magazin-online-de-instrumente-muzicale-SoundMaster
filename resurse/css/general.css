@@ -1,6 +1,5 @@
 @import "video.css";
-
-body {
+:root{
     --culoare-buton: #9500EA;
     --culoare-fundal: #FFFFFF;
     --culoare-secundara: #D9E6E9;
@@ -14,6 +13,9 @@ body {
     --spatiere-dreapta: 20px;
     --gap-grid: 30px;
     --zona-padding: 15px;
+
+}   
+body {
 
     background-color: var(--culoare-fundal);
     color: var(--culoare-text);

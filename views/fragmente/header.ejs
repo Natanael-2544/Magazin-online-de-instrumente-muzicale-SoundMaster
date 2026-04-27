@@ -46,18 +46,17 @@
         </li>
 
         <li>
-            <a href="/produse">
-                <div class="text-icon">Produse</div>
-                <div class="imag-icon"><span class="fa-solid fa-music"></span></div>
-            </a>
+            <a href="/produse">Produse</a>
             <ul>
-                <li><a href="/produse?tip=piane">Piane</a></li>
+                <li><a href="/produse?tip=toate">Toate</a></li>
 
-                <li><a href="/produse?tip=chitare_si_basuri">Chitare și Basuri</a></li>
-
-                <li><a href="/produse?tip=tobe">Tobe</a></li>
-
-                <li><a href="/produse?tip=instrumente_cu_coarde">Instrumente cu coarde</a></li>
+                <% if (locals.optiuni && locals.optiuni.length) { %>
+                    <% for (let opt of locals.optiuni) { %>
+                        <li>
+                            <a href="/produse?tip=<%- opt %>"><%- opt %></a>
+                        </li>
+                    <% } %>
+                 <% } %>
             </ul>
         </li>
 

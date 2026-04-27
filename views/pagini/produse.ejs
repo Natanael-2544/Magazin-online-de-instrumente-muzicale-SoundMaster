@@ -7,7 +7,7 @@
     <meta name="description"
         content="Magazin online specializat în instrumente muzicale pentru muzicieni amatori și profesioniști.">
     <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
-    title>Magazin online de instrumente muzicale: SoundMaster - Produse</title>
+    <title>Magazin online de instrumente muzicale: SoundMaster</title>
     <%- include("../fragmente/head") %>
         <script type="text/javascript" src=/resurse/js/produse.js></script>
         <script type="text/javascript" src=/resurse/js/produse-cos.js></script>
@@ -21,66 +21,99 @@
 
         <main>
 
-            <label>Nume: <input type="text" id="inp-nume"></label>
+            <section id="filtre">
+                <h2>Filtrează Instrumente</h2>
 
-            <div>
-                Tip instrument:
+                <label> Nume:
+                    <input type="text" id="inp-nume">
+                </label>
 
-                <p><label>Piane
-                        <input id="i_rad1" name="gr_rad" value="piane" type="radio">
-                    </label></p>
+                <label> Material (căutare rapidă):
+                    <input list="lista-materiale" id="inp-material">
+                    <datalist id="lista-materiale">
+                        <option value="lemn paltin">
+                        <option value="lemn molid">
+                        <option value="lemn artar">
+                        <option value="lemn mahon">
+                        <option value="lemn mesteacan">
+                        <option value="lemn plop">
+                        <option value="lemn arin">
+                        <option value="lemn frasin">
+                        <option value="metal">
+                        <option value="otel">
+                        <option value="plastic">
+                        <option value="cauciuc">
+                        <option value="ebonita">
+                    </datalist>
+                </label>
 
-                <p><label>Chitare și basuri
-                        <input id="i_rad2" name="gr_rad" value="chitare_si_basuri" type="radio">
-                    </label></p>
+                <br>
 
-                <p><label>Tobe
-                        <input id="i_rad3" name="gr_rad" value="tobe" type="radio">
-                    </label></p>
+                <label> Greutate maximă:
+                    <span>0</span>
+                    <input type="range" id="inp-greutate" min="0" max="20000" value="20000">
+                    <span>20000 <span id="val-greutate">(20000)</span></span>
+                </label>
 
-                <p><label>Instrumente cu coarde
-                        <input id="i_rad4" name="gr_rad" value="instrumente_cu_coarde" type="radio">
-                    </label></p>
+                <br>
 
-                <p><label>Toate
-                        <input id="i_rad5" checked name="gr_rad" value="toate" type="radio">
-                    </label></p>
-            </div>
+                <div>
+                    Tip instrument:
+                    <label><input type="radio" name="gr_rad" value="toate" checked> Toate</label>
+                    <label><input type="radio" name="gr_rad" value="piane"> Piane</label>
+                    <label><input type="radio" name="gr_rad" value="chitare_si_basuri"> Chitare și basuri</label>
+                    <label><input type="radio" name="gr_rad" value="tobe"> Tobe</label>
+                    <label><input type="radio" name="gr_rad" value="instrumente_cu_coarde"> Coarde</label>
+                </div>
 
+                <br>
 
-            <label>
-                Preț minim:
-                <input type="range" id="inp-pret" value="0" min="0" max="50000">
-                <span id="infoRange">(0)</span>
-            </label>
+                <label> Descriere conține: <br>
+                    <textarea id="inp-descriere"></textarea>
+                </label>
 
+                <br>
 
-            <label>
-                Select simplu:
-                <select id="inp-categorie">
-                    <option id="sel-toate" selected value="toate">toate</option>
-                    <% for (let opt of locals.optiuni) { %>
-                        <option value="<%- opt.unnest %>"><%- opt.unnest %></option>
-                        <% } %>
-                </select>
-            </label>
+                <label> Categorie utilizare:
+                    <select id="inp-categorie">
+                        <option value="toate">oricare</option>
+                        <option value="incepator">începător</option>
+                        <option value="intermediar">intermediar</option>
+                        <option value="profesionist">profesionist</option>
+                        <option value="copii">copii</option>
+                    </select>
+                </label>
 
+                <br>
 
-            <p>
-                <button class="c1 c2 c3" id="filtrare">Filtrează</button>
+                <label> Materiale (multiple):
+                    <select id="inp-materiale" multiple>
+                        <option value="lemn">lemn</option>
+                        <option value="metal">metal</option>
+                        <option value="plastic">plastic</option>
+                        <option value="cauciuc">cauciuc</option>
+                    </select>
+                </label>
 
-                <button id="resetare">Resetează</button><br />
+                <br>
 
-                <button id="sortCrescNume">Sortează crescător după preț și nume</button>
+                <label>
+                    <input type="checkbox" id="inp-electric"> Doar electrice
+                </label>
 
-                <button id="sortDescrescNume">Sortează descrescător după preț și nume</button>
-            </p>
+                <br>
 
+                <p>
+                    <button id="filtrare">Filtrează</button>
+                    <button id="resetare">Resetează</button><br>
+                    <button id="sortCrescNume">Sortează crescător</button>
+                    <button id="sortDescrescNume">Sortează descrescător</button>
+                </p>
 
-            <p id="p-suma">
-                Apăsați Alt+"c" pentru suma prețurilor instrumentelor afișate.
-            </p>
-
+                <p id="p-suma">
+                    Apăsați Alt + "c" pentru suma prețurilor instrumentelor afișate.
+                </p>
+            </section>
 
             <section id="produse">
 

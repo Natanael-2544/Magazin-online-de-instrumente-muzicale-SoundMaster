@@ -1,41 +1,82 @@
-h2{
-    padding:0.4rem;
-}
-#art-produs{
-    margin:0 auto;
-    width:70%;
-    max-width:700px;
-    background-color: var(--cl-light-t);
-    box-shadow: 0px 0px 10px 5px grey;
-    padding:0.4rem;
+
+[id^="art"] {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 1200px;
+    background-color: var(--culoare-fundal); 
+    box-shadow: 0 0 10px 3px var(--culoare-text);
+    padding: 1.5rem;
+    border-radius: 8px;
 }
 
-#art-produs p{
-    margin:0;
-    padding:0.4rem;
-    font-weight:bold;
-    font-size:1.1rem;
+[id^="art"] h2 {
+    margin-bottom: 0.2rem;
+    color: var(--culoare-buton);
 }
 
-#art-produs p span{
+[id^="art"] h3 {
+    margin-top: 0;
     font-weight: normal;
+    font-size: 1.1rem;
+    color: var(--culaore-text);
+    font-style: italic;
 }
-#art-produs p:nth-of-type(even){
-    background-color: var(--culoare-roz-inchis);
+
+[id^="art"] p {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
 }
-#art-produs p:nth-of-type(odd){
-    background-color: var(--cl-marcare);
+
+[id^="art"] > div {
+    display: flex;
+    flex-direction: row; 
+    gap: 30px;
+    align-items: flex-start;
 }
-.imag-produs{
-    text-align: center;
+
+[id^="art"] figure {
+    flex: 0 0 400px;
+    margin: 0;
 }
-.imag-produs img{
-    width:50%;
-    height:auto;
+
+[id^="art"] figure img {
+    width: 100%; 
+    height: 400px; 
+    object-fit: cover; 
+    border-radius: 4px;
+    border: 1px solid var(--culoare-text);
 }
-@media screen and (max-width: 700px){
-    #art-produs{
-        margin:0 auto;
-        width:95%;
+
+[id^="art"] table {
+    flex: 1;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+[id^="art"] td {
+    padding: 0.6rem;
+    border: 1px solid var(--culoare-text);
+}
+
+[id^="art"] td:first-child {
+    font-weight: bold;
+    width: 40%;
+    background-color: var(--culoare-secundara);
+}
+
+time {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 700px) {
+    [id^="art"] > div {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    [id^="art"] figure {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 250px;
     }
 }

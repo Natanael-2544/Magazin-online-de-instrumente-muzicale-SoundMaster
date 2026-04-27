@@ -4,16 +4,16 @@ const fs = require("fs");
 const sass = require("sass");
 const sharp = require("sharp");
 
-const ejs=require('ejs');
+const ejs = require('ejs');
 const pg = require("pg");
 
 //etapa 6
-client=new pg.Client({
-    database:"cti_2026",
-    user:"natanael",
-    password:"natanael",
-    host:"localhost",
-    port:5432
+client = new pg.Client({
+    database: "cti_2026",
+    user: "natanael",
+    password: "natanael",
+    host: "localhost",
+    port: 5432
 })
 
 client.connect()
@@ -57,7 +57,7 @@ app.get(["/", "/index", "/home"], function (req, res) {
         });
     });
 
-let imaginiIndicePar = obGlobal.obImagini.imagini.filter((img, index) => index % 2 === 0);
+    let imaginiIndicePar = obGlobal.obImagini.imagini.filter((img, index) => index % 2 === 0);
 
     let imaginiUnice = [...new Map(imaginiIndicePar.map(img => [img.cale_relativa, img])).values()];
 
@@ -70,7 +70,7 @@ let imaginiIndicePar = obGlobal.obImagini.imagini.filter((img, index) => index %
 
     const caleSassVars = path.join(obGlobal.folderScss, "_galerie_variabile.scss");
     fs.writeFileSync(caleSassVars, `$nr-imagini: ${n};`);
-    
+
     compileazaScss("galerie_animata.scss");
 
     res.render("pagini/index", {
@@ -87,7 +87,7 @@ app.get("/galerie-dinamica", (req, res) => {
     let imaginiDinJSON = obGlobal.obImagini.imagini;
     let imaginiProcesate = imaginiDinJSON.map(img => {
         let numeFis = path.parse(img.cale_relativa).name;
-    
+
         return {
             ...img,
             fisier: path.join("/", obGlobal.obImagini.cale_galerie, img.cale_relativa).replace(/\\/g, "/")
@@ -95,33 +95,42 @@ app.get("/galerie-dinamica", (req, res) => {
     });
 
     res.render("pagini/galerie_dinamica", {
-        imagini: imaginiProcesate 
+        imagini: imaginiProcesate
     });
 });
 
 
 //Etapa 6
 app.get("/produse", function (req, res) {
-    clauzaWhere = ""
-    if (req.query.tip) {
-        clauzaWhere = `where tip_produs='${req.query.tip}'`
-    }
 
-    client.query(`select * from instrumente ${clauzaWhere}`, function (err, rez) {
-        if (err) {
-            console.log("Eroare", err)
-            afisareEroare(res, 2)
+    client.query(
+        "SELECT unnest(enum_range(NULL::categ_instrument)) AS tipuri",
+        function (err, rezEnum) {
+            let tip = req.query.tip;
+            let query = "SELECT * FROM instrumente";
+            let params = [];
+
+            if (tip && tip !== "toate") {
+                query += " WHERE tip_produs = $1";
+                params.push(tip);
+            }
+
+            client.query(query, params, function (err, rez) {
+                if (err) {
+                    console.log(err);
+                    afisareEroare(res, 2);
+                    return;
+                }
+
+                res.render("pagini/produse", {
+                    produse: rez.rows,
+                    optiuni: rezEnum.rows.map(o => o.tipuri)
+                });
+            });
         }
-        else {
-            res.render("pagini/produse", {
-                produse: rez.rows,
-                optiuni: []
-            })
+    );
 
-        }
-    })
-
-})
+});
 
 
 app.get("/produs/:id", function (req, res) {
@@ -337,15 +346,15 @@ function compileazaScss(caleScss, caleCss) {
     //c)
     let caleBackup = path.join(obGlobal.folderBackup, "resurse/css");
     if (!fs.existsSync(caleBackup)) {
-        fs.mkdirSync(caleBackup, { recursive: true });  
+        fs.mkdirSync(caleBackup, { recursive: true });
     }
     //Bonus 3
     let numeFisCss = path.basename(caleCss);
 
     if (fs.existsSync(caleCss)) {
         try {
-            let nume = path.parse(numeFisCss).name;   
-            let extensie = path.parse(numeFisCss).ext; 
+            let nume = path.parse(numeFisCss).name;
+            let extensie = path.parse(numeFisCss).ext;
             let timestamp = Date.now();
 
             let numeBackup = `${nume}_${timestamp}${extensie}`;

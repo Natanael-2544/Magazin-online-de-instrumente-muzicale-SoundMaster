@@ -17,31 +17,63 @@
         <section>
             <h2>Pagină produs</h2>
 
-            <article id="art-produs">
-                <h3><span class="nume"><%- locals.prod.nume %></span></h3>
+            <article id="art<%- locals.prod.id %>" class="<%- locals.prod.tip_produs.replace(/\s+/g,'_') %>">
 
-                <p>Pret: <span class="pret"><%- locals.prod.pret %></span></p>
+                <h2><%- locals.prod.nume %></h2>
+                <h3>Categorie: <%- locals.prod.tip_produs %></h3>
+                <p><%- locals.prod.descriere %></p>
 
-                <p>Descriere: <span class="descriere"><%- locals.prod.descriere %></span></p>
+                <div>
+                    <figure>
+                        <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="<%- locals.prod.nume %>"/>
+                    </figure>
 
-                <p>Tip instrument: <span class="tip_produs"><%- locals.prod.tip_produs %></span></p>
+                    <table>
+                        <tr>
+                            <td>Preț</td>
+                            <td><%- locals.prod.pret %></td>
+                        </tr>
+                        <tr>
+                            <td>Greutate</td>
+                            <td><%- locals.prod.greutate %> g</td>
+                        </tr>
+                        <tr>
+                            <td>Tip instrument</td>
+                            <td><%- locals.prod.tip_produs %></td>
+                        </tr>
+                        <tr>
+                            <td>Număr componente</td>
+                            <td><%- locals.prod.nr_componente %></td>
+                        </tr>
+                        <tr>
+                            <td>Categorie utilizare</td>
+                            <td><%- locals.prod.categorie %></td>
+                        </tr>
+                        <tr>
+                            <td>Materiale</td>
+                            <td><%- locals.prod.materiale %></td>
+                        </tr>
+                        <tr>
+                            <td>Electric</td>
+                            <td><%- locals.prod.este_electric %></td>
+                        </tr>
 
-                <p>Număr componente: <span class="nr_componente"><%- locals.prod.nr_componente %></span></p>
+                        <tr>
+                            <td>Data adăugare</td>
+                            <td>
+                                <% const d=new Date(locals.prod.data_adaugare); const
+                                    zile=["Duminică","Luni","Marți","Miercuri","Joi","Vineri","Sâmbătă"]; const
+                                    luni=["Ianuarie","Februarie","Martie","Aprilie","Mai","Iunie","Iulie","August","Septembrie","Octombrie","Noiembrie","Decembrie"];
+                                    %>
 
-                <p>Greutate: <span class="greutate"><%- locals.prod.greutate %> g</span></p>
-
-                <p>Categorie utilizare: <span class="categorie"><%- locals.prod.categorie %></span></p>
-
-                <p>Materiale: <span class="materiale"><%- locals.prod.materiale %></span></p>
-
-                <p>Este electric: <span class="este_electric"><%- locals.prod.este_electric %></span></p>
-
-                <p>Data adăugare: <span class="data_adaugare"><%- locals.prod.data_adaugare %></span></p>
-
-                <figure class="imag-produs">
-                    <img src="/resurse/imagini/instrumente/<%- locals.prod.imagine %>"
-                        alt="[imagine <%- locals.prod.nume %>]" />
-                </figure>
+                                    <time>
+                                        <%= d.getDate() %>/<%= luni[d.getMonth()] %>/<%= d.getFullYear() %>
+                                                    (<%= zile[d.getDay()] %>)
+                                    </time>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </article>
         </section>
     </main>
