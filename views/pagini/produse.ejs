@@ -21,14 +21,18 @@
 
         <main>
 
-            <section id="filtre">
+            <section id="filtre" class="container">
                 <h2>Filtrează Instrumente</h2>
 
-                <label> Nume:
-                    <input type="text" id="inp-nume">
-                </label>
+                <div class="row g-3"></div>
 
-                <label> Material (căutare rapidă):
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label class="form-label">Nume</label>
+                    <input type="text" id="inp-nume" class="form-control">
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label class="form-label">Material</label>
                     <input list="lista-materiale" id="inp-material">
                     <datalist id="lista-materiale">
                         <option value="lemn paltin">
@@ -45,74 +49,112 @@
                         <option value="cauciuc">
                         <option value="ebonita">
                     </datalist>
-                </label>
+                    </label>
 
-                <br>
-
-                <label> Greutate maximă:
-                    <span>0</span>
-                    <input type="range" id="inp-greutate" min="0" max="20000" value="20000">
-                    <span>20000 <span id="val-greutate">(20000)</span></span>
-                </label>
-
-                <br>
-
-                <div>
-                    Tip instrument:
-                    <label><input type="radio" name="gr_rad" value="toate" checked> Toate</label>
-                    <label><input type="radio" name="gr_rad" value="piane"> Piane</label>
-                    <label><input type="radio" name="gr_rad" value="chitare_si_basuri"> Chitare și basuri</label>
-                    <label><input type="radio" name="gr_rad" value="tobe"> Tobe</label>
-                    <label><input type="radio" name="gr_rad" value="instrumente_cu_coarde"> Coarde</label>
                 </div>
 
-                <br>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label class="form-label">Preț minim</label>
+                    <span id="val-pret-min">(0)</span>
+                    <input type="range" id="inp-pret-min" class="form-range" min="0" max="50000" value="0">
+                </div>
 
-                <label> Descriere conține: <br>
-                    <textarea id="inp-descriere"></textarea>
-                </label>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <label class="form-label">Preț maxim</label>
+                    <span id="val-pret-max">(50000)</span>
+                    <input type="range" id="inp-pret-max" class="form-range" min="0" max="50000" value="50000">
+                </div>
 
-                <br>
+                <div class="col-12">
+                    <label class="form-label d-block">Tip instrument</label>
 
-                <label> Categorie utilizare:
-                    <select id="inp-categorie">
+                    <input type="radio" class="btn-check" name="gr_rad" id="rad-toate" value="toate" checked>
+                    <label class="btn btn-outline-primary" for="rad-toate">Toate</label>
+
+                    <input type="radio" class="btn-check" name="gr_rad" id="rad-piane" value="piane">
+                    <label class="btn btn-outline-primary" for="rad-piane">Piane</label>
+
+                    <input type="radio" class="btn-check" name="gr_rad" id="rad-chitare" value="chitare_si_basuri">
+                    <label class="btn btn-outline-primary" for="rad-chitare">Chitare și basuri</label>
+
+                    <input type="radio" class="btn-check" name="gr_rad" id="rad-tobe" value="tobe">
+                    <label class="btn btn-outline-primary" for="rad-tobe">Tobe</label>
+
+                    <input type="radio" class="btn-check" name="gr_rad" id="rad-coarde" value="instrumente_cu_coarde">
+                    <label class="btn btn-outline-primary" for="rad-coarde">Coarde</label>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label">Lungime min</label>
+                    <input type="number" id="inp-len-min" class="form-control" value="0">
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <label class="form-label">Lungime max</label>
+                    <input type="number" id="inp-len-max" class="form-control" value="1000">
+                </div>
+
+                <div class="col-12">
+                    <div class="form-floating">
+                        <textarea id="inp-descriere" class="form-control"></textarea>
+                        <label for="inp-descriere">Descriere conține</label>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Categorie utilizare</label>
+                    <select id="inp-categorie" class="form-select">
                         <option value="toate">oricare</option>
                         <option value="incepator">începător</option>
                         <option value="intermediar">intermediar</option>
                         <option value="profesionist">profesionist</option>
                         <option value="copii">copii</option>
                     </select>
-                </label>
+                </div>
 
-                <br>
-
-                <label> Materiale (multiple):
-                    <select id="inp-materiale" multiple>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Materiale</label>
+                    <select id="inp-materiale" class="form-select" multiple>
                         <option value="lemn">lemn</option>
                         <option value="metal">metal</option>
                         <option value="plastic">plastic</option>
                         <option value="cauciuc">cauciuc</option>
                     </select>
-                </label>
+                </div>
 
-                <br>
+                <div class="col-12">
+                    <input type="checkbox" id="inp-electric" class="form-check-input">
+                    <label for="inp-electric">Doar electrice</label>
+                </div>
 
-                <label>
-                    <input type="checkbox" id="inp-electric"> Doar electrice
-                </label>
+                <div class="col-12">
+                    <button id="filtrare" class="btn btn-primary">
+                        <i class="bi bi-funnel"></i>
+                        <span class="d-none d-md-inline">Filtrează</span>
+                    </button>
+                    <button id="resetare" class="btn btn-secondary">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        <span class="d-none d-md-inline">Resetează</span>
+                    </button>
 
-                <br>
+                    <button id="sortCrescNume" class="btn btn-primary">
+                        <i class="bi bi-sort-alpha-down"></i>
+                        <span class="d-none d-md-inline">Crescător</span>
+                    </button>
 
-                <p>
-                    <button id="filtrare">Filtrează</button>
-                    <button id="resetare">Resetează</button><br>
-                    <button id="sortCrescNume">Sortează crescător</button>
-                    <button id="sortDescrescNume">Sortează descrescător</button>
-                </p>
+                    <button id="sortDescrescNume" class="btn btn-primary">
+                        <i class="bi bi-sort-alpha-up"></i>
+                        <span class="d-none d-md-inline">Descrescător</span>
+                    </button>
 
-                <p id="p-suma">
-                    Apăsați Alt + "c" pentru suma prețurilor instrumentelor afișate.
-                </p>
+                    <button id="calculeaza-suma" class="btn btn-danger">
+                        <i class="bi bi-calculator"></i>
+                        <span class="d-none d-md-inline">Sumă</span>
+                    </button>
+
+                </div>
+
             </section>
 
             <section id="produse">
@@ -137,40 +179,28 @@
                                     Preț: <span class="val-pret"><%- prod.pret %></span>
                                 </p>
 
-                                <p class="greutate">
-                                    Greutate: <span class="val-greutate"><%- prod.greutate %> g</span>
+                                <p class="materiale" style="display: none">
+                                    Materiale: <span class="val-materiale"><%- prod.materiale %> </span>
                                 </p>
 
-                                <p class="nr_componente">
-                                    Componente: <span class="val-nr"><%- prod.nr_componente %></span>
+                                <p class="electric" style="display: none">
+                                    Electric: <span class="val-electric"><%- prod.este_electric %> </span>
+                                </p>
+
+                                <p class="utilizare" style="display: none">
+                                    Utilizare: <span class="val-categorie"><%- prod.categorie %> </span>
+                                </p>
+
+
+                                <p class="tip_produs">
+                                    Tip instrument:
+                                    <span class="val-tip"><%- prod.tip_produs.toLowerCase().replace(/\s+/g, '_' )
+                                            %></span>
                                 </p>
 
                             </div>
 
-
-                            <p class="categorie">
-                                Utilizare:
-                                <span class="val-categorie"><%- prod.categorie %></span>
-                            </p>
-
-
-                            <p class="tip_produs">
-                                Tip instrument:
-                                <span class="val-tip"><%- prod.tip_produs %></span>
-                            </p>
-
-
-                            <p class="materiale">
-                                Materiale:
-                                <span class="val-materiale"><%- prod.materiale %></span>
-                            </p>
-
-
-                            <p class="electric">
-                                Electric:
-                                <span class="val-electric"><%- prod.este_electric %></span>
-                            </p>
-
+                            <span class="val-descriere"><%- prod.descriere %> </span>
 
                             <figure>
                                 <a href="/produs/<%- prod.id %>">

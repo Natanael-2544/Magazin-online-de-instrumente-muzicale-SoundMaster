@@ -11,14 +11,25 @@ $font-family-base: "Cinzel", serif;
 $h1-font-size: 2.5rem;
 $h2-font-size: 1.8rem;
 $h3-font-size: 1.5rem;
-
 $border-radius: 12px;
+$btn-border-radius: 12px;
+$btn-border-width: 2px;
+$input-border-radius: 10px;
+$input-border-width: 2px;
+
+$form-range-thumb-width: 1.5rem;
+$form-range-thumb-height: 1.5rem;
+$form-range-thumb-border-radius: 50%;
+// culoare bulină
+$form-range-thumb-bg: #9500EA;
+// culoare slider (bara)
+$form-range-track-bg: #D9E6E9;
 
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
-  md: 800px,   
-  lg: 1100px,  
+  md: 800px,
+  lg: 1100px,
   xl: 1200px,
   xxl: 1400px
 );
@@ -30,16 +41,18 @@ $theme-dark-text: #ffffff;
 $theme-dark-primary: #7a2cff;
 $theme-dark-secondary: #2a2a2a;
 
-  @use "../../node_modules/bootstrap/scss/bootstrap.scss" with (
-    $primary: $primary,
-    $secondary: $secondary,
-    $danger: $danger,
-    $body-bg: $body-bg,
-    $body-color: $body-color,
-    $font-family-base: $font-family-base,
-    $border-radius: $border-radius,
-    $h1-font-size: $h1-font-size,
-    $h2-font-size: $h2-font-size,
-    $h3-font-size: $h3-font-size,
-    $grid-breakpoints: $grid-breakpoints
-  );
+@use "../../node_modules/bootstrap/scss/bootstrap.scss" with ($primary: $primary,
+  $secondary: $secondary,
+  $danger: $danger,
+  $body-bg: $body-bg,
+  $body-color: $body-color,
+  $font-family-base: $font-family-base,
+  $border-radius: $border-radius,
+  $btn-border-radius: $btn-border-radius,
+  $btn-border-width: $btn-border-width,
+  $input-border-radius: $input-border-radius,
+  $input-border-width: $input-border-width,
+  $h1-font-size: $h1-font-size,
+  $h2-font-size: $h2-font-size,
+  $h3-font-size: $h3-font-size,
+  $grid-breakpoints: $grid-breakpoints );

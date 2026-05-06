@@ -135,24 +135,26 @@ app.get("/produse", function (req, res) {
 
 app.get("/produs/:id", function (req, res) {
 
-    client.query(`select * from instrumente where id=${req.params.id}`, function (err, rez) {
-        if (err) {
-            console.log("Eroare", err)
-            afisareEroare(res, 2)
-        }
-        else {
-            if (rez.rowCount == 0) {
-                afisareEroare(res, 404, "Produs inexistent")
+    client.query(
+        "SELECT * FROM instrumente WHERE id=$1",
+        [req.params.id], function (err, rez) {
+            if (err) {
+                console.log("Eroare", err)
+                afisareEroare(res, 2)
             }
             else {
-                res.render("pagini/produs", {
-                    prod: rez.rows[0]
-                })
+                if (rez.rowCount == 0) {
+                    afisareEroare(res, 404, "Produs inexistent")
+                }
+                else {
+                    res.render("pagini/produs", {
+                        prod: rez.rows[0]
+                    })
+
+                }
 
             }
-
-        }
-    })
+        })
 
 })
 
@@ -462,7 +464,6 @@ fs.watch(obGlobal.folderScss, function (eveniment, numeFis) {
         }
     }
 })
-
 
 
 app.listen(8080);

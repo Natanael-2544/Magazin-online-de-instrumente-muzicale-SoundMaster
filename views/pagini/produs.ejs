@@ -25,7 +25,7 @@
 
                 <div>
                     <figure>
-                        <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="<%- locals.prod.nume %>"/>
+                        <img src="/resurse/imagini/produse/<%- locals.prod.imagine %>" alt="<%- locals.prod.nume %>" />
                     </figure>
 
                     <table>
@@ -67,7 +67,8 @@
                                     %>
 
                                     <time>
-                                        <%= d.getDate() %>/<%= luni[d.getMonth()] %>/<%= d.getFullYear() %>
+                                        <%= d.getDate().toString().padStart(2,'0') %>/<%= luni[d.getMonth()] %>/<%=
+                                                    d.getFullYear() %>
                                                     (<%= zile[d.getDay()] %>)
                                     </time>
                             </td>
