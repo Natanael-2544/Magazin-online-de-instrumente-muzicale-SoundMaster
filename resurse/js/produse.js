@@ -1,7 +1,6 @@
 
 window.onload = function () {
 
-
   const inpPretMin = document.getElementById("inp-pret-min");
   const inpPretMax = document.getElementById("inp-pret-max");
   const valPretMin = document.getElementById("val-pret-min");
@@ -13,8 +12,27 @@ window.onload = function () {
   inpPretMax.oninput = function () {
     valPretMax.innerHTML = `(${this.value})`;
   };
+  function invalid(t) {
+    return /[0-9]/.test(t);
+  }
 
   document.getElementById("filtrare").onclick = function () {
+    let inpNumeField = document.getElementById("inp-nume");
+
+    if (/[0-9]/.test(inpNumeField.value)) {
+      inpNumeField.classList.add("is-invalid");
+      return;
+    } else {
+      inpNumeField.classList.remove("is-invalid");
+    }
+    let inpMaterialField = document.getElementById("inp-material");
+
+    if (/[0-9]/.test(inpMaterialField.value)) {
+      inpMaterialField.classList.add("is-invalid");
+      return;
+    } else {
+      inpMaterialField.classList.remove("is-invalid");
+    }
 
     let inpNume = document.getElementById("inp-nume").value.trim().toLowerCase()
       .replace(/ă/g, "a").replace(/â/g, "a").replace(/î/g, "i").replace(/ș/g, "s").replace(/ț/g, "t");

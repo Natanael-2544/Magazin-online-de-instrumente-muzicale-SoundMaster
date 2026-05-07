@@ -11859,3 +11859,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+[data-bs-theme=dark] {
+  --bs-body-bg: #000000;
+  --bs-body-bg-rgb: 0, 0, 0;
+  --bs-card-bg: #000000;
+  --bs-card-color: #ffffff;
+  --bs-card-border-color: rgba(255, 255, 255, 0.15);
+  --bs-tertiary-bg: #000000;
+}

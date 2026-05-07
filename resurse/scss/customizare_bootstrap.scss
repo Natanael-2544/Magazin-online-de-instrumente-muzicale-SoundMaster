@@ -40,12 +40,15 @@ $theme-dark-bg: #121212;
 $theme-dark-text: #ffffff;
 $theme-dark-primary: #7a2cff;
 $theme-dark-secondary: #2a2a2a;
+$theme-dark-highlight: #EA3424;
 
 @use "../../node_modules/bootstrap/scss/bootstrap.scss" with ($primary: $primary,
   $secondary: $secondary,
   $danger: $danger,
   $body-bg: $body-bg,
   $body-color: $body-color,
+  $body-bg-dark: $theme-dark-bg, 
+  $body-color-dark: $theme-dark-primary,
   $font-family-base: $font-family-base,
   $border-radius: $border-radius,
   $btn-border-radius: $btn-border-radius,
@@ -55,4 +58,5 @@ $theme-dark-secondary: #2a2a2a;
   $h1-font-size: $h1-font-size,
   $h2-font-size: $h2-font-size,
   $h3-font-size: $h3-font-size,
-  $grid-breakpoints: $grid-breakpoints );
+  $grid-breakpoints: $grid-breakpoints
+   );
