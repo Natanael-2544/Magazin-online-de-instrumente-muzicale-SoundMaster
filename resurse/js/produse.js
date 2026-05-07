@@ -223,5 +223,4 @@ window.onload = function () {
       div.remove();
     }, 2000);
   };
-
 };

@@ -132,7 +132,6 @@ app.get("/produse", function (req, res) {
 
 });
 
-
 app.get("/produs/:id", function (req, res) {
 
     client.query(
@@ -150,12 +149,9 @@ app.get("/produs/:id", function (req, res) {
                     res.render("pagini/produs", {
                         prod: rez.rows[0]
                     })
-
                 }
-
             }
         })
-
 })
 
 
