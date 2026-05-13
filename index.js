@@ -131,6 +131,10 @@ app.get("/produse", function (req, res) {
     );
 
 });
+// app.use(function(req, res, next){
+//     res.locals.vazutDeToti=[1,2,3];
+//     next();
+// }) inlocuim la produse?... in header
 
 app.get("/produs/:id", function (req, res) {
 

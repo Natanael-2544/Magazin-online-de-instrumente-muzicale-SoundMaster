@@ -25,13 +25,43 @@ body {
     margin-right: var(--margine-laterala);
 
 }
-
-.dark {
-    --culoare-buton: #7a2cff;
+body.dark{
+   --culoare-buton: #7a2cff;
     --culoare-fundal: #121212;
     --culoare-secundara: #2a2a2a;
     --culoare-text: #ffffff;
     --culoare-highlight: #EA3424;
+}
+body.light {
+    background: white;
+    color: black;
+}
+
+body.blue {
+    --culoare-buton: #3b82f6;
+    --culoare-fundal: #0f172a;
+    --culoare-secundara: #1e293b;
+    --culoare-text: #e2e8f0;
+    --culoare-highlight: #38bdf8;
+    color: var(--culoare-text)
+}
+
+body.green {
+    --culoare-buton: #22c55e;
+    --culoare-fundal: #0b1f14;
+    --culoare-secundara: #14532d;
+    --culoare-text: #dcfce7;
+    --culoare-highlight: #a3e635;
+    color: var(--culoare-text)
+}
+
+body.christmas {
+    --culoare-buton: #d62828;        
+    --culoare-fundal: #0b1d13;       
+    --culoare-secundara: #163d2a;
+    --culoare-text: #f8f9fa;
+    --culoare-highlight: #ffd60a;  
+    color: var(--culoare-text)  
 }
 
 #pagina-galerie.statica {

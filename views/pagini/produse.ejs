@@ -20,207 +20,276 @@
     <%- include("../fragmente/header") %>
 
         <main>
+            <% let preturi=locals.produse.map(p=> p.pret);
+                let minPret = Math.min(...preturi);
+                let maxPret = Math.max(...preturi);
+                %>
 
-            <section id="filtre" class="container">
-                <h2>Filtrează Instrumente</h2>
+                <% let lungimi=locals.produse.map(p=> p.descriere.length);
+                    let minLen = Math.min(...lungimi);
+                    let maxLen = Math.max(...lungimi);
+                    %>
+                    <% let materiale=new Set(); locals.produse.forEach(p=> {
+                        p.materiale.forEach(m => materiale.add(m));
+                        });
+                        %>
+                        <% let areElectric=locals.produse.some(p=> p.este_electric);
+                            %>
+                            <% let materiale2=new Set(); locals.produse.forEach(p=> {
+                                (p.materiale || []).forEach(m => materiale2.add(m));
+                                });
 
-                <div class="row g-3"></div>
+                                materiale2 = [...materiale2];
+                                %>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <label class="form-label">Nume</label>
-                    <input type="text" id="inp-nume" class="form-control">
-                </div>
+                                <section id="filtre" class="container">
+                                    <h2>Filtrează Instrumente</h2>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <label class="form-label">Material</label>
-                    <input list="lista-materiale" id="inp-material">
-                    <datalist id="lista-materiale">
-                        <option value="lemn paltin">
-                        <option value="lemn molid">
-                        <option value="lemn artar">
-                        <option value="lemn mahon">
-                        <option value="lemn mesteacan">
-                        <option value="lemn plop">
-                        <option value="lemn arin">
-                        <option value="lemn frasin">
-                        <option value="metal">
-                        <option value="otel">
-                        <option value="plastic">
-                        <option value="cauciuc">
-                        <option value="ebonita">
-                    </datalist>
-                    </label>
+                                    <div class="row g-3"></div>
 
-                </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <label class="form-label">Nume</label>
+                                        <input type="text" id="inp-nume" class="form-control">
+                                    </div>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <label class="form-label">Preț minim</label>
-                    <span id="val-pret-min">(0)</span>
-                    <input type="range" id="inp-pret-min" class="form-range" min="0" max="50000" value="0">
-                </div>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <label class="form-label">Material</label>
+                                        <input list="lista-materiale" id="inp-material">
+                                        <datalist id="lista-materiale">
+                                            <% for (let m of materiale) { %>
+                                                <option value="<%- m %>">
+                                                    <% } %>
+                                        </datalist>
+                                        </label>
 
-                <div class="col-12 col-md-6 col-lg-4">
-                    <label class="form-label">Preț maxim</label>
-                    <span id="val-pret-max">(50000)</span>
-                    <input type="range" id="inp-pret-max" class="form-range" min="0" max="50000" value="50000">
-                </div>
+                                    </div>
 
-                <div class="col-12">
-                    <label class="form-label d-block">Tip instrument</label>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <label class="form-label">Preț minim</label>
+                                        <span id="val-pret-min">(<%- minPret %>)</span>
+                                        <input type="range" id="inp-pret-min" class="form-range" min="<%- minPret %>"
+                                            max="<%- maxPret %>" value="<%- minPret %>">
+                                    </div>
 
-                    <input type="radio" class="btn-check" name="gr_rad" id="rad-toate" value="toate" checked>
-                    <label class="btn btn-outline-primary" for="rad-toate">Toate</label>
+                                    <div class="col-12 col-md-6 col-lg-4">
+                                        <label class="form-label">Preț maxim</label>
+                                        <span id="val-pret-max">(<%- maxPret %>)</span>
+                                        <input type="range" id="inp-pret-max" class="form-range" min="<%- minPret %>"
+                                            max="<%- maxPret %>" value="<%- maxPret %>">
+                                    </div>
 
-                    <input type="radio" class="btn-check" name="gr_rad" id="rad-piane" value="piane">
-                    <label class="btn btn-outline-primary" for="rad-piane">Piane</label>
+                                    <div class="col-12">
+                                        <label class="form-label d-block">Tip instrument</label>
 
-                    <input type="radio" class="btn-check" name="gr_rad" id="rad-chitare" value="chitare_si_basuri">
-                    <label class="btn btn-outline-primary" for="rad-chitare">Chitare și basuri</label>
+                                        <input type="radio" class="btn-check" name="gr_rad" id="rad-toate" value="toate"
+                                            checked>
+                                        <label class="btn btn-outline-primary" for="rad-toate">Toate</label>
 
-                    <input type="radio" class="btn-check" name="gr_rad" id="rad-tobe" value="tobe">
-                    <label class="btn btn-outline-primary" for="rad-tobe">Tobe</label>
+                                        <input type="radio" class="btn-check" name="gr_rad" id="rad-piane"
+                                            value="piane">
+                                        <label class="btn btn-outline-primary" for="rad-piane">Piane</label>
 
-                    <input type="radio" class="btn-check" name="gr_rad" id="rad-coarde" value="instrumente_cu_coarde">
-                    <label class="btn btn-outline-primary" for="rad-coarde">Coarde</label>
-                </div>
+                                        <input type="radio" class="btn-check" name="gr_rad" id="rad-chitare"
+                                            value="chitare_si_basuri">
+                                        <label class="btn btn-outline-primary" for="rad-chitare">Chitare și
+                                            basuri</label>
 
-                <div class="col-6 col-md-3">
-                    <label class="form-label">Lungime min</label>
-                    <input type="number" id="inp-len-min" class="form-control" value="0">
-                </div>
+                                        <input type="radio" class="btn-check" name="gr_rad" id="rad-tobe" value="tobe">
+                                        <label class="btn btn-outline-primary" for="rad-tobe">Tobe</label>
 
-                <div class="col-6 col-md-3">
-                    <label class="form-label">Lungime max</label>
-                    <input type="number" id="inp-len-max" class="form-control" value="1000">
-                </div>
+                                        <input type="radio" class="btn-check" name="gr_rad" id="rad-coarde"
+                                            value="instrumente_cu_coarde">
+                                        <label class="btn btn-outline-primary" for="rad-coarde">Coarde</label>
+                                    </div>
 
-                <div class="col-12">
-                    <div class="form-floating">
-                        <textarea id="inp-descriere" class="form-control"></textarea>
-                        <label for="inp-descriere">Descriere conține</label>
-                    </div>
-                </div>
+                                    <div class="col-6 col-md-3">
+                                        <label class="form-label">Lungime min</label>
+                                        <input type="number" id="inp-len-min" class="form-control" min="<%- minLen %>"
+                                            max="<%- maxLen %>" value="<%- minLen %>">
+                                    </div>
 
+                                    <div class="col-6 col-md-3">
+                                        <label class="form-label">Lungime max</label>
+                                        <input type="number" id="inp-len-max" class="form-control" min="<%- minLen %>"
+                                            max="<%- maxLen %>" value="<%- maxLen %>">
+                                    </div>
 
-                <div class="col-12 col-md-6">
-                    <label class="form-label">Categorie utilizare</label>
-                    <select id="inp-categorie" class="form-select">
-                        <option value="toate">oricare</option>
-                        <option value="incepator">începător</option>
-                        <option value="intermediar">intermediar</option>
-                        <option value="profesionist">profesionist</option>
-                        <option value="copii">copii</option>
-                    </select>
-                </div>
-
-                <div class="col-12 col-md-6">
-                    <label class="form-label">Materiale</label>
-                    <select id="inp-materiale" class="form-select" multiple>
-                        <option value="lemn">lemn</option>
-                        <option value="metal">metal</option>
-                        <option value="plastic">plastic</option>
-                        <option value="cauciuc">cauciuc</option>
-                    </select>
-                </div>
-
-                <div class="col-12">
-                    <input type="checkbox" id="inp-electric" class="form-check-input">
-                    <label for="inp-electric">Doar electrice</label>
-                </div>
-
-                <div class="col-12">
-                    <button id="filtrare" class="btn btn-primary">
-                        <i class="bi bi-funnel"></i>
-                        <span class="d-none d-md-inline">Filtrează</span>
-                    </button>
-                    <button id="resetare" class="btn btn-secondary">
-                        <i class="bi bi-arrow-clockwise"></i>
-                        <span class="d-none d-md-inline">Resetează</span>
-                    </button>
-
-                    <button id="sortCrescNume" class="btn btn-primary">
-                        <i class="bi bi-sort-alpha-down"></i>
-                        <span class="d-none d-md-inline">Crescător</span>
-                    </button>
-
-                    <button id="sortDescrescNume" class="btn btn-primary">
-                        <i class="bi bi-sort-alpha-up"></i>
-                        <span class="d-none d-md-inline">Descrescător</span>
-                    </button>
-
-                    <button id="calculeaza-suma" class="btn btn-danger">
-                        <i class="bi bi-calculator"></i>
-                        <span class="d-none d-md-inline">Sumă</span>
-                    </button>
-
-                </div>
-
-            </section>
-
-            <section id="produse">
-
-                <h2>Instrumente</h2>
-
-                <div class="grid-produse">
-
-                    <% for (let prod of locals.produse) { %>
-                        <article class="produs">
-
-                            <h3 class="nume">
-                                Nume:
-                                <a href="/produs/<%- prod.id %>">
-                                    <span class="val-nume"><%- prod.nume %></span>
-                                </a>
-                            </h3>
-
-                            <div class="info-prod">
-
-                                <p class="pret">
-                                    Preț: <span class="val-pret"><%- prod.pret %></span>
-                                </p>
-
-                                <p class="materiale" style="display: none">
-                                    Materiale: <span class="val-materiale"><%- prod.materiale %> </span>
-                                </p>
-
-                                <p class="electric" style="display: none">
-                                    Electric: <span class="val-electric"><%- prod.este_electric %> </span>
-                                </p>
-
-                                <p class="utilizare" style="display: none">
-                                    Utilizare: <span class="val-categorie"><%- prod.categorie %> </span>
-                                </p>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea id="inp-descriere" class="form-control"></textarea>
+                                            <label for="inp-descriere">Descriere conține</label>
+                                        </div>
+                                    </div>
 
 
-                                <p class="tip_produs">
-                                    Tip instrument:
-                                    <span class="val-tip"><%- prod.tip_produs.toLowerCase().replace(/\s+/g, '_' )
-                                            %></span>
-                                </p>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label">Categorie utilizare</label>
+                                        <select id="inp-categorie" class="form-select">
+                                            <option value="toate">oricare</option>
+                                            <option value="incepator">începător</option>
+                                            <option value="intermediar">intermediar</option>
+                                            <option value="profesionist">profesionist</option>
+                                            <option value="copii">copii</option>
+                                        </select>
+                                    </div>
 
-                            </div>
+                                    <div class="col-12 col-md-6">
+                                        <label class="form-label">Materiale</label>
+                                        <select id="inp-materiale" class="form-select" multiple>
+                                            <% for (let m of materiale2) { %>
+                                                <option value="<%- m %>"><%- m %></option>
+                                                <% } %>
+                                        </select>
+                                    </div>
 
-                            <span class="val-descriere"><%- prod.descriere %> </span>
+                                    <div class="col-12">
+                                        <input type="checkbox" id="inp-electric" class="form-check-input" <%-
+                                            areElectric ? '' : 'disabled' %>>
+                                        <label for="inp-electric">Doar electrice</label>
+                                    </div>
 
-                            <figure>
-                                <a href="/produs/<%- prod.id %>">
-                                    <img src="/resurse/imagini/produse/<%- prod.imagine %>"
-                                        style="width:50%;height:auto;" alt="[imagine <%- prod.nume %>]" />
-                                </a>
-                            </figure>
+                                    <div class="col-12">
+                                        <button id="filtrare" class="btn btn-primary">
+                                            <i class="bi bi-funnel"></i>
+                                            <span class="d-none d-md-inline">Filtrează</span>
+                                        </button>
+                                        <button id="resetare" class="btn btn-primary">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                            <span class="d-none d-md-inline">Resetează</span>
+                                        </button>
+
+                                        <button id="sortCrescNume" class="btn btn-primary">
+                                            <i class="bi bi-sort-alpha-down"></i>
+                                            <span class="d-none d-md-inline">Crescător</span>
+                                        </button>
+
+                                        <button id="sortDescrescNume" class="btn btn-primary">
+                                            <i class="bi bi-sort-alpha-up"></i>
+                                            <span class="d-none d-md-inline">Descrescător</span>
+                                        </button>
+
+                                        <button id="calculeaza-suma" class="btn btn-danger">
+                                            <i class="bi bi-calculator"></i>
+                                            <span class="d-none d-md-inline">Sumă</span>
+                                        </button>
+                                        <!-- Sortare avansată (Bonus 8) -->
+                                        <button id="sortare-avansata" class="btn btn-warning">
+                                            Sortare avansată
+                                        </button>
+                                        <div class="col-12 col-md-3">
+                                            <label>Sortare 1</label>
+                                            <select id="sort-key-1" class="form-select">
+                                                <option value="nume">Nume</option>
+                                                <option value="pret">Preț</option>
+                                                <option value="categorie">Categorie</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-md-3">
+                                            <label>Direcție 1</label>
+                                            <select id="sort-dir-1" class="form-select">
+                                                <option value="1">Crescător</option>
+                                                <option value="-1">Descrescător</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-md-3">
+                                            <label>Sortare 2</label>
+                                            <select id="sort-key-2" class="form-select">
+                                                <option value="nume">Nume</option>
+                                                <option value="pret">Preț</option>
+                                                <option value="categorie">Categorie</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12 col-md-3">
+                                            <label>Direcție 2</label>
+                                            <select id="sort-dir-2" class="form-select">
+                                                <option value="1">Crescător</option>
+                                                <option value="-1">Descrescător</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+
+                                </section>
+
+                                <section id="produse">
+
+                                    <h2>Instrumente</h2>
+                                    <p id="nr-produse" style="font-weight:bold;"></p>
+
+                                    <div class="grid-produse">
+
+                                        <% for (let prod of locals.produse) { %>
+                                            <article class="produs">
+
+                                                <h3 class="nume">
+
+                                                    Nume:
+                                                    <a href="/produs/<%- prod.id %>">
+                                                        <span class="val-nume"><%- prod.nume %></span>
+                                                    </a>
+                                                </h3>
+
+                                                <div class="info-prod">
+
+                                                    <p class="pret">
+                                                        Preț: <span class="val-pret"><%- prod.pret %></span>
+                                                    </p>
+
+                                                    <p class="materiale" style="display: none">
+                                                        Materiale: <span class="val-materiale"><%- prod.materiale %>
+                                                        </span>
+                                                    </p>
+
+                                                    <p class="electric" style="display: none">
+                                                        Electric: <span class="val-electric"><%- prod.este_electric %>
+                                                        </span>
+                                                    </p>
+
+                                                    <p class="utilizare" style="display: none">
+                                                        Utilizare: <span class="val-categorie"><%- prod.categorie %>
+                                                        </span>
+                                                    </p>
+                                                    <p class="badge-ieftin"
+                                                        style="display:none; font-weight:bold; color:white; background:red; padding:5px; width:fit-content;">
+                                                        Cel mai ieftin din categorie
+                                                    </p> <!--Bonus 14-->
 
 
-                            <label class="selecteaza-cos">
-                                Selectează:<br />
-                                <input type="checkbox" class="select-cos" value="<%- prod.id %>" autocomplete="off">
-                            </label>
+                                                    <p class="tip_produs">
+                                                        Tip instrument:
+                                                        <span class="val-tip"><%-
+                                                                prod.tip_produs.toLowerCase().replace(/\s+/g, '_' )
+                                                                %></span>
+                                                    </p>
 
-                        </article>
-                        <% } %>
+                                                </div>
 
-                </div>
+                                                <span class="val-descriere"><%- prod.descriere %> </span>
 
-            </section>
+                                                <figure>
+                                                    <a href="/produs/<%- prod.id %>">
+                                                        <img src="/resurse/imagini/produse/<%- prod.imagine %>"
+                                                            style="width:50%;height:auto;"
+                                                            alt="[imagine <%- prod.nume %>]" />
+                                                    </a>
+                                                </figure>
+
+
+                                                <label class="selecteaza-cos">
+                                                    Selectează:<br />
+                                                    <input type="checkbox" class="select-cos" value="<%- prod.id %>"
+                                                        autocomplete="off">
+                                                </label>
+
+                                            </article>
+                                            <% } %>
+
+                                    </div>
+
+                                </section>
 
         </main>
 

@@ -47,17 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // GALERIE DIN FETCH (fragment)
 
-  fetch("/galerie.fragment.html")
-    .then(r => r.text())
-    .then(html => {
-      const container = document.getElementById("galerie-container");
-      if (!container) return;
 
-      container.innerHTML = html;
-
-      const imaginiFragment = container.querySelectorAll(".slide img");
-      animareGalerie(imaginiFragment);
-    });
 
   function animareGalerie(imagini) {
     if (!imagini || imagini.length === 0) return;

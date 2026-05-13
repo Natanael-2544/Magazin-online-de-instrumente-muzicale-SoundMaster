@@ -5,6 +5,40 @@ window.onload = function () {
   const inpPretMax = document.getElementById("inp-pret-max");
   const valPretMin = document.getElementById("val-pret-min");
   const valPretMax = document.getElementById("val-pret-max");
+  //Bonus 3
+  let mesaj = document.createElement("p");
+  mesaj.id = "mesaj-niciun-produs";
+  mesaj.style.color = "red";
+  mesaj.style.fontWeight = "bold";
+  mesaj.style.display = "none";
+
+  document.getElementById("produse").appendChild(mesaj);
+
+  let produse = Array.from(document.getElementsByClassName("produs"));
+
+  //Bonus 15 numa produse
+  let afisNr = document.getElementById("nr-produse");
+
+//Bonus 14 - ieftin
+let minPeCategorie = {};
+
+for (let prod of produse) {
+  let tip = prod.querySelector(".val-tip").innerText.trim();
+  let pret = parseFloat(prod.querySelector(".val-pret").innerText);
+
+  if (!minPeCategorie[tip] || pret < minPeCategorie[tip].pret) {
+    minPeCategorie[tip] = {
+      produs: prod,
+      pret: pret
+    };
+  }
+}
+for (let tip in minPeCategorie) {
+  let produsMinim = minPeCategorie[tip].produs;
+
+  let badge = produsMinim.querySelector(".badge-ieftin");
+  badge.style.display = "block";
+}
 
   inpPretMin.oninput = function () {
     valPretMin.innerHTML = `(${this.value})`;
@@ -17,6 +51,8 @@ window.onload = function () {
   }
 
   document.getElementById("filtrare").onclick = function () {
+    let nrproduse=0;
+    let nrAfisate = 0;
     let inpNumeField = document.getElementById("inp-nume");
 
     if (/[0-9]/.test(inpNumeField.value)) {
@@ -51,7 +87,14 @@ window.onload = function () {
     let tipSelectat = "toate";
     for (let rad of radioTipuri) {
       if (rad.checked) {
-        tipSelectat = rad.value;
+        tipSelectat = rad.value
+      .trim()
+      .toLowerCase()
+      .replace(/ă/g, "a")
+      .replace(/â/g, "a")
+      .replace(/î/g, "i")
+      .replace(/ș/g, "s")
+      .replace(/ț/g, "t");
         break;
       }
     }
@@ -88,7 +131,14 @@ window.onload = function () {
       let catProdus = prod.querySelector(".val-categorie").innerHTML.trim().toLowerCase();
       let isElectric = prod.querySelector(".val-electric").innerHTML.trim().toLowerCase() == "true";
 
-      let tip = prod.querySelector(".val-tip").innerHTML.trim().toLowerCase();
+      let tip = prod.querySelector(".val-tip").innerText
+        .trim()
+        .toLowerCase()
+        .replace(/ă/g, "a")
+        .replace(/â/g, "a")
+        .replace(/î/g, "i")
+        .replace(/ș/g, "s")
+        .replace(/ț/g, "t");
       let descriereStr = prod.querySelector(".val-descriere").innerHTML.trim();
       let descriere = descriereStr.toLowerCase();
 
@@ -119,7 +169,56 @@ window.onload = function () {
       if (condNume && condPret && condTip && condLen && condTextDescr && condElec &&
         condMaterial && condCat && condMaterialeMultiple) {
         prod.style.display = "block";
+        nrAfisate++;
+        nrproduse++
       }
+    }
+    afisNr.innerText = `Număr produse afișate: ${nrAfisate}`;
+    //Bonus 3
+    if (nrAfisate === 0) {
+      mesaj.innerText = "Nu există produse conform filtrării curente";
+      mesaj.style.display = "block";
+    } else {
+      mesaj.style.display = "none";
+    }
+  };
+  //Bonus 8
+  function getVal(prod, key) {
+    if (key === "nume")
+      return prod.querySelector(".val-nume").innerText.toLowerCase();
+    if (key === "pret")
+      return parseFloat(prod.querySelector(".val-pret").innerText);
+    if (key === "categorie")
+      return prod.querySelector(".val-categorie").innerText.toLowerCase();
+    return "";
+  }
+
+  document.getElementById("sortare-avansata").onclick = function () {
+    let key1 = document.getElementById("sort-key-1").value;
+    let dir1 = parseInt(document.getElementById("sort-dir-1").value);
+
+    let key2 = document.getElementById("sort-key-2").value;
+    let dir2 = parseInt(document.getElementById("sort-dir-2").value);
+
+    let produse = Array.from(document.getElementsByClassName("produs"));
+
+    produse.sort((a, b) => {
+      let a1 = getVal(a, key1);
+      let b1 = getVal(b, key1);
+      if (a1 > b1) return dir1;
+      if (a1 < b1) return -dir1;
+
+      let a2 = getVal(a, key2);
+      let b2 = getVal(b, key2);
+      if (a2 > b2) return dir2;
+      if (a2 < b2) return -dir2;
+
+      return 0;
+    });
+
+    let container = document.querySelector(".grid-produse");
+    for (let p of produse) {
+      container.appendChild(p);
     }
   };
 

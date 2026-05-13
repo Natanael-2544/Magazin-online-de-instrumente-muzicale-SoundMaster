@@ -142,3 +142,9 @@ main {
     cursor: pointer;
     margin: 0.5rem 0;
 }
+/*Bonus 14*/
+.badge-ieftin {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
