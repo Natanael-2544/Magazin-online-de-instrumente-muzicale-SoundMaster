@@ -6,21 +6,16 @@ window.addEventListener("DOMContentLoaded", function () {
     let dark = localStorage.getItem("dark") === "true";
     let tema = localStorage.getItem("tema") || "default";
 
-    // aplicare initială
     if (dark) {
         document.body.classList.add("dark");
         switchTema.checked = true;
     }
-
     if (tema !== "default") {
         document.body.classList.add(tema);
     }
-
     selectTema.value = tema;
 
-    // 🔥 SWITCH DARK/LIGHT
     switchTema.addEventListener("change", function () {
-
         if (this.checked) {
             document.body.classList.add("dark");
             localStorage.setItem("dark", "true");
@@ -29,18 +24,11 @@ window.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("dark", "false");
         }
     });
-
-    // 🎨 SELECT TEME
     selectTema.addEventListener("change", function () {
-
-        // scoatem doar temele de culoare (NU dark)
         document.body.classList.remove("blue", "green", "christmas");
-
         if (this.value !== "default") {
             document.body.classList.add(this.value);
         }
-
         localStorage.setItem("tema", this.value);
     });
-
 });

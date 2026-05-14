@@ -18,7 +18,6 @@ client = new pg.Client({
 
 client.connect()
 
-
 app = express();
 app.set("view engine", "ejs")
 
@@ -157,7 +156,6 @@ app.get("/produs/:id", function (req, res) {
             }
         })
 })
-
 
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))

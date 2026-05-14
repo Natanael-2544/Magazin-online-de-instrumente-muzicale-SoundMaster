@@ -113,8 +113,7 @@ for (let tip in minPeCategorie) {
     for (let prod of produse) {
       prod.style.display = "none";
 
-
-
+      
       let materialeProdus = prod.querySelector(".val-materiale").innerHTML.trim().toLowerCase();
 
       let condMaterialeMultiple = true;

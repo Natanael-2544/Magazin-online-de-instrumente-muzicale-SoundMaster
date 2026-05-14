@@ -40,14 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // GALERIE DIN EJS (cerință)
+  // galerie din ejs
 
   const imaginiDinamice = document.querySelectorAll(".galerie-dinamica .slide img");
   animareGalerie(imaginiDinamice);
 
-  // GALERIE DIN FETCH (fragment)
-
-
+  //galerie animata
 
   function animareGalerie(imagini) {
     if (!imagini || imagini.length === 0) return;
