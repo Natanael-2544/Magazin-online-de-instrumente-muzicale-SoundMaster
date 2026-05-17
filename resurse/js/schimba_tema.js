@@ -24,6 +24,7 @@ window.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("dark", "false");
         }
     });
+    
     selectTema.addEventListener("change", function () {
         document.body.classList.remove("blue", "green", "christmas");
         if (this.value !== "default") {

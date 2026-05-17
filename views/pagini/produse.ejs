@@ -20,6 +20,7 @@
     <%- include("../fragmente/header") %>
 
         <main>
+            <!-- Bonus 1 -->
             <% let preturi=locals.produse.map(p=> p.pret);
                 let minPret = Math.min(...preturi);
                 let maxPret = Math.max(...preturi);
@@ -176,38 +177,40 @@
                                         <button id="sortare-avansata" class="btn btn-warning">
                                             Sortare avansată
                                         </button>
-                                        <div class="col-12 col-md-3">
-                                            <label>Sortare 1</label>
-                                            <select id="sort-key-1" class="form-select">
-                                                <option value="nume">Nume</option>
-                                                <option value="pret">Preț</option>
-                                                <option value="categorie">Categorie</option>
-                                            </select>
-                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <label>Sortare 1</label>
+                                                <select id="sort-key-1" class="form-select">
+                                                    <option value="nume">Nume</option>
+                                                    <option value="pret">Preț</option>
+                                                    <option value="categorie">Categorie</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="col-12 col-md-3">
-                                            <label>Direcție 1</label>
-                                            <select id="sort-dir-1" class="form-select">
-                                                <option value="1">Crescător</option>
-                                                <option value="-1">Descrescător</option>
-                                            </select>
-                                        </div>
+                                            <div class="col-12 col-md-6">
+                                                <label>Direcție 1</label>
+                                                <select id="sort-dir-1" class="form-select">
+                                                    <option value="1">Crescător</option>
+                                                    <option value="-1">Descrescător</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="col-12 col-md-3">
-                                            <label>Sortare 2</label>
-                                            <select id="sort-key-2" class="form-select">
-                                                <option value="nume">Nume</option>
-                                                <option value="pret">Preț</option>
-                                                <option value="categorie">Categorie</option>
-                                            </select>
-                                        </div>
+                                            <div class="col-12 col-md-6">
+                                                <label>Sortare 2</label>
+                                                <select id="sort-key-2" class="form-select">
+                                                    <option value="nume">Nume</option>
+                                                    <option value="pret">Preț</option>
+                                                    <option value="categorie">Categorie</option>
+                                                </select>
+                                            </div>
 
-                                        <div class="col-12 col-md-3">
-                                            <label>Direcție 2</label>
-                                            <select id="sort-dir-2" class="form-select">
-                                                <option value="1">Crescător</option>
-                                                <option value="-1">Descrescător</option>
-                                            </select>
+                                            <div class="col-12 col-md-6">
+                                                <label>Direcție 2</label>
+                                                <select id="sort-dir-2" class="form-select">
+                                                    <option value="1">Crescător</option>
+                                                    <option value="-1">Descrescător</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                     </div>
