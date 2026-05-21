@@ -1,34 +1,58 @@
 
+// setCookie("a",10, 1000)
+function setCookie(nume, val, timpExpirare) {
+    let d = new Date();
+    d.setTime(d.getTime() + timpExpirare);
 
-//setCookie("a",10, 1000)
-function setCookie(nume, val, timpExpirare){//timpExpirare in milisecunde
-    d=new Date();
-    d.setTime(d.getTime()+timpExpirare)
-    document.cookie=`${nume}=${val}; expires=${d.toUTCString()}`;
+    document.cookie = `${nume}=${val}; expires=${d.toUTCString()}; path=/`;
 }
 
-function getCookie(nume){
-    vectorParametri=document.cookie.split(";") // ["a=10","b=ceva"]
-    for(let param of vectorParametri){
-        if (param.trim().startsWith(nume+"="))
-            return param.split("=")[1]
+
+function getCookie(nume) {
+    let vectorParametri = document.cookie.split(";");
+
+    for (let param of vectorParametri) {
+        param = param.trim();
+
+        if (param.startsWith(nume + "=")) {
+            return param.split("=")[1];
+        }
     }
     return null;
 }
 
-function deleteCookie(nume){
-    console.log(`${nume}; expires=${(new Date()).toUTCString()}`)
-    document.cookie=`${nume}=0; expires=${(new Date()).toUTCString()}`;
+function deleteCookie(nume) {
+    document.cookie = `${nume}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+}
+
+function deleteAllCookies() {
+    let cookies = document.cookie.split(";");
+
+    for (let c of cookies) {
+        let nume = c.split("=")[0].trim();
+        document.cookie = `${nume}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
+    }
 }
 
 
-window.addEventListener("load", function(){
-    if (getCookie("acceptat_banner")){
-        document.getElementById("banner").style.display="none";
+window.addEventListener("load", function () {
+
+    let banner = document.getElementById("banner-print");
+    let btn = document.getElementById("ok_cookies");
+
+    if (getCookie("acceptat_banner")) {
+        if (banner) banner.style.display = "none";
     }
 
-    this.document.getElementById("ok_cookies").onclick=function(){
-        setCookie("acceptat_banner",true,60000);
-        document.getElementById("banner").style.display="none"
+    if (btn) {
+        btn.onclick = function () {
+            setCookie("acceptat_banner", true, 60000); 
+            if (banner) banner.style.display = "none";
+        };
     }
-})
+});
+
+window.addEventListener("load", function () {
+    setCookie("ultima_pagina", window.location.pathname, 24 * 60 * 60 * 1000);
+
+});

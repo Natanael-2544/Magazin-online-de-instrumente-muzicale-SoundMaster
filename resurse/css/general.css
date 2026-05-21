@@ -260,6 +260,19 @@ ul.meniu {
     z-index: -1;
 }
 
+.harta-interactiva img{
+    width:100%;
+    max-width:600px;
+    height:auto;
+    display:block;
+    margin:auto;
+}
+
+.harta-interactiva{
+    width:100%;
+    overflow:hidden;
+    box-sizing:border-box;
+}
 /*  */
 
 hr {
@@ -273,6 +286,83 @@ hr {
     border-radius: 10px;
     margin: 10px auto;
     width: 90%;
+}
+
+.carousel-item img {
+    height: 900px;
+    width: 100%;
+    object-fit: contain;
+    background: black;
+}
+
+#banner-print {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 16px;
+    z-index: 9999;
+
+    /* culori cerute (alege din tema ta) */
+    --c1: #222;
+    --c2: #444;
+    --c3: #ffcc00;
+
+    background: var(--c1);
+    border-top: 3px solid var(--c3);
+
+    transform: translateX(-100%);
+    animation: slideBanner 5s linear forwards;
+}
+
+/* ANIMAȚIE */
+@keyframes slideBanner {
+    0% {
+        transform: translateX(-100%);
+        background: var(--c1);
+        border-color: var(--c3);
+    }
+
+    50% {
+        background: var(--c3);
+        border-color: var(--c2);
+    }
+
+    100% {
+        transform: translateX(0%);
+        background: var(--c2);
+        border-color: var(--c3);
+    }
+}
+
+
+.galerie-seria {
+    display: flex;
+    flex-direction: row;       
+    justify-content: center;   
+    gap: 30px;                
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.galerie-seria .imagine-responsive {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;      
+}
+
+.galerie-seria figcaption {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    max-width: 300px;      
 }
 
 .imagine-efect {
@@ -316,6 +406,14 @@ hr {
 .imagine-efect:hover::before,
 .imagine-efect:hover::after {
     opacity: 0;
+}
+
+
+@media (max-width: 950px) {
+    .galerie-seria {
+        flex-direction: column; 
+        align-items: center;
+    }
 }
 
 /*text*/
@@ -590,6 +688,12 @@ hr {
     .tabel-container {
         overflow-x: auto;
     }
+    #banner-print {
+        animation: none;
+        transform: none;
+        position: static;
+        width: 100%;
+    }
 
     #instrumente {
         column-count: 1;
@@ -754,6 +858,12 @@ thead {
         padding: 0;
         width: 100%;
 
+    }
+    #banner-print {
+        animation: none;
+        transform: none;
+        position: static;
+        width: 100%;
     }
 
     #instrumente {

@@ -157,6 +157,20 @@ app.get("/produs/:id", function (req, res) {
         })
 })
 
+//Etapa 7
+app.get("/api/carousel-produse", function (req, res) {
+    client.query("SELECT * FROM instrumente ORDER BY RANDOM() LIMIT 5",
+        (err, rez) => {
+            if (err) return res.status(500).json([]);
+
+            res.json(rez.rows.map(p => ({
+                ...p,
+                imagine: "/resurse/imagini/produse/" + p.imagine
+            })));
+        });
+});
+
+
 app.get("/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "resurse/imagini/ico/favicon.ico"))
 });

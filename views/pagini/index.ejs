@@ -37,7 +37,7 @@
 
                         <p><small>Apasă pe diferite părți ale imaginii pentru a naviga rapid.</small></p>
 
-                        <img src="/resurse/imagini/Pian.jpg" alt="Harta Instrumente" usemap="#harta-pian" width="600">
+                        <img src="/resurse/imagini/Pian.jpg" alt="Harta Instrumente" usemap="#harta-pian">
 
                         <map name="harta-pian">
 
@@ -78,31 +78,74 @@
                         <!-- meter pentru a arata satisfactia clientilor, span pentru a afisa valoarea -->
                     </p>
 
-                    <figure class="imagine-responsive"> <!--organizarea imaginilor si a legendei-->
-                        <picture>
-                            <!-- element pentru imagini de diferite dimensiuni, in functie de dispozitiv, afiseaza imaginea optima -->
-                            <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:700px)" />
-                            <!-- source e intructiunea de selectie a imaginii-->
-
-                            <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:1200px)" />
-
+                    <div class="galerie-seria">
+                        <figure class="imagine-responsive">
                             <div class="imagine-efect">
-                                <img src="/resurse/imagini/Pian.jpg" alt="Pian în showroom"
-                                    title="Descoperă gama noastră de instrumente premium">
-                                <!--director curent ./, ../un nivel mai sus(parinte)-->
+                                <picture>
+                                    <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:700px)" />
+                                    <source srcset="/resurse/imagini/Pian.jpg" media="(max-width:1200px)" />
+                                    <img src="/resurse/imagini/pianvertical.jpg" alt="Pian în showroom"
+                                        title="Descoperă gama noastră de instrumente premium">
+                                </picture>
                             </div>
-                        </picture>
-                        <figcaption>Selecția noastră de piane disponibile în magazinul online.
-                        </figcaption>
-                    </figure>
+                            <figcaption>Selecția noastră de piane disponibile în magazinul online.</figcaption>
+                        </figure>
+
+                        <figure class="imagine-responsive">
+                            <div class="imagine-efect">
+                                <picture>
+                                    <source srcset="/resurse/imagini/violinv.jpg" media="(max-width:700px)" />
+                                    <source srcset="/resurse/imagini/violinv.jpg" media="(max-width:1200px)" />
+                                    <img src="/resurse/imagini/violinv.jpg" alt="Vioara"
+                                        title="Chitare acustice și electrice">
+                                </picture>
+                            </div>
+                            <figcaption>Gama de viori pentru începători și avansați.</figcaption>
+                        </figure>
+
+                        <figure class="imagine-responsive">
+                            <div class="imagine-efect">
+                                <picture>
+                                    <source srcset="/resurse/imagini/chitarav.jpg" media="(max-width:700px)" />
+                                    <source srcset="/resurse/imagini/chitarav.jpg" media="(max-width:1200px)" />
+                                    <img src="/resurse/imagini/chitarav.jpg" alt="Chitara" title="Chitare">
+                                </picture>
+                            </div>
+                            <figcaption>Chitare ideale pentru orice gen muzical.</figcaption>
+                        </figure>
+                    </div>
                     <!-- Link imagine separată -->
                     <figure>
-                        <a href="/resurse/imagini/Pian.jpg">
-                            <img src="/resurse/imagini/Pian.jpg" alt="Pian mare în showroom"
+                        <a href="/resurse/imagini/PianGrand.jpg">
+                            <img src="/resurse/imagini/PianGrand.jpg" alt="Pian mare în showroom"
                                 title="Imagine Piano - click pentru versiunea mare" width="300">
                         </a>
                         <figcaption>Pian profesional - versiune mare la click</figcaption>
                     </figure>
+                    <p>Carusel</p>
+                    <div class="container mt-4">
+
+                        <div id="caruselProduse" class="carousel slide" data-bs-ride="carousel">
+
+                            <!-- INDICATORI -->
+                            <div class="carousel-indicators" id="indicators"></div>
+
+                            <!-- SLIDES -->
+                            <div class="carousel-inner" id="carousel-inner"></div>
+
+                            <!-- CONTROALE -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#caruselProduse"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#caruselProduse"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+
+                        </div>
+                    </div>
 
                     <p class="intro">Vă mulțumim că ne vizitați site-ul! Magazinul <abbr title="SoundMaster">SM</abbr>
                         oferă instrumente de înaltă calitate pentru muzicieni!
@@ -587,7 +630,7 @@
                     </div>
                     <p>Galerie animată</p>
                     <div id="galerie-animata">
-                        
+
                         <div id="grid-galerie">
                             <% if (locals.imagini && locals.imagini.length> 0) { %>
                                 <% for (let i=0; i < imagini.length; i++) { let img=imagini[i]; %>

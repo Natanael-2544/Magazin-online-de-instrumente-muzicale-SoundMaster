@@ -4,10 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const checkbox = document.getElementById('ch-menu');
 
-  hamburger?.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    checkbox.checked = !checkbox.checked;
-  });
+  hamburger?.addEventListener('click', (e) => {
+  hamburger.classList.toggle('active');
+});
 
   const themeSwitch = document.getElementById('theme-switch');
   const themeIcon = document.getElementById('theme-icon');
