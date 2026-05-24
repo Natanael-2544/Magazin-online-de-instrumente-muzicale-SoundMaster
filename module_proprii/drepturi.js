@@ -15,10 +15,13 @@
  * @type Drepturi
  */
 const Drepturi = {
-	vizualizareUtilizatori: Symbol("vizualizareUtilizatori"),
-	stergereUtilizatori: Symbol("stergereUtilizatori"),
-	cumparareProduse: Symbol("cumparareProduse"),
-	vizualizareGrafice: Symbol("vizualizareGrafice")
-}
+    vizualizareUtilizatori: Symbol("vizualizareUtilizatori"),
+    stergereUtilizatori: Symbol("stergereUtilizatori"),
+    adaugareProduse: Symbol("adaugareProduse"),
+    modificareProduse: Symbol("modificareProduse"),
+    stergereProduse: Symbol("stergereProduse"),
+    cumparareProduse: Symbol("cumparareProduse"),
+    vizualizareGrafice: Symbol("vizualizareGrafice")
+};
 
-module.exports=Drepturi;
+module.exports = Drepturi;

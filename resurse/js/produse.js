@@ -19,26 +19,26 @@ window.onload = function () {
   //Bonus 15 numa produse
   let afisNr = document.getElementById("nr-produse");
 
-//Bonus 14 - ieftin
-let minPeCategorie = {};
+  //Bonus 14 - ieftin
+  let minPeCategorie = {};
 
-for (let prod of produse) {
-  let tip = prod.querySelector(".val-tip").innerText.trim();
-  let pret = parseFloat(prod.querySelector(".val-pret").innerText);
+  for (let prod of produse) {
+    let tip = prod.querySelector(".val-tip").innerText.trim();
+    let pret = parseFloat(prod.querySelector(".val-pret").innerText);
 
-  if (!minPeCategorie[tip] || pret < minPeCategorie[tip].pret) {
-    minPeCategorie[tip] = {
-      produs: prod,
-      pret: pret
-    };
+    if (!minPeCategorie[tip] || pret < minPeCategorie[tip].pret) {
+      minPeCategorie[tip] = {
+        produs: prod,
+        pret: pret
+      };
+    }
   }
-}
-for (let tip in minPeCategorie) {
-  let produsMinim = minPeCategorie[tip].produs;
+  for (let tip in minPeCategorie) {
+    let produsMinim = minPeCategorie[tip].produs;
 
-  let badge = produsMinim.querySelector(".badge-ieftin");
-  badge.style.display = "block";
-}
+    let badge = produsMinim.querySelector(".badge-ieftin");
+    badge.style.display = "block";
+  }
 
   inpPretMin.oninput = function () {
     valPretMin.innerHTML = `(${this.value})`;
@@ -51,7 +51,7 @@ for (let tip in minPeCategorie) {
   }
 
   document.getElementById("filtrare").onclick = function () {
-    let nrproduse=0;
+    let nrproduse = 0;
     let nrAfisate = 0;
     let inpNumeField = document.getElementById("inp-nume");
 
@@ -88,13 +88,13 @@ for (let tip in minPeCategorie) {
     for (let rad of radioTipuri) {
       if (rad.checked) {
         tipSelectat = rad.value
-      .trim()
-      .toLowerCase()
-      .replace(/ă/g, "a")
-      .replace(/â/g, "a")
-      .replace(/î/g, "i")
-      .replace(/ș/g, "s")
-      .replace(/ț/g, "t");
+          .trim()
+          .toLowerCase()
+          .replace(/ă/g, "a")
+          .replace(/â/g, "a")
+          .replace(/î/g, "i")
+          .replace(/ș/g, "s")
+          .replace(/ț/g, "t");
         break;
       }
     }
@@ -113,7 +113,7 @@ for (let tip in minPeCategorie) {
     for (let prod of produse) {
       prod.style.display = "none";
 
-      
+
       let materialeProdus = prod.querySelector(".val-materiale").innerHTML.trim().toLowerCase();
 
       let condMaterialeMultiple = true;
@@ -179,6 +179,25 @@ for (let tip in minPeCategorie) {
       mesaj.style.display = "block";
     } else {
       mesaj.style.display = "none";
+    }
+    // Etapa 7 Bonus 3
+    if (document.getElementById("salveaza-filtrare").checked) {
+
+      let dateFiltrare = {
+        nume: document.getElementById("inp-nume").value,
+        pretMin: document.getElementById("inp-pret-min").value,
+        pretMax: document.getElementById("inp-pret-max").value,
+        categorie: document.getElementById("inp-categorie").value,
+        material: document.getElementById("inp-material").value,
+        descriere: document.getElementById("inp-descriere").value,
+        electric: document.getElementById("inp-electric").checked,
+        salvat: true
+      };
+
+      localStorage.setItem(
+        "filtrare-produse",
+        JSON.stringify(dateFiltrare)
+      );
     }
   };
   //Bonus 8
@@ -258,6 +277,10 @@ for (let tip in minPeCategorie) {
     });
 
     arr.forEach(p => container.appendChild(p));
+    //Bonus 3 E7
+    document.getElementById("salveaza-filtrare").checked = false;
+
+    localStorage.removeItem("filtrare-produse");
   };
 
   function sorteaza(semn) {
@@ -291,6 +314,41 @@ for (let tip in minPeCategorie) {
   document.getElementById("sortDescrescNume").onclick = function () {
     sorteaza(-1);
   };
+  //Bonus 3 E7
+  let filtrareSalvata =
+      localStorage.getItem("filtrare-produse");
+
+    if (filtrareSalvata) {
+
+      let f = JSON.parse(filtrareSalvata);
+
+      document.getElementById("inp-nume").value = f.nume;
+      document.getElementById("inp-pret-min").value = f.pretMin;
+      document.getElementById("inp-pret-max").value = f.pretMax;
+
+      document.getElementById("val-pret-min").innerHTML =
+        `(${f.pretMin})`;
+
+      document.getElementById("val-pret-max").innerHTML =
+        `(${f.pretMax})`;
+
+      document.getElementById("inp-categorie").value =
+        f.categorie;
+
+      document.getElementById("inp-material").value =
+        f.material;
+
+      document.getElementById("inp-descriere").value =
+        f.descriere;
+
+      document.getElementById("inp-electric").checked =
+        f.electric;
+
+      document.getElementById("salveaza-filtrare").checked =
+        true;
+
+      document.getElementById("filtrare").click();
+    };
 
 
   document.getElementById("calculeaza-suma").onclick = function () {
@@ -321,4 +379,4 @@ for (let tip in minPeCategorie) {
       div.remove();
     }, 2000);
   };
-};
+}
