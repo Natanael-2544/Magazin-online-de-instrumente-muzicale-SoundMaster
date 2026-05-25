@@ -486,20 +486,14 @@ let admin = RolFactory.creeazaRol("admin");
 let moderator = RolFactory.creeazaRol("moderator");
 let rolclient = RolFactory.creeazaRol("comun");
 
-console.log("ADMIN poate sterge utilizatori:",
-    admin.areDreptul(Drepturi.stergereUtilizatori));
+console.log(`Rolul creat are codul: ${admin.cod}`);
+console.log(`Rolul creat are codul: ${rolclient.cod}`); 
 
-console.log("MODERATOR poate sterge utilizatori:",
-    moderator.areDreptul(Drepturi.stergereUtilizatori));
-
-console.log("CLIENT poate sterge utilizatori:",
-    rolclient.areDreptul(Drepturi.stergereUtilizatori));
-
-console.log("CLIENT poate cumpara:",
-    rolclient.areDreptul(Drepturi.cumparareProduse));
-
-console.log("MODERATOR poate cumpara:",
-    moderator.areDreptul(Drepturi.cumparareProduse));
+console.log("ADMIN poate sterge utilizatori:", admin.areDreptul(Drepturi.stergereUtilizatori));
+console.log("MODERATOR poate sterge utilizatori:", moderator.areDreptul(Drepturi.stergereUtilizatori));
+console.log("CLIENT poate sterge utilizatori:", rolclient.areDreptul(Drepturi.stergereUtilizatori));
+console.log("CLIENT poate cumpara:", rolclient.areDreptul(Drepturi.cumparareProduse));
+console.log("MODERATOR poate cumpara:", moderator.areDreptul(Drepturi.cumparareProduse));
 
 app.listen(8080);
 console.log("Serverul a pornit!");

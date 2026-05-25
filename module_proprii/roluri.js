@@ -20,6 +20,9 @@ class RolAdmin extends Rol {
     static get tip() {
         return "admin";
     }
+    static get drepturi() {
+        return Object.values(Drepturi);
+    }
     constructor() {
         super();
     }
@@ -37,7 +40,6 @@ class RolModerator extends Rol {
         return [
             Drepturi.vizualizareUtilizatori,
             Drepturi.stergereUtilizatori,
-            Drepturi.vizualizareGrafice
         ];
     }
     constructor() {
@@ -50,6 +52,7 @@ class RolClient extends Rol {
     static get tip() {
         return "comun";
     }
+
     static get drepturi() {
         return [
             Drepturi.cumparareProduse
